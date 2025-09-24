@@ -15,7 +15,7 @@ export default function Footer() {
                     </div>
                 </div>
                 <p className="font-bold">
-                    CISSA - Communication and Information Sciences Students'
+                    CISSA - Communication and Information Sciences Students&apos;
                     Association
                 </p>
                 <p>

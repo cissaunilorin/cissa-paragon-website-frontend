@@ -166,7 +166,7 @@ export default function Home() {
                                 </h3>
                                 <p className="text-base-content/80">
                                     Ensures the well-being of members by
-                                    addressing students' concerns, and providing
+                                    addressing students&apos; concerns, and providing
                                     assistance during emergencies.
                                 </p>
                             </div>
@@ -177,7 +177,7 @@ export default function Home() {
                                     Social Events & Networking
                                 </h3>
                                 <p className="text-base-content/80">
-                                    Plans and executes events like Freshers'
+                                    Plans and executes events like Freshers&apos;
                                     Welcome, Dinner & Awards, and other social
                                     functions to foster unity and networking.
                                 </p>
@@ -215,7 +215,7 @@ export default function Home() {
                                 <p className="text-base-content/80">
                                     Serves as a voice for CISSAites in
                                     faculty-wide or university-level matters,
-                                    ensuring students' interests are protected.
+                                    ensuring students&apos; interests are protected.
                                 </p>
                             </div>
                         </div>
@@ -231,7 +231,7 @@ export default function Home() {
                             Get in <span className="text-primary">Touch</span>
                         </h2>
                         <p className="text-lg text-base-content/70 max-w-2xl mx-auto">
-                            Have questions or want to get involved? We'd love to
+                            Have questions or want to get involved? We&apos;d love to
                             hear from you.
                         </p>
                     </div>
