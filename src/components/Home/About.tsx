@@ -9,31 +9,40 @@ export default function About() {
                         </h2>
                         <p className="text-lg text-base-content/80 mb-6">
                             The Communication and Information Sciences Students
-                            Association (CISSA) is the premier student
-                            organization representing all undergraduate and
-                            graduate students in the Faculty of Communication
-                            and Information Sciences at the University of
-                            Ilorin.
+                            Association (CISSA) is the official student body
+                            representing undergraduates in the Faculty of
+                            Communication and Information Sciences (CIS),
+                            University of Ilorin.
                         </p>
-                        <p className="text-lg text-base-content/80 mb-8">
-                            We are committed to fostering academic excellence,
-                            professional development, and creating lasting bonds
-                            among students while bridging the gap between
-                            academic theory and industry practice.
+                        <p className="text-lg text-base-content/80 mb-6">
+                            Founded in 2008, following the establishment of the
+                            faculty itself, CISSA was created to unite students
+                            from the five departments under the faculty:
                         </p>
-                        <div className="flex flex-wrap gap-4">
-                            <div className="badge badge-primary badge-lg">
-                                Academic Excellence
-                            </div>
-                            <div className="badge badge-secondary badge-lg">
-                                Professional Growth
-                            </div>
-                            <div className="badge badge-accent badge-lg">
-                                Community Building
-                            </div>
-                        </div>
+                        <ul className="list-disc list-inside text-lg text-base-content/80 mb-6 space-y-2 pl-4">
+                            <li>Computer Science</li>
+                            <li>Information and Communication Science</li>
+                            <li>Library and Information Science</li>
+                            <li>Mass Communication</li>
+                            <li>Telecommunication Science</li>
+                        </ul>
+                        <p className="text-lg text-base-content/80 mb-6">
+                            Over the years, CISSA has evolved into one of the
+                            most active and innovative student associations in
+                            the university. Through academic tutorials, tech
+                            trainings, media initiatives, social events, and
+                            welfare drives, it continues to embody the faculty&apos;s
+                            vision of producing globally competitive and
+                            communication-savvy graduates.
+                        </p>
+                        <p className="text-lg text-base-content/80 mb-6">
+                            CISSA is governed by a constitution and run by
+                            elected executives who work with faculty authorities
+                            and student representatives to serve the interests
+                            of CIS students, popularly known as CISSAites.
+                        </p>
                     </div>
-                    <div className="card bg-gradient-to-br from-primary/10 to-secondary/10 shadow-xl">
+                    <div className="card shadow-xl">
                         <div className="card-body">
                             <h3 className="card-title text-2xl mb-4">
                                 Our Mission
