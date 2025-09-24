@@ -2,12 +2,12 @@
 
 import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import Statistics from "@/components/Statistics";
+import Hero from "@/components/Home/Hero";
+import Statistics from "@/components/Home/Statistics";
 import Footer from "@/components/Footer";
-import Responsibilities from "@/components/Responsibilities";
-import About from "@/components/About";
-import Contact from "@/components/Contact";
+import Responsibilities from "@/components/Home/Responsibilities";
+import About from "@/components/Home/About";
+import Contact from "@/components/Home/Contact";
 
 export default function Home() {
     const [showNavbar, setShowNavbar] = useState(false);
