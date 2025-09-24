@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Statistics from "@/components/Statistics";
+import Footer from "@/components/Footer";
 
 export default function Home() {
     const [showNavbar, setShowNavbar] = useState(false);
@@ -52,10 +53,10 @@ export default function Home() {
     ];
 
     const stats = [
-        { label: "Years of Excellence", value: "15" },
+        { label: "Years of Excellence", value: "17" },
         { label: "Departments", value: "5" },
         { label: "Executive Officers", value: "10" },
-        { label: "Principal Officers", value: "4" },    
+        { label: "Principal Officers", value: "4" },
         { label: "Honourables", value: "20" },
         { label: "Senators", value: "3" },
         { label: "Students", value: "1,250" },
@@ -139,44 +140,83 @@ export default function Home() {
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-12">
                         <h2 className="text-4xl md:text-5xl font-bold text-base-content mb-4">
-                            Our <span className="text-primary">Responsibilities</span>
+                            Our{" "}
+                            <span className="text-primary">
+                                Responsibilities
+                            </span>
                         </h2>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         <div className="card bg-base-100 shadow-xl">
                             <div className="card-body">
-                                <h3 className="card-title text-xl text-primary">Academic Empowerment</h3>
-                                <p className="text-base-content/80">Organizes tutorials, workshops, and seminars to support academic excellence and skills development among CISSAites.</p>
+                                <h3 className="card-title text-xl text-primary">
+                                    Academic Empowerment
+                                </h3>
+                                <p className="text-base-content/80">
+                                    Organizes tutorials, workshops, and seminars
+                                    to support academic excellence and skills
+                                    development among CISSAites.
+                                </p>
                             </div>
                         </div>
                         <div className="card bg-base-100 shadow-xl">
                             <div className="card-body">
-                                <h3 className="card-title text-xl text-primary">Welfare Support</h3>
-                                <p className="text-base-content/80">Ensures the well-being of members by addressing students' concerns, and providing assistance during emergencies.</p>
+                                <h3 className="card-title text-xl text-primary">
+                                    Welfare Support
+                                </h3>
+                                <p className="text-base-content/80">
+                                    Ensures the well-being of members by
+                                    addressing students' concerns, and providing
+                                    assistance during emergencies.
+                                </p>
                             </div>
                         </div>
                         <div className="card bg-base-100 shadow-xl">
                             <div className="card-body">
-                                <h3 className="card-title text-xl text-primary">Social Events & Networking</h3>
-                                <p className="text-base-content/80">Plans and executes events like Freshers' Welcome, Dinner & Awards, and other social functions to foster unity and networking.</p>
+                                <h3 className="card-title text-xl text-primary">
+                                    Social Events & Networking
+                                </h3>
+                                <p className="text-base-content/80">
+                                    Plans and executes events like Freshers'
+                                    Welcome, Dinner & Awards, and other social
+                                    functions to foster unity and networking.
+                                </p>
                             </div>
                         </div>
                         <div className="card bg-base-100 shadow-xl">
                             <div className="card-body">
-                                <h3 className="card-title text-xl text-primary">Sports and Fitness</h3>
-                                <p className="text-base-content/80">Promotes physical well-being and unity through inter-departmental games, Dean Cup, and sporting events.</p>
+                                <h3 className="card-title text-xl text-primary">
+                                    Sports and Fitness
+                                </h3>
+                                <p className="text-base-content/80">
+                                    Promotes physical well-being and unity
+                                    through inter-departmental games, Dean Cup,
+                                    and sporting events.
+                                </p>
                             </div>
                         </div>
                         <div className="card bg-base-100 shadow-xl">
                             <div className="card-body">
-                                <h3 className="card-title text-xl text-primary">Career and Tech Development</h3>
-                                <p className="text-base-content/80">Collaborates with industry experts to host tech bootcamps, career talks, and trainings for future-ready CISSAites.</p>
+                                <h3 className="card-title text-xl text-primary">
+                                    Career and Tech Development
+                                </h3>
+                                <p className="text-base-content/80">
+                                    Collaborates with industry experts to host
+                                    tech bootcamps, career talks, and trainings
+                                    for future-ready CISSAites.
+                                </p>
                             </div>
                         </div>
                         <div className="card bg-base-100 shadow-xl">
                             <div className="card-body">
-                                <h3 className="card-title text-xl text-primary">Representation & Advocacy</h3>
-                                <p className="text-base-content/80">Serves as a voice for CISSAites in faculty-wide or university-level matters, ensuring students' interests are protected.</p>
+                                <h3 className="card-title text-xl text-primary">
+                                    Representation & Advocacy
+                                </h3>
+                                <p className="text-base-content/80">
+                                    Serves as a voice for CISSAites in
+                                    faculty-wide or university-level matters,
+                                    ensuring students' interests are protected.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -329,6 +369,7 @@ export default function Home() {
             </div>
 
             {/* Footer */}
+            <Footer />
         </>
     );
 }
