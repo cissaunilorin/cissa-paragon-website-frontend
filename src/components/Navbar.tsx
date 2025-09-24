@@ -1,7 +1,7 @@
 export default function Navbar({ showNavbar }: { showNavbar: boolean }) {
     return (
         <div
-            className={`navbar fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-52 ${
+            className={`navbar fixed top-0 left-0 right-0 z-50 transition-all duration-300 lg:px-46 ${
                 showNavbar
                     ? "bg-base-100/95 backdrop-blur shadow-lg translate-y-0"
                     : "-translate-y-full"
@@ -59,8 +59,6 @@ export default function Navbar({ showNavbar }: { showNavbar: boolean }) {
                             <img
                                 src="/assets/cissa.png"
                                 alt="CISSA Logo"
-                                width={32}
-                                height={32}
                             />
                         </div>
                     </div>
