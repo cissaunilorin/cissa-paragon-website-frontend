@@ -1,14 +1,22 @@
+import Image from "next/image";
+
 export default function Footer() {
     return (
         <footer className="footer footer-horizontal footer-center bg-primary text-primary-content p-10">
             <aside>
                 <div className="avatar">
                     <div className="w-14 h-14 rounded-full">
-                        <img src="/assets/cissa.png" alt="CISSA Logo" />
+                        <Image
+                            src="/assets/cissa.png"
+                            alt="CISSA Logo"
+                            width={56}
+                            height={56}
+                        />
                     </div>
                 </div>
                 <p className="font-bold">
-                    CISSA - Communication and Information Sciences Students' Association
+                    CISSA - Communication and Information Sciences Students'
+                    Association
                 </p>
                 <p>
                     Copyright © {new Date().getFullYear()} - All right reserved

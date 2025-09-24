@@ -19,38 +19,38 @@ export default function Home() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    const executives = [
-        {
-            name: "John Adebayo",
-            position: "President",
-            image: "/api/placeholder/300/400",
-        },
-        {
-            name: "Sarah Johnson",
-            position: "Vice President",
-            image: "/api/placeholder/300/400",
-        },
-        {
-            name: "Michael Chen",
-            position: "Secretary General",
-            image: "/api/placeholder/300/400",
-        },
-        {
-            name: "Fatima Ibrahim",
-            position: "Financial Secretary",
-            image: "/api/placeholder/300/400",
-        },
-        {
-            name: "David Okafor",
-            position: "Public Relations Officer",
-            image: "/api/placeholder/300/400",
-        },
-        {
-            name: "Aisha Mohammed",
-            position: "Social Director",
-            image: "/api/placeholder/300/400",
-        },
-    ];
+    // const executives = [
+    //     {
+    //         name: "John Adebayo",
+    //         position: "President",
+    //         image: "/api/placeholder/300/400",
+    //     },
+    //     {
+    //         name: "Sarah Johnson",
+    //         position: "Vice President",
+    //         image: "/api/placeholder/300/400",
+    //     },
+    //     {
+    //         name: "Michael Chen",
+    //         position: "Secretary General",
+    //         image: "/api/placeholder/300/400",
+    //     },
+    //     {
+    //         name: "Fatima Ibrahim",
+    //         position: "Financial Secretary",
+    //         image: "/api/placeholder/300/400",
+    //     },
+    //     {
+    //         name: "David Okafor",
+    //         position: "Public Relations Officer",
+    //         image: "/api/placeholder/300/400",
+    //     },
+    //     {
+    //         name: "Aisha Mohammed",
+    //         position: "Social Director",
+    //         image: "/api/placeholder/300/400",
+    //     },
+    // ];
 
     const stats = [
         { label: "Years of Excellence", value: "17" },

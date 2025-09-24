@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Navbar({ showNavbar }: { showNavbar: boolean }) {
     return (
         <div
@@ -56,9 +58,11 @@ export default function Navbar({ showNavbar }: { showNavbar: boolean }) {
                 <div className="flex items-center gap-2">
                     <div className="avatar">
                         <div className="w-8 h-8 rounded-full">
-                            <img
+                            <Image
                                 src="/assets/cissa.png"
                                 alt="CISSA Logo"
+                                width={32}
+                                height={32}
                             />
                         </div>
                     </div>
