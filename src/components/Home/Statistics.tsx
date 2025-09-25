@@ -48,6 +48,17 @@ export default function Statistics() {
         { label: "Students", value: 1250, icon: Users },
     ];
 
+    // Call hooks at the top level for each stat
+    const count1 = useCountUp(stats[0].value, 2000, isVisible);
+    const count2 = useCountUp(stats[1].value, 2200, isVisible);
+    const count3 = useCountUp(stats[2].value, 2400, isVisible);
+    const count4 = useCountUp(stats[3].value, 2600, isVisible);
+    const count5 = useCountUp(stats[4].value, 2800, isVisible);
+    const count6 = useCountUp(stats[5].value, 3000, isVisible);
+    const count7 = useCountUp(stats[6].value, 3200, isVisible);
+
+    const counts = [count1, count2, count3, count4, count5, count6, count7];
+
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
@@ -70,7 +81,7 @@ export default function Statistics() {
             <div className="container mx-auto px-4">
                 <div className="stats stats-vertical lg:stats-horizontal shadow-lg w-full">
                     {stats.map((stat, index) => {
-                        const count = useCountUp(stat.value, 2000 + index * 200, isVisible);
+                        const count = counts[index];
                         const formattedCount = stat.value === 1250 ? count.toLocaleString() : count.toString();
                         
                         return (
