@@ -11,14 +11,13 @@ export default function Hero() {
             <div className="hero-content text-neutral-content text-center">
                 <div className="max-w-4xl">
                     <h1 className="mb-6 text-5xl md:text-7xl font-bold leading-tight">
-                        Welcome to <span className="text-secondary">CISSA</span>
+                        Where{" "}
+                        <span className="text-secondary">Communication</span>{" "}
+                        Meets <span className="text-secondary">Innovation</span>
                     </h1>
-                    <p className="mb-8 text-lg md:text-xl max-w-2xl mx-auto">
-                        Communication and Information Sciences Students
-                        Association - Your gateway to academic excellence,
-                        professional development, and lasting connections in the
-                        Faculty of Communication and Information Sciences,
-                        University of Ilorin.
+                    <p className="mb-8 text-xl md:text-2xl max-w-2xl mx-auto">
+                        With CISSA at its core, the faculty thrives through
+                        collaboration, creativity, and excellence.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <button className="btn btn-primary btn-lg ">
