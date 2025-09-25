@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function About() {
     return (
-        <div id="about" className="py-20 bg-base-100">
+        <div id="about" className="py-10 bg-base-100">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-6xl font-bold mb-4">
@@ -13,7 +13,7 @@ export default function About() {
                 </div>
 
                 <div className="mx-auto">
-                    <div className="card card-xl lg:card-side shadow-2xl overflow-hidden mb-8">
+                    <div className="card card-xl lg:card-side shadow-xl overflow-hidden mb-8">
                         <figure>
                             <Image
                                 src="/assets/ov-2.png"
