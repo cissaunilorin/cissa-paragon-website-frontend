@@ -1,6 +1,6 @@
 export default function About() {
     return (
-        <div id="about" className="py-20 bg-base-200">
+        <div id="about" className="py-20 bg-base-100">
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div>
@@ -42,7 +42,7 @@ export default function About() {
                             of CIS students, popularly known as CISSAites.
                         </p>
                     </div>
-                    <div className="card shadow-xl">
+                    <div className="card shadow-lg">
                         <div className="card-body">
                             <h3 className="card-title text-2xl mb-4">
                                 Our Mission

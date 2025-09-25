@@ -4,14 +4,14 @@ export default function Hero() {
             id="home"
             className="hero min-h-screen relative"
             style={{
-                backgroundImage: "url(/assets/ov-2.png)",
+                backgroundImage: "url(/assets/ov-3.png)",
             }}
         >
             <div className="hero-overlay bg-gradient-to-r from-black/60 to-black/40"></div>
             <div className="hero-content text-neutral-content text-center">
                 <div className="max-w-4xl">
                     <h1 className="mb-6 text-5xl md:text-7xl font-bold leading-tight">
-                        Welcome to <span className="text-primary">CISSA</span>
+                        Welcome to <span className="text-secondary">CISSA</span>
                     </h1>
                     <p className="mb-8 text-lg md:text-xl max-w-2xl mx-auto">
                         Communication and Information Sciences Students

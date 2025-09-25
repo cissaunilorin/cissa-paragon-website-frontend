@@ -1,6 +1,6 @@
 export default function Statistics({ stats }: { stats: { label: string; value: string }[] }) {
     return (
-        <div className="py-16 bg-base-100">
+        <div className="pb-16 bg-base-100">
             <div className="container mx-auto px-4">
                 <div className="stats stats-vertical lg:stats-horizontal shadow w-full">
                     {stats.map((stat, index) => (

@@ -136,8 +136,8 @@ export default function Home() {
         <>
             <Navbar showNavbar={showNavbar} />
             <Hero />
-            <Statistics stats={stats} />
             <About />
+            <Statistics stats={stats} />
             <Executives executives={executives} />
             <Responsibilities />
             <Contact />

@@ -18,7 +18,7 @@ interface ExecutivesProps {
 
 export default function Executives({ executives }: ExecutivesProps) {
     return (
-        <div className="py-20 bg-base-100">
+        <div className="py-20 bg-base-200">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
                     <h2 className="text-4xl md:text-5xl font-bold text-base-content mb-4">
@@ -32,7 +32,7 @@ export default function Executives({ executives }: ExecutivesProps) {
                 <div className="carousel carousel-center w-full p-4 space-x-4 rounded-box">
                     {executives.map((executive, index) => (
                         <div key={index} className="carousel-item w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]">
-                            <div className="card bg-base-100 shadow-xl w-full">
+                            <div className="card bg-base-100 shadow-lg w-full">
                                 <figure className="px-4 pt-4 relative h-64">
                                     <Image
                                         src={executive.image}
