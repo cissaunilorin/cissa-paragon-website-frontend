@@ -34,7 +34,7 @@ export default function Departments() {
         <div className="pb-20">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
-                    <h3 className="text-3xl md:text-4xl font-bold text-base-content mb-4">
+                    <h3 className="text-4xl md:text-5xl font-bold text-base-content mb-4">
                         Our <span className="text-secondary">Dynamic</span>{" "}
                         Departments
                     </h3>
