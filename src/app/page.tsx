@@ -31,7 +31,6 @@ export default function Home() {
             <Navbar showNavbar={showNavbar} />
             <Hero />
             <About />
-            <Statistics />
             <Departments />
             <Executives />
             <Responsibilities />

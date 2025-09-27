@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Departments from "./Departments";
+import Statistics from "./Statistics";
 
 export default function About() {
     return (
@@ -65,6 +65,8 @@ export default function About() {
                             </div>
                         </div>
                     </div>
+
+                    <Statistics />
                 </div>
             </div>
         </div>

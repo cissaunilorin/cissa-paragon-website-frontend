@@ -77,8 +77,7 @@ export default function Statistics() {
     }, []);
 
     return (
-        <div ref={sectionRef} className="pb-14 bg-base-100">
-            <div className="container mx-auto px-4">
+        <div ref={sectionRef}>
                 <div className="stats stats-vertical lg:stats-horizontal shadow-lg w-full bg-secondary text-secondary-content">
                     {stats.map((stat, index) => {
                         const count = counts[index];
@@ -99,7 +98,6 @@ export default function Statistics() {
                         );
                     })}
                 </div>
-            </div>
         </div>
     );
 }
