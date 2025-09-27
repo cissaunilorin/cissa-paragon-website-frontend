@@ -9,7 +9,7 @@ export default function Hero() {
         >
             <div className="hero-overlay bg-gradient-to-r from-black/60 to-black/40"></div>
             <div className="hero-content text-neutral-content text-center">
-                <div className="max-w-4xl">
+                <div className="max-w-4xl backdrop-blur-sm border-4 border-base-100/5 p-6 md:p-10 rounded-xl shadow-2xl">
                     <h1 className="mb-6 text-3xl sm:text-5xl md:text-7xl font-bold leading-tight whitespace-normal break-words">
                         Where{" "}
                         <span className="text-secondary">Communication</span>{" "}

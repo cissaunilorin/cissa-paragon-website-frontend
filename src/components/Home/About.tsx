@@ -13,7 +13,7 @@ export default function About() {
                 </div>
 
                 <div className="mx-auto">
-                    <div className="card card-xl lg:card-side shadow-xl overflow-hidden mb-8">
+                    <div className="card card-xl lg:card-side shadow-xl overflow-hidden mb-8 border-8 border-base-200/80">
                         <figure>
                             <Image
                                 src="/assets/ov-2.png"
@@ -23,7 +23,7 @@ export default function About() {
                                 className="object-contain w-full h-full"
                             />
                         </figure>
-                        <div className="card-body bg-primary text-primary-content p-8 lg:w-1/2">
+                        <div className="card-body bg-primary/90 text-primary-content border-base-100 px-4 lg:w-1/2">
                             <h3 className="card-title font-bold text-3xl mb-6">
                                 Who We Are
                             </h3>

@@ -79,7 +79,7 @@ export default function Statistics() {
     return (
         <div ref={sectionRef} className="pb-16 bg-base-100">
             <div className="container mx-auto px-4">
-                <div className="stats stats-vertical lg:stats-horizontal shadow-lg w-full">
+                <div className="stats stats-vertical lg:stats-horizontal shadow-lg w-full bg-base-200/70">
                     {stats.map((stat, index) => {
                         const count = counts[index];
                         const formattedCount = stat.value === 1250 ? count.toLocaleString() : count.toString();
