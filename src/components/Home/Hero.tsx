@@ -2,7 +2,7 @@ export default function Hero() {
     return (
         <div
             id="home"
-            className="hero min-h-screen relative"
+            className="hero min-h-screen relative overflow-x-hidden" // added overflow-x-hidden
             style={{
                 backgroundImage: "url(/assets/ov-3.png)",
             }}
@@ -10,12 +10,12 @@ export default function Hero() {
             <div className="hero-overlay bg-gradient-to-r from-black/60 to-black/40"></div>
             <div className="hero-content text-neutral-content text-center">
                 <div className="max-w-4xl">
-                    <h1 className="mb-6 text-5xl md:text-7xl font-bold leading-tight">
+                    <h1 className="mb-6 text-3xl sm:text-5xl md:text-7xl font-bold leading-tight whitespace-normal break-words">
                         Where{" "}
                         <span className="text-secondary">Communication</span>{" "}
                         Meets <span className="text-secondary">Innovation</span>
                     </h1>
-                    <p className="mb-8 text-lg md:text-xl max-w-2xl mx-auto">
+                    <p className="mb-8 text-base md:text-xl max-w-2xl mx-auto whitespace-normal">
                         With CISSA at its core, the faculty thrives through
                         collaboration, creativity, and excellence.
                     </p>
