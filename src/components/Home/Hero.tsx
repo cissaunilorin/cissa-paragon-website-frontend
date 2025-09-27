@@ -15,7 +15,7 @@ export default function Hero() {
                         <span className="text-secondary">Communication</span>{" "}
                         Meets <span className="text-secondary">Innovation</span>
                     </h1>
-                    <p className="mb-8 text-lg md:text-2xl max-w-2xl mx-auto">
+                    <p className="mb-8 text-lg md:text-xl max-w-2xl mx-auto">
                         With CISSA at its core, the faculty thrives through
                         collaboration, creativity, and excellence.
                     </p>
