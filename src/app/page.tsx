@@ -9,6 +9,7 @@ import Responsibilities from "@/components/Home/Responsibilities";
 import About from "@/components/Home/About";
 import Contact from "@/components/Home/Contact";
 import Executives from "@/components/Home/Executives";
+import Departments from "@/components/Home/Departments";
 
 export default function Home() {
     const [showNavbar, setShowNavbar] = useState(false);
@@ -31,6 +32,7 @@ export default function Home() {
             <Hero />
             <About />
             <Statistics />
+            <Departments />
             <Executives />
             <Responsibilities />
             <Contact />

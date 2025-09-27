@@ -79,20 +79,20 @@ export default function Statistics() {
     return (
         <div ref={sectionRef} className="pb-16 bg-base-100">
             <div className="container mx-auto px-4">
-                <div className="stats stats-vertical lg:stats-horizontal shadow-lg w-full bg-base-200/70">
+                <div className="stats stats-vertical lg:stats-horizontal shadow-lg w-full bg-secondary text-secondary-content">
                     {stats.map((stat, index) => {
                         const count = counts[index];
                         const formattedCount = stat.value === 1250 ? count.toLocaleString() : count.toString();
                         
                         return (
                             <div key={index} className="stat">
-                                <div className="stat-figure text-primary mb-2">
-                                    <stat.icon size={36} />
+                                <div className="stat-figure mb-2">
+                                    <stat.icon size={46} />
                                 </div>
-                                <div className="stat-value text-primary text-4xl">
+                                <div className="stat-value font-black text-4xl md:text-6xl">
                                     {formattedCount}
                                 </div>
-                                <div className="stat-title text-base-content/70">
+                                <div className="stat-title font-bold text-secondary-content text-md mt-2">
                                     {stat.label}
                                 </div>
                             </div>

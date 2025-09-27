@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Departments from "./Departments";
 
 export default function About() {
     return (
@@ -6,14 +7,14 @@ export default function About() {
             <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-6xl font-bold mb-4">
-                        Discover <span className="text-primary">CISSA</span>{" "}
-                        - The heartbeat of{" "}
+                        Discover <span className="text-primary">CISSA</span> -
+                        The heartbeat of{" "}
                         <span className="text-secondary">CIS</span>
                     </h2>
                 </div>
 
                 <div className="mx-auto">
-                    <div className="card card-xl lg:card-side shadow-xl overflow-hidden mb-8 border-8 border-base-200/80">
+                    <div className="card card-xl lg:card-side shadow-2xl rounded-3xl overflow-hidden mb-8 border border-base-200">
                         <figure>
                             <Image
                                 src="/assets/ov-2.png"
@@ -23,7 +24,7 @@ export default function About() {
                                 className="object-contain w-full h-full"
                             />
                         </figure>
-                        <div className="card-body bg-primary/90 text-primary-content border-base-100 px-4 lg:w-1/2">
+                        {/* <div className="card-body bg-primary/90 text-primary-content border-base-100 px-4 lg:w-1/2">
                             <h3 className="card-title font-bold text-3xl mb-6">
                                 Who We Are
                             </h3>
@@ -40,40 +41,32 @@ export default function About() {
                                 the most active student associations in the
                                 university.
                             </p>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
-                                    <h4 className="text-2xl font-semibold mb-3">
-                                        Our Departments:
-                                    </h4>
-                                    <ul className="space-y-2 text-xl">
-                                        <li className="flex items-center">
-                                            <span className="w-2 h-2 bg-primary-content rounded-full mr-3"></span>
-                                            Computer Science
-                                        </li>
-                                        <li className="flex items-center">
-                                            <span className="w-2 h-2 bg-primary-content rounded-full mr-3"></span>
-                                            Information & Communication Science
-                                        </li>
-                                        <li className="flex items-center">
-                                            <span className="w-2 h-2 bg-primary-content rounded-full mr-3"></span>
-                                            Library & Information Science
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className="md:mt-8">
-                                    <ul className="space-y-2 text-xl">
-                                        <li className="flex items-center">
-                                            <span className="w-2 h-2 bg-primary-content rounded-full mr-3"></span>
-                                            Mass Communication
-                                        </li>
-                                        <li className="flex items-center">
-                                            <span className="w-2 h-2 bg-primary-content rounded-full mr-3"></span>
-                                            Telecommunication Science
-                                        </li>
-                                    </ul>
+                        </div> */}
+
+                        <div className="p-8 lg:p-12 bg-gradient-to-br from-primary/95 to-primary text-primary-content">
+                        <div className="space-y-8">
+                            <div>
+                                <h3 className="text-3xl lg:text-4xl font-bold mb-6 flex items-center gap-3">
+                                    <span className="w-2 h-8 bg-primary-content rounded-full"></span>
+                                    Who We Are
+                                </h3>
+                                <div className="space-y-4 text-lg leading-relaxed">
+                                    <p>
+                                        The <strong>Communication and Information Sciences Students Association (CISSA)</strong> is the official 
+                                        student body representing undergraduates in the Faculty of Communication and Information Sciences, 
+                                        University of Ilorin.
+                                    </p>
+                                    <p>
+                                        <span className="inline-flex items-center gap-2 bg-primary-content/20 px-3 py-1 rounded-full text-sm font-medium mr-2">
+                                            Est. 2008
+                                        </span>
+                                        We unite students from five dynamic departments and have evolved into one of the most active 
+                                        student associations in the university.
+                                    </p>
                                 </div>
                             </div>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>
