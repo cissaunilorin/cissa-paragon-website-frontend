@@ -5,7 +5,7 @@ export default function About() {
     return (
         <div id="about" className="pt-10 bg-base-100">
             <div className="container mx-auto px-4">
-                <div className="text-center mb-14">
+                <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-6xl font-bold mb-4">
                         Discover <span className="text-primary">CISSA</span> -
                         The heartbeat of{" "}
@@ -28,7 +28,13 @@ export default function About() {
                             <div className="space-y-8">
                                 <div>
                                     <h3 className="text-3xl lg:text-4xl font-bold mb-6 flex items-center gap-3">
-                                        <span className="w-2 h-8 bg-primary-content rounded-full"></span>
+                                        {/* <span className="w-2 h-2 bg-primary-content rounded-full"></span> */}
+                                        <Image
+                                            src="/assets/cissa.png"
+                                            alt="CISSA Logo"
+                                            width={46}
+                                            height={46}
+                                        />
                                         Who We Are
                                     </h3>
                                     <div className="space-y-4 text-lg leading-relaxed">
