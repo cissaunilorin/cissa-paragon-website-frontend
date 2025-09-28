@@ -29,7 +29,6 @@ export default function Departments() {
         },
     ];
 
-
     return (
         <div className="py-16">
             <div className="container mx-auto px-4">
@@ -51,12 +50,15 @@ export default function Departments() {
                             ></div>
                             <div className="relative z-10">
                                 <div className="mb-4 transform group-hover:scale-110 transition-transform duration-300">
-                                    <dept.icon size={34} className="text-primary" />
+                                    <dept.icon
+                                        size={34}
+                                        className="text-primary"
+                                    />
                                 </div>
                                 <h4 className="text-lg font-bold text-base-content mb-2 group-hover:text-primary transition-colors duration-300">
                                     {dept.name}
                                 </h4>
-                                <div className="w-full h-1 bg-base-200 rounded-full overflow-hidden">
+                                <div className="w-full h-1 bg-base-200 rounded-full overflow-hidden hidden md:block">
                                     <div
                                         className={`h-full bg-gradient-to-r ${dept.color} transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 delay-100`}
                                     ></div>
