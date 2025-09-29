@@ -112,7 +112,7 @@ export default function Executives() {
         },
     ];
     return (
-        <div className="py-16 bg-base-200">
+        <div id="executives" className="py-16 bg-base-200">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-4">
                     <h2 className="text-4xl md:text-5xl font-bold text-base-content mb-4">

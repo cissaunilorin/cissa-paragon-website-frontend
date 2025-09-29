@@ -91,7 +91,7 @@ export default function Statistics() {
                                 <div className="stat-value font-black text-4xl md:text-6xl">
                                     {formattedCount}
                                 </div>
-                                <div className="stat-title font-bold text-secondary-content text-md mt-2">
+                                <div className="stat-title font-bold text-md mt-2">
                                     {stat.label}
                                 </div>
                             </div>

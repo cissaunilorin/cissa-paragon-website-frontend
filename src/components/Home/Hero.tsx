@@ -20,12 +20,12 @@ export default function Hero() {
                         collaboration, creativity, and excellence.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <button className="btn btn-primary btn-lg ">
-                            Explore CISSA
-                        </button>
-                        <button className="btn btn-outline btn-lg">
-                            Learn More
-                        </button>
+                        <a href="#news" className="btn btn-primary btn-lg ">
+                            Latest News
+                        </a>
+                        <a href="#contact" className="btn btn-outline btn-lg">
+                            Contact Us
+                        </a>
                     </div>
                 </div>
             </div>

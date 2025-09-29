@@ -30,7 +30,7 @@ export default function Departments() {
     ];
 
     return (
-        <div className="py-16">
+        <div id="departments" className="py-16">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
                     <h2 className="text-4xl md:text-5xl font-bold text-base-content mb-4">

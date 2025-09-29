@@ -41,7 +41,7 @@ export default function Responsibilities() {
     ];
 
     return (
-        <div className="py-16 bg-base-100">
+        <div id="responsibilities" className="py-16 bg-base-100">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
                     <h2 className="text-4xl md:text-5xl font-bold text-base-content mb-4">
