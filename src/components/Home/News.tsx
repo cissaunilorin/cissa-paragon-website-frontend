@@ -1,5 +1,5 @@
 import React from "react";
-import { AnnouncementPreviews } from "@/components/Publications/PublicationPreview";
+import { AnnouncementPreviews } from "@/components/Home/NewsPreview";
 import { getAnnouncements } from "@/lib/news";
 
 export default function News() {
