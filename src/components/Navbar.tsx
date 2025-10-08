@@ -3,6 +3,12 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
+const navLinks = [
+    { label: "Home", href: "/" },
+    { label: "News", href: "/news" },
+    { label: "Contact", href: "/#contact" },
+];
+
 export default function Navbar() {
     const [showNavbar, setShowNavbar] = useState(false);
 
@@ -66,27 +72,11 @@ export default function Navbar() {
                         tabIndex={0}
                         className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
                     >
-                        <li>
-                            <a href="#home">Home</a>
-                        </li>
-                        <li>
-                            <a href="#about">About</a>
-                        </li>
-                        <li>
-                            <a href="#departments">Departments</a>
-                        </li>
-                        <li>
-                            <a href="#executives">Executives</a>
-                        </li>
-                        <li>
-                            <a href="#responsibilities">Responsibilities</a>
-                        </li>
-                        <li>
-                            <a href="#news">News</a>
-                        </li>
-                        <li>
-                            <a href="#contact">Contact</a>
-                        </li>
+                        {navLinks.map((link) => (
+                            <li key={link.href}>
+                                <a href={link.href}>{link.label}</a>
+                            </li>
+                        ))}
                     </ul>
                 </div>
 
@@ -109,65 +99,17 @@ export default function Navbar() {
                 className="navbar-end hidden lg:flex tabs tabs-border"
             >
                 <ul className="menu menu-horizontal px-1">
-                    <li>
-                        <a href="#home" className="hover:text-primary tab">
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            role="tab"
-                            href="#about"
-                            className="hover:text-primary tab"
-                        >
-                            About
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            role="tab"
-                            href="#departments"
-                            className="hover:text-primary tab"
-                        >
-                            Departments
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            role="tab"
-                            href="#executives"
-                            className="hover:text-primary tab"
-                        >
-                            Executives
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            role="tab"
-                            href="#responsibilities"
-                            className="hover:text-primary tab"
-                        >
-                            Responsibilities
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            role="tab"
-                            href="#news"
-                            className="hover:text-primary tab"
-                        >
-                            News
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            role="tab"
-                            href="#contact"
-                            className="hover:text-primary tab"
-                        >
-                            Contact
-                        </a>
-                    </li>
+                    {navLinks.map((link) => (
+                        <li key={link.href}>
+                            <a
+                                role="tab"
+                                href={link.href}
+                                className="hover:text-primary tab"
+                            >
+                                {link.label}
+                            </a>
+                        </li>
+                    ))}
                 </ul>
             </div>
         </div>

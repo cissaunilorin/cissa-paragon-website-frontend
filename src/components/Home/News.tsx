@@ -25,8 +25,8 @@ export default function News() {
                 )}
 
                 <div className="mt-10 text-center">
-                    <a href="/announcements" className="btn btn-outline">
-                        View all announcements
+                    <a href="/news" className="btn btn-outline">
+                        View all faculty news
                     </a>
                 </div>
             </div>
