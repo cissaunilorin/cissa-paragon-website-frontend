@@ -1,5 +1,3 @@
-import { promises } from "fs";
-
 export interface Signatory {
     name: string; // e.g. "SANNI, Nurudeen Akorede"
     alias?: string; // e.g. "D'LIGHT"

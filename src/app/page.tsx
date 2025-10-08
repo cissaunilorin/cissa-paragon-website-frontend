@@ -1,10 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Navbar from "@/components/Navbar";
 import Hero from "@/components/Home/Hero";
 import News from "@/components/Home/News";
-import Footer from "@/components/Footer";
 import Responsibilities from "@/components/Home/Responsibilities";
 import About from "@/components/Home/About";
 import Contact from "@/components/Home/Contact";

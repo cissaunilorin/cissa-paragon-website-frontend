@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Hero() {
     return (
         <div
@@ -23,9 +25,9 @@ export default function Hero() {
                         <a href="/news" className="btn btn-primary btn-lg ">
                             Latest News
                         </a>
-                        <a href="/#contact" className="btn btn-outline btn-lg">
+                        <Link href="/#contact" className="btn btn-outline btn-lg">
                             Contact Us
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>
