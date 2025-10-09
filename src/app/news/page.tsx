@@ -8,8 +8,8 @@ export default function NewsPage() {
     const announcements = getAnnouncements();
 
     return (
-        <main className="min-h-screen bg-base-100 pt-28 md:pt-32 pb-16">
-            <div className="container mx-auto px-4">
+        <main className="min-h-screen bg-base-100 pt-24 md:pt-32 pb-16">
+            <div className="container mx-auto px-4 md: max-w-6xl">
                 <header className="text-center mb-12">
                     <p className="text-sm uppercase tracking-wide text-primary font-semibold">
                         Faculty Updates
@@ -24,7 +24,7 @@ export default function NewsPage() {
                     </p>
                 </header>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {announcements.length > 0 ? (
                         announcements.map((announcement) => (
                             <AnnouncementPreview

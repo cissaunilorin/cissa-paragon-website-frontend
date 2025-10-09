@@ -1,5 +1,4 @@
-import Image from "next/image";
-import Link from "next/link";
+import ImageModal from "@/components/ImageModal";
 import { notFound } from "next/navigation";
 import { formatRich } from "@/lib/formatRich";
 import { getAnnouncementById, getAnnouncements } from "@/lib/news";
@@ -36,13 +35,6 @@ export default async function AnnouncementPage({
     return (
         <main className="min-h-screen bg-base-100 pt-20 md:pt-24 pb-16">
             <div className="container mx-auto px-4 max-w-4xl">
-                <Link
-                    href="/news"
-                    className="link link-primary text-sm font-medium"
-                >
-                    ← Back to News
-                </Link>
-
                 <article className="mt-6 space-y-6">
                     <header className="space-y-4">
                         <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-wide font-semibold">
@@ -69,15 +61,10 @@ export default async function AnnouncementPage({
                     </header>
 
                     {announcement.imageUrl && (
-                        <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-lg">
-                            <Image
-                                src={announcement.imageUrl}
-                                alt={announcement.title}
-                                fill
-                                className="object-cover"
-                                priority
-                            />
-                        </div>
+                        <ImageModal
+                            imageUrl={announcement.imageUrl}
+                            title={announcement.title}
+                        />
                     )}
 
                     <section className="prose max-w-none">
@@ -102,7 +89,7 @@ export default async function AnnouncementPage({
                         announcement.signatories.length > 0 && (
                             <footer className="border-t border-base-200 pt-6">
                                 <h2 className="text-sm font-semibold uppercase tracking-wide mb-4">
-                                    Signatories
+                                    Signed By
                                 </h2>
                                 <ul className="space-y-4">
                                     {announcement.signatories.map(

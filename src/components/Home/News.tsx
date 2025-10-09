@@ -3,7 +3,7 @@ import AnnouncementPreview from "../News/NewsPreview";
 import { getAnnouncements } from "@/lib/news";
 
 export default function News() {
-    const announcements = getAnnouncements().slice(0, 3); // Show only the latest 3 announcements
+    const announcements = getAnnouncements().slice(0, 6); // Show only the latest 3 announcements
     return (
         <section id="news" className="py-20 bg-base-200">
             <div className="container mx-auto px-4">
