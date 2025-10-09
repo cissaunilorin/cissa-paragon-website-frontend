@@ -36,7 +36,7 @@ export default function Navbar() {
             // non-home pages: always show navbar
             setShowNavbar(true);
         }
-    }, []);
+    }, [pathname]);
 
     return (
         <div

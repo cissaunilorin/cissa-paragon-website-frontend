@@ -1,6 +1,7 @@
 import React from "react";
 import AnnouncementPreview from "../News/NewsPreview";
 import { getAnnouncements } from "@/lib/news";
+import Link from "next/link";
 
 export default function News() {
     const announcements = getAnnouncements().slice(0, 6); // Show only the latest 3 announcements
@@ -37,9 +38,9 @@ export default function News() {
                 </div>
 
                 <div className="mt-10 text-center">
-                    <a href="/news" className="btn btn-outline">
+                    <Link href="/news" className="btn btn-outline">
                         View all faculty news
-                    </a>
+                    </Link>
                 </div>
             </div>
         </section>
