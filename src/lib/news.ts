@@ -256,3 +256,8 @@ export function getAnnouncements(): Announcement[] {
 
     return announcements;
 }
+
+export async function getAnnouncementById(id: string): Promise<Announcement | undefined> {
+    const allAnnouncements = getAnnouncements();
+    return allAnnouncements.find((announcement) => announcement.id === id);
+}

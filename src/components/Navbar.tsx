@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const navLinks = [
@@ -11,12 +12,10 @@ const navLinks = [
 
 export default function Navbar() {
     const [showNavbar, setShowNavbar] = useState(false);
+    const pathname = usePathname();
 
     useEffect(() => {
-        // guard for SSR / node environment
-        if (typeof window === "undefined") return;
-
-        const pathname = window.location.pathname;
+        console.log("Current pathname:", pathname);
         const isHome = pathname === "/";
 
         if (isHome) {
