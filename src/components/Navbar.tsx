@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
@@ -73,7 +74,7 @@ export default function Navbar() {
                     >
                         {navLinks.map((link) => (
                             <li key={link.href}>
-                                <a href={link.href}>{link.label}</a>
+                                <Link href={link.href}>{link.label}</Link>
                             </li>
                         ))}
                     </ul>
@@ -100,13 +101,13 @@ export default function Navbar() {
                 <ul className="menu menu-horizontal px-1">
                     {navLinks.map((link) => (
                         <li key={link.href}>
-                            <a
+                            <Link
                                 role="tab"
                                 href={link.href}
                                 className="hover:text-primary tab"
                             >
                                 {link.label}
-                            </a>
+                            </Link>
                         </li>
                     ))}
                 </ul>
