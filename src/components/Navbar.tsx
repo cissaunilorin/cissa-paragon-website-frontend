@@ -43,7 +43,7 @@ export default function Navbar() {
         <div
             className={`navbar fixed top-0 left-0 right-0 z-50 transition-all duration-300 lg:px-46 ${
                 showNavbar
-                    ? "bg-base-100/95 backdrop-blur shadow-lg translate-y-0"
+                    ? "bg-base-100/95 backdrop-blur shadow-md translate-y-0"
                     : "-translate-y-full"
             }`}
         >

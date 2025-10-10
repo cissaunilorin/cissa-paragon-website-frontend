@@ -2,6 +2,9 @@ import ImageModal from "@/components/ImageModal";
 import { notFound } from "next/navigation";
 import { formatRich } from "@/lib/formatRich";
 import { getAnnouncementById, getAnnouncements } from "@/lib/news";
+import Link from "next/link";
+
+import { Phone } from "lucide-react";
 
 export function generateStaticParams() {
     return getAnnouncements().map(({ id }) => ({ id }));
@@ -33,7 +36,7 @@ export default async function AnnouncementPage({
     }
 
     return (
-        <main className="min-h-screen bg-base-100 pt-20 md:pt-24 pb-16">
+        <main className="min-h-screen bg-base-100 pt-16 md:pt-20 pb-16">
             <div className="container mx-auto px-4 max-w-4xl">
                 <article className="mt-6 space-y-6">
                     <header className="space-y-4">
@@ -110,11 +113,15 @@ export default async function AnnouncementPage({
                                                 {signatory.contact && (
                                                     <a
                                                         href={signatory.contact}
-                                                        className="link link-primary text-sm"
+                                                        className="link link-primary text-sm inline-flex items-center gap-1"
                                                         target="_blank"
                                                         rel="noopener noreferrer"
                                                     >
-                                                        Contact
+                                                        <Phone
+                                                            className="h-4 w-4"
+                                                            aria-hidden="true"
+                                                        />
+                                                        <span>Contact</span>
                                                     </a>
                                                 )}
                                             </li>
@@ -123,6 +130,16 @@ export default async function AnnouncementPage({
                                 </ul>
                             </footer>
                         )}
+
+                    <div className="pt-8 text-center">
+                        <Link
+                            href="/news"
+                            className="btn btn-outline btn-primary btn-wide"
+                            aria-label="View all news and announcements"
+                        >
+                            View all announcements
+                        </Link>
+                    </div>
                 </article>
             </div>
         </main>
