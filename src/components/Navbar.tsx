@@ -4,11 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import { Home, Newspaper, Phone } from "lucide-react";
 
 const navLinks = [
-    { label: "Home", href: "/" },
-    { label: "News", href: "/news" },
-    { label: "Contact", href: "/#contact" },
+    { label: "Home", href: "/" , icon: Home},
+    { label: "News", href: "/news" , icon: Newspaper},
+    { label: "Contact", href: "/#contact", icon: Phone },
 ];
 
 export default function Navbar() {
@@ -80,7 +81,7 @@ export default function Navbar() {
                     </ul>
                 </div>
 
-                <div className="flex items-center gap-2">
+                <Link href="/" className="flex items-center gap-2">
                     <div className="avatar">
                         <div className="w-8 h-8 rounded-full">
                             <Image
@@ -92,7 +93,7 @@ export default function Navbar() {
                         </div>
                     </div>
                     <span className="text-xl font-bold">CISSA</span>
-                </div>
+                </Link>
             </div>
             <div
                 role="tablist"
@@ -104,8 +105,11 @@ export default function Navbar() {
                             <Link
                                 role="tab"
                                 href={link.href}
-                                className="hover:text-primary tab"
+                                className={`hover:text-primary tab ${
+                                    pathname === link.href ? "tab-active" : ""
+                                }`}
                             >
+                                {link.icon && <link.icon className="w-4 h-4 mr-2 inline" />}
                                 {link.label}
                             </Link>
                         </li>

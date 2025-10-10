@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { Newspaper } from "lucide-react";
+import { Phone } from "lucide-react";
 
 export default function Hero() {
     return (
@@ -23,9 +25,11 @@ export default function Hero() {
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Link href="/news" className="btn btn-primary btn-lg ">
+                            <Newspaper className="w-5 h-5 mr-2" />
                             Latest News
                         </Link>
                         <Link href="/#contact" className="btn btn-outline btn-lg">
+                            <Phone className="w-5 h-5 mr-2" />
                             Contact Us
                         </Link>
                     </div>
