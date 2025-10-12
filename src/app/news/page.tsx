@@ -41,6 +41,14 @@ export default function NewsPage() {
                         </section>
                     )}
                 </div>
+
+                {announcements.length > 0 && (
+                    <div className="join pt-16 text-center justify-center w-full">
+                        <button className="join-item btn" disabled>«</button>
+                        <button className="join-item btn">Page 1</button>
+                        <button className="join-item btn" disabled>»</button>
+                    </div>
+                )}
             </div>
         </main>
     );
