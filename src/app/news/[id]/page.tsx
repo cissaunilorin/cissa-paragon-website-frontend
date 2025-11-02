@@ -1,6 +1,6 @@
 import ImageModal from "@/components/ImageModal";
 import { notFound } from "next/navigation";
-import { formatRich } from "@/lib/formatRich";
+import { formatRich } from "@/lib/utils/formatRich";
 import { getAnnouncementById, getAnnouncements } from "@/lib/news";
 import Link from "next/link";
 
