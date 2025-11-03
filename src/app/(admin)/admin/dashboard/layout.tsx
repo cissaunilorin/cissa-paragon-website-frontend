@@ -34,20 +34,20 @@ export default function AdminDashboardLayout({
             icon: Users,
         },
         {
-            href: "/admin/announcements",
+            href: "/admin/dashboard/announcements",
             label: "Announcements",
             icon: Megaphone,
         },
-        {
-            href: "/admin/events",
-            label: "Events",
-            icon: Calendar,
-        },
-        {
-            href: "/admin/settings",
-            label: "Settings",
-            icon: Settings,
-        },
+        // {
+        //     href: "/admin/events",
+        //     label: "Events",
+        //     icon: Calendar,
+        // },
+        // {
+        //     href: "/admin/settings",
+        //     label: "Settings",
+        //     icon: Settings,
+        // },
     ];
 
     return (

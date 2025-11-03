@@ -11,17 +11,15 @@ export default function AdminLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const accessToken = getAccessToken();
-
     const router = useRouter();
 
     useEffect(() => {
-        const isAuthenticated = !!accessToken;
+        const isAuthenticated = !!getAccessToken;
 
         if (!isAuthenticated) {
             router.push("/admin/login");
         }
-    }, [router, accessToken]);
+    }, [router]);
 
     return <>{children}</>;
 }

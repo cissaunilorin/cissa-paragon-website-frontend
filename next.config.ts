@@ -9,7 +9,15 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/images/**',
         search: '',
-      },],
+      },
+      {
+        protocol: 'https',
+        hostname: 'kuatmlnhpmfsnocrmely.supabase.co',
+        port: '',
+        pathname: '/**',
+        search: '',
+      }
+    ],
     },
 };
 
