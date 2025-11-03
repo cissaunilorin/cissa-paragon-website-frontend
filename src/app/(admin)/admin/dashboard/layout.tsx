@@ -29,7 +29,7 @@ export default function AdminDashboardLayout({
             icon: LayoutDashboard,
         },
         {
-            href: "/admin/signatories",
+            href: "/admin/dashboard/signatories",
             label: "Signatories",
             icon: Users,
         },
