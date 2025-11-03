@@ -73,7 +73,7 @@ export default function AnnouncementsDashboard() {
         }
     };
 
-    console.log(announcements)
+    console.log(announcements);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -497,7 +497,7 @@ export default function AnnouncementsDashboard() {
                 {/* Modal */}
                 {isModalOpen && (
                     <div className="modal modal-open">
-                        <div className="modal-box max-w-4xl">
+                        <div className="modal-box max-w-6xl">
                             <h3 className="font-bold text-lg mb-4">
                                 {editingAnnouncement
                                     ? "Edit Announcement"
@@ -507,7 +507,7 @@ export default function AnnouncementsDashboard() {
                             <form onSubmit={handleSubmit}>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                                     <div className="form-control">
-                                        <label className="label">
+                                        <label className="label mr-2">
                                             <span className="label-text">
                                                 Title *
                                             </span>
@@ -528,7 +528,7 @@ export default function AnnouncementsDashboard() {
                                     </div>
 
                                     <div className="form-control">
-                                        <label className="label">
+                                        <label className="label mr-2">
                                             <span className="label-text">
                                                 Category *
                                             </span>
@@ -563,7 +563,7 @@ export default function AnnouncementsDashboard() {
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                                     <div className="form-control">
-                                        <label className="label">
+                                        <label className="label mr-2">
                                             <span className="label-text">
                                                 Session *
                                             </span>
@@ -584,7 +584,7 @@ export default function AnnouncementsDashboard() {
                                     </div>
 
                                     <div className="form-control">
-                                        <label className="label">
+                                        <label className="label mr-2">
                                             <span className="label-text">
                                                 Published Date *
                                             </span>
@@ -600,18 +600,16 @@ export default function AnnouncementsDashboard() {
                                                         e.target.value,
                                                 }))
                                             }
-                                            required
+                                            required={!editingAnnouncement}
                                         />
                                     </div>
                                 </div>
 
                                 <div className="form-control mb-4">
-                                    <label className="label">
+                                    <label className="label mr-2">
                                         <span className="label-text">
                                             Image{" "}
-                                            {editingAnnouncement
-                                                ? "(optional - leave empty to keep current)"
-                                                : "*"}
+                                            {editingAnnouncement ? "" : "*"}
                                         </span>
                                     </label>
                                     <input
@@ -630,13 +628,13 @@ export default function AnnouncementsDashboard() {
                                 </div>
 
                                 <div className="form-control mb-4">
-                                    <label className="label">
+                                    <label className="label mr-2">
                                         <span className="label-text">
                                             Body *
                                         </span>
                                     </label>
                                     <textarea
-                                        className="textarea textarea-bordered h-32"
+                                        className="textarea textarea-bordered h-64 w-full"
                                         placeholder="Enter announcement content..."
                                         value={formData.body}
                                         onChange={(e) =>
