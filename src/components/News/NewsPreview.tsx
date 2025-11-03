@@ -1,12 +1,24 @@
 import React from "react";
 import Image from "next/image";
-import { Announcement } from "@/lib/news";
+import { type Announcement } from "@/lib/announcements";
 
 export default function AnnouncementPreview({
     announcement,
 }: {
     announcement: Announcement;
 }) {
+
+    const publishedDate = new Date(announcement.published_at);
+    const date = publishedDate.toLocaleDateString(undefined, {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+    });
+    const time = publishedDate.toLocaleTimeString(undefined, {
+        hour: "2-digit",
+        minute: "2-digit",
+    });
+
     return (
         <a
             href={`/news/${announcement.id}`}
@@ -14,10 +26,10 @@ export default function AnnouncementPreview({
             aria-label={`Read announcement: ${announcement.title}`}
         >
             <article className="card bg-base-100 shadow-md border border-base-200 overflow-hidden transition-transform duration-200 group-hover:-translate-y-1">
-                {announcement.imageUrl && (
+                {announcement.image_url && (
                     <figure className="relative w-full aspect-video">
                         <Image
-                            src={announcement.imageUrl}
+                            src={announcement.image_url}
                             alt={announcement.title}
                             fill
                             className="object-cover transition-transform duration-200 group-hover:scale-[1.02]"
@@ -29,10 +41,10 @@ export default function AnnouncementPreview({
                         <span className="badge badge-primary badge-sm font-semibold">
                             {announcement.category}
                         </span>
-                        <span className="opacity-70">{announcement.date}</span>
-                        {announcement.time && (
+                        <span className="opacity-70">{date}</span>
+                        {time && (
                             <span className="opacity-70">
-                                {announcement.time}
+                                {time}
                             </span>
                         )}
                     </div>
