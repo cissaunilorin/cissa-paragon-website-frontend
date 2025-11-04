@@ -8,7 +8,7 @@ import {
     deleteSignatory, 
     Signatory
 } from "@/lib/signatories";
-import { Plus, Edit, Trash2, User, Mail, Phone, UserCheck } from "lucide-react";
+import { Plus, Edit, Trash2, UserCheck } from "lucide-react";
 
 export default function SignatoriesDashboard() {
     const [signatories, setSignatories] = useState<Signatory[]>([]);

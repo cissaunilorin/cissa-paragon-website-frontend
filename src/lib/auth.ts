@@ -1,3 +1,4 @@
+import { AxiosError } from "axios";
 import apiClient from "./api";
 import { setAccessToken } from "./utils/token";
 
@@ -21,10 +22,15 @@ export async function login(
         setAccessToken(access_token);
 
         return data;
-    } catch (error: any) {
-        if (error.response && error.response.status === 400) {
+    } catch (error: unknown) {
+        if (
+            error instanceof AxiosError &&
+            error.response &&
+            error.response.status === 400
+        ) {
             throw new Error("Invalid email or password");
         }
+
         throw error;
     }
 }
@@ -38,8 +44,12 @@ export async function getCurrentUser(): Promise<UserData | undefined> {
     try {
         const response = await apiClient.get("/auth/user");
         return response.data.data;
-    } catch (error: any) {
-        if (error.response && error.response.status === 401) {
+    } catch (error: unknown) {
+        if (
+            error instanceof AxiosError &&
+            error.response &&
+            error.response.status === 401
+        ) {
             throw new Error("Unauthorized");
         }
         throw error;

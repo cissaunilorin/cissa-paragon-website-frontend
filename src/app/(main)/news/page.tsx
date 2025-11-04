@@ -1,10 +1,13 @@
 "use client";
 
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import AnnouncementPreview from "@/components/News/NewsPreview";
-import { getAnnouncements, type Announcement, type AnnouncementsListResponse } from "@/lib/announcements";
-
+import {
+    getAnnouncements,
+    type Announcement,
+    type AnnouncementsListResponse,
+} from "@/lib/announcements";
 
 export default function NewsPage() {
     const [announcements, setAnnouncements] = useState<Announcement[]>([]);
@@ -15,15 +18,14 @@ export default function NewsPage() {
     const [totalItems, setTotalItems] = useState(0);
     const pageSize = 9;
 
-    useEffect(() => {
-        fetchAnnouncements();
-    }, [currentPage]);
-
-    const fetchAnnouncements = async () => {
+    const fetchAnnouncements = useCallback(async () => {
         try {
             setIsLoading(true);
             setError(null);
-            const data: AnnouncementsListResponse = await getAnnouncements(currentPage, pageSize);
+            const data: AnnouncementsListResponse = await getAnnouncements(
+                currentPage,
+                pageSize
+            );
             setAnnouncements(data.items);
             setTotalPages(data.total_pages);
             setTotalItems(data.total_items);
@@ -33,17 +35,24 @@ export default function NewsPage() {
         } finally {
             setIsLoading(false);
         }
-    };
+    }, [currentPage, pageSize]);
+
+    useEffect(() => {
+        fetchAnnouncements();
+    }, [fetchAnnouncements]);
 
     const handlePageChange = (page: number) => {
         setCurrentPage(page);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
     const LoadingSkeleton = () => (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[...Array(pageSize)].map((_, index) => (
-                <div key={index} className="card bg-base-100 shadow-md border border-base-200 overflow-hidden">
+                <div
+                    key={index}
+                    className="card bg-base-100 shadow-md border border-base-200 overflow-hidden"
+                >
                     <div className="skeleton h-48 w-full"></div>
                     <div className="card-body p-5 space-y-3">
                         <div className="flex gap-2">
@@ -66,12 +75,16 @@ export default function NewsPage() {
             const range = [];
             const rangeWithDots = [];
 
-            for (let i = Math.max(2, currentPage - delta); i <= Math.min(totalPages - 1, currentPage + delta); i++) {
+            for (
+                let i = Math.max(2, currentPage - delta);
+                i <= Math.min(totalPages - 1, currentPage + delta);
+                i++
+            ) {
                 range.push(i);
             }
 
             if (currentPage - delta > 2) {
-                rangeWithDots.push(1, '...');
+                rangeWithDots.push(1, "...");
             } else {
                 rangeWithDots.push(1);
             }
@@ -79,7 +92,7 @@ export default function NewsPage() {
             rangeWithDots.push(...range);
 
             if (currentPage + delta < totalPages - 1) {
-                rangeWithDots.push('...', totalPages);
+                rangeWithDots.push("...", totalPages);
             } else {
                 rangeWithDots.push(totalPages);
             }
@@ -90,9 +103,12 @@ export default function NewsPage() {
         return (
             <div className="flex flex-col items-center gap-4 pt-16">
                 <div className="text-sm text-base-content/70">
-                    Showing {Math.min((currentPage - 1) * pageSize + 1, totalItems)} to {Math.min(currentPage * pageSize, totalItems)} of {totalItems} announcements
+                    Showing{" "}
+                    {Math.min((currentPage - 1) * pageSize + 1, totalItems)} to{" "}
+                    {Math.min(currentPage * pageSize, totalItems)} of{" "}
+                    {totalItems} announcements
                 </div>
-                
+
                 <div className="join">
                     <button
                         className="join-item btn"
@@ -103,14 +119,19 @@ export default function NewsPage() {
                     </button>
 
                     {getVisiblePages().map((page, index) =>
-                        page === '...' ? (
-                            <button key={`dots-${index}`} className="join-item btn btn-disabled">
+                        page === "..." ? (
+                            <button
+                                key={`dots-${index}`}
+                                className="join-item btn btn-disabled"
+                            >
                                 ...
                             </button>
                         ) : (
                             <button
                                 key={page}
-                                className={`join-item btn ${currentPage === page ? 'btn-active' : ''}`}
+                                className={`join-item btn ${
+                                    currentPage === page ? "btn-active" : ""
+                                }`}
                                 onClick={() => handlePageChange(page as number)}
                             >
                                 {page}
@@ -152,12 +173,22 @@ export default function NewsPage() {
                 ) : error ? (
                     <div className="text-center py-16">
                         <div className="alert alert-error max-w-md mx-auto">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="stroke-current shrink-0 h-6 w-6"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
                             </svg>
                             <span>{error}</span>
                         </div>
-                        <button 
+                        <button
                             onClick={fetchAnnouncements}
                             className="btn btn-primary mt-4"
                         >
@@ -176,12 +207,15 @@ export default function NewsPage() {
                                 ))
                             ) : (
                                 <div className="col-span-full text-center py-20">
-                                    <div className="text-6xl mb-4 opacity-20">📢</div>
+                                    <div className="text-6xl mb-4 opacity-20">
+                                        📢
+                                    </div>
                                     <p className="text-base-content/60 text-lg mb-2">
                                         No announcements available
                                     </p>
                                     <p className="text-base-content/40 text-sm">
-                                        Check back soon for the latest updates and news.
+                                        Check back soon for the latest updates
+                                        and news.
                                     </p>
                                 </div>
                             )}

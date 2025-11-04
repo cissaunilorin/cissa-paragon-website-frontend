@@ -1,12 +1,11 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
     LayoutDashboard,
     Users,
     Megaphone,
-    Calendar,
-    Settings,
     ChevronLeft,
     ChevronRight,
 } from "lucide-react";
@@ -37,17 +36,7 @@ export default function AdminDashboardLayout({
             href: "/admin/dashboard/announcements",
             label: "Announcements",
             icon: Megaphone,
-        },
-        // {
-        //     href: "/admin/events",
-        //     label: "Events",
-        //     icon: Calendar,
-        // },
-        // {
-        //     href: "/admin/settings",
-        //     label: "Settings",
-        //     icon: Settings,
-        // },
+        }
     ];
 
     return (
@@ -61,14 +50,14 @@ export default function AdminDashboardLayout({
                 {/* Logo and Title */}
                 <div className="p-4 border-b border-base-300">
                     <div className="flex items-center gap-3">
-                        {/* <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                            <span className="text-primary-content font-bold text-sm">
-                                C
-                            </span>
-                        </div> */}
                         <div className="avatar">
                             <div className="w-8 h-8 rounded-full">
-                                <img src="/assets/cissa.png" alt="CISSA Logo" />
+                                <Image
+                                    src="/assets/cissa.png"
+                                    alt="CISSA Logo"
+                                    width={32}
+                                    height={32}
+                                />
                             </div>
                         </div>
                         {!isCollapsed && (

@@ -1,13 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import {
     getAnnouncements,
     createAnnouncement,
     updateAnnouncement,
     deleteAnnouncement,
     type Announcement,
-    type AnnouncementsListResponse,
 } from "@/lib/announcements";
 import { getSignatories, type Signatory } from "@/lib/signatories";
 import {
@@ -44,12 +43,7 @@ export default function AnnouncementsDashboard() {
         image: null as File | null,
     });
 
-    useEffect(() => {
-        fetchAnnouncements();
-        fetchSignatories();
-    }, [currentPage]);
-
-    const fetchAnnouncements = async () => {
+    const fetchAnnouncements = useCallback(async () => {
         try {
             setLoading(true);
             const data = await getAnnouncements(currentPage, 10);
@@ -62,16 +56,21 @@ export default function AnnouncementsDashboard() {
         } finally {
             setLoading(false);
         }
-    };
+    }, [currentPage]);
 
-    const fetchSignatories = async () => {
+    const fetchSignatories = useCallback(async () => {
         try {
             const data = await getSignatories();
             setSignatories(data);
         } catch (error) {
             console.error("Failed to fetch signatories:", error);
         }
-    };
+    }, []);
+
+    useEffect(() => {
+        fetchAnnouncements();
+        fetchSignatories();
+    }, [fetchAnnouncements, fetchSignatories]);
 
     console.log(announcements);
 
@@ -124,8 +123,10 @@ export default function AnnouncementsDashboard() {
                 const newAnnouncement = await createAnnouncement(
                     submitFormData
                 );
-                // Refresh the list to get updated data
-                await fetchAnnouncements();
+
+                // prepend the new announcement to the list
+                setAnnouncements((prev) => [newAnnouncement, ...prev]);
+                setTotal((prev) => prev + 1);
             }
 
             closeModal();

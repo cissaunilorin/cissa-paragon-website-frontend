@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { Eye, EyeOff, Lock, Mail, LogIn } from "lucide-react";
 import { login } from "@/lib/auth";
 
@@ -44,9 +45,13 @@ export default function AdminLogin() {
                 // Redirect to admin dashboard
                 router.push("/admin");
             }
-        } catch (error: any) {
+        } catch (error: unknown) {
             console.error("Login error:", error);
-            setError(error.message);
+            if (error instanceof Error) {
+                setError(error.message);
+            } else {
+                setError(String(error));
+            }
         } finally {
             setIsLoading(false);
         }
@@ -60,9 +65,11 @@ export default function AdminLogin() {
                         <div className="text-center mb-6">
                             <div className="avatar mb-4">
                                 <div className="w-16 h-16 rounded-full">
-                                    <img
+                                    <Image
                                         src="/assets/cissa.png"
                                         alt="CISSA Logo"
+                                        width={64}
+                                        height={64}
                                     />
                                 </div>
                             </div>
@@ -186,7 +193,7 @@ export default function AdminLogin() {
                 <div className="text-center mt-6 text-xs text-base-content/50">
                     <p>
                         © {new Date().getFullYear()} CISSA - Communication and
-                        Information Sciences Students' Association
+                        Information Sciences Students&apos; Association
                     </p>
                 </div>
             </div>
