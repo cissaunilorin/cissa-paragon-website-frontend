@@ -14,7 +14,8 @@ export default function AdminLayout({
     const router = useRouter();
 
     useEffect(() => {
-        const isAuthenticated = !!getAccessToken;
+        const isAuthenticated = !!getAccessToken();
+
 
         if (!isAuthenticated) {
             router.push("/admin/login");

@@ -43,7 +43,7 @@ export default function AdminLogin() {
                 );
 
                 // Redirect to admin dashboard
-                router.push("/admin");
+                router.push("/admin/dashboard");
             }
         } catch (error: unknown) {
             console.error("Login error:", error);

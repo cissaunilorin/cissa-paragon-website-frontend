@@ -1,12 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { 
-    getSignatories, 
-    createSignatory, 
-    updateSignatory, 
-    deleteSignatory, 
-    Signatory
+import {
+    getSignatories,
+    createSignatory,
+    updateSignatory,
+    deleteSignatory,
+    Signatory,
 } from "@/lib/signatories";
 import { Plus, Edit, Trash2, UserCheck } from "lucide-react";
 
@@ -14,12 +14,14 @@ export default function SignatoriesDashboard() {
     const [signatories, setSignatories] = useState<Signatory[]>([]);
     const [loading, setLoading] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [editingSignatory, setEditingSignatory] = useState<Signatory | null>(null);
+    const [editingSignatory, setEditingSignatory] = useState<Signatory | null>(
+        null
+    );
     const [formData, setFormData] = useState({
         name: "",
         alias: "",
         role: "",
-        contact: ""
+        contact: "",
     });
 
     useEffect(() => {
@@ -38,20 +40,39 @@ export default function SignatoriesDashboard() {
         }
     };
 
+    const formatNumberToWhatsappLink = (number: string | undefined) => {
+        if (!number) return "";
+
+        // Remove any non-digit characters
+        const cleanNumber = number.replace(/\D/g, "");
+
+        // If starts with 0, replace with 234 (Nigeria country code)
+        const formattedNumber = cleanNumber.startsWith("0")
+            ? "234" + cleanNumber.slice(1)
+            : cleanNumber;
+
+        return `https://wa.me/+${formattedNumber}`;
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        
+
         try {
             if (editingSignatory) {
                 // Update existing signatory
-                const updatedSignatory = await updateSignatory(editingSignatory.id, {
-                    name: formData.name || undefined,
-                    alias: formData.alias || undefined,
-                    role: formData.role || undefined,
-                    contact: formData.contact || undefined,
-                });
-                setSignatories(prev => 
-                    prev.map(s => s.id === editingSignatory.id ? updatedSignatory : s)
+                const updatedSignatory = await updateSignatory(
+                    editingSignatory.id,
+                    {
+                        name: formData.name || undefined,
+                        alias: formData.alias || undefined,
+                        role: formData.role || undefined,
+                        contact: formData.contact || undefined,
+                    }
+                );
+                setSignatories((prev) =>
+                    prev.map((s) =>
+                        s.id === editingSignatory.id ? updatedSignatory : s
+                    )
                 );
             } else {
                 // Create new signatory
@@ -61,9 +82,9 @@ export default function SignatoriesDashboard() {
                     role: formData.role,
                     contact: formData.contact || "",
                 });
-                setSignatories(prev => [...prev, newSignatory]);
+                setSignatories((prev) => [...prev, newSignatory]);
             }
-            
+
             closeModal();
             // Show success message (you could add a toast notification here)
         } catch (error) {
@@ -74,11 +95,12 @@ export default function SignatoriesDashboard() {
 
     const handleEdit = (signatory: Signatory) => {
         setEditingSignatory(signatory);
+
         setFormData({
             name: signatory.name,
             alias: signatory.alias || "",
             role: signatory.role,
-            contact: signatory.contact || ""
+            contact: signatory.contact || "",
         });
         setIsModalOpen(true);
     };
@@ -87,7 +109,7 @@ export default function SignatoriesDashboard() {
         if (confirm("Are you sure you want to delete this signatory?")) {
             try {
                 await deleteSignatory(id);
-                setSignatories(prev => prev.filter(s => s.id !== id));
+                setSignatories((prev) => prev.filter((s) => s.id !== id));
                 // Show success message
             } catch (error) {
                 console.error("Failed to delete signatory:", error);
@@ -130,10 +152,11 @@ export default function SignatoriesDashboard() {
                             Signatory Management
                         </h1>
                         <p className="text-base-content/70 mt-2">
-                            Manage announcement signatories and their information
+                            Manage announcement signatories and their
+                            information
                         </p>
                     </div>
-                    <button 
+                    <button
                         onClick={openModal}
                         className="btn btn-primary btn-lg gap-2"
                     >
@@ -143,12 +166,14 @@ export default function SignatoriesDashboard() {
                 </div>
 
                 {/* Stats Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div className="grid grid-cols-1 md:grid-cols-1 gap-6 mb-8">
                     <div className="stat bg-primary text-primary-content rounded-lg">
                         <div className="stat-figure">
                             <UserCheck size={32} />
                         </div>
-                        <div className="stat-title text-primary-content/70">Total Signatories</div>
+                        <div className="stat-title text-primary-content/70">
+                            Total Signatories
+                        </div>
                         <div className="stat-value">{signatories.length}</div>
                     </div>
                 </div>
@@ -157,11 +182,16 @@ export default function SignatoriesDashboard() {
                 <div className="card bg-base-100 shadow-xl">
                     <div className="card-body">
                         <h2 className="card-title mb-4">All Signatories</h2>
-                        
+
                         {signatories.length === 0 ? (
                             <div className="text-center py-12">
-                                <UserCheck size={64} className="mx-auto text-base-content/20 mb-4" />
-                                <p className="text-base-content/60">No signatories found</p>
+                                <UserCheck
+                                    size={64}
+                                    className="mx-auto text-base-content/20 mb-4"
+                                />
+                                <p className="text-base-content/60">
+                                    No signatories found
+                                </p>
                                 <p className="text-base-content/40 text-sm">
                                     Create your first signatory to get started
                                 </p>
@@ -192,7 +222,9 @@ export default function SignatoriesDashboard() {
                                                             {signatory.alias}
                                                         </span>
                                                     ) : (
-                                                        <span className="text-base-content/40">—</span>
+                                                        <span className="text-base-content/40">
+                                                            —
+                                                        </span>
                                                     )}
                                                 </td>
                                                 <td>
@@ -202,8 +234,10 @@ export default function SignatoriesDashboard() {
                                                 </td>
                                                 <td>
                                                     {signatory.contact ? (
-                                                        <a 
-                                                            href={signatory.contact}
+                                                        <a
+                                                            href={formatNumberToWhatsappLink(
+                                                                signatory.contact
+                                                            )}
                                                             target="_blank"
                                                             rel="noopener noreferrer"
                                                             className="link link-primary text-sm"
@@ -211,20 +245,30 @@ export default function SignatoriesDashboard() {
                                                             Contact
                                                         </a>
                                                     ) : (
-                                                        <span className="text-base-content/40">—</span>
+                                                        <span className="text-base-content/40">
+                                                            —
+                                                        </span>
                                                     )}
                                                 </td>
                                                 <td>
                                                     <div className="flex gap-2">
-                                                        <button 
-                                                            onClick={() => handleEdit(signatory)}
+                                                        <button
+                                                            onClick={() =>
+                                                                handleEdit(
+                                                                    signatory
+                                                                )
+                                                            }
                                                             className="btn btn-ghost btn-sm"
                                                             title="Edit signatory"
                                                         >
                                                             <Edit size={16} />
                                                         </button>
-                                                        <button 
-                                                            onClick={() => handleDelete(signatory.id)}
+                                                        <button
+                                                            onClick={() =>
+                                                                handleDelete(
+                                                                    signatory.id
+                                                                )
+                                                            }
                                                             className="btn btn-ghost btn-sm text-error hover:bg-error hover:text-error-content"
                                                             title="Delete signatory"
                                                         >
@@ -246,73 +290,103 @@ export default function SignatoriesDashboard() {
                     <div className="modal modal-open">
                         <div className="modal-box">
                             <h3 className="font-bold text-lg mb-4">
-                                {editingSignatory ? "Edit Signatory" : "Add New Signatory"}
+                                {editingSignatory
+                                    ? "Edit Signatory"
+                                    : "Add New Signatory"}
                             </h3>
-                            
+
                             <form onSubmit={handleSubmit}>
                                 <div className="form-control mb-4">
                                     <label className="label mr-2">
-                                        <span className="label-text">Name *</span>
+                                        <span className="label-text">
+                                            Name *
+                                        </span>
                                     </label>
                                     <input
                                         type="text"
                                         placeholder="e.g., SANNI, Nurudeen Akorede"
                                         className="input input-bordered"
                                         value={formData.name}
-                                        onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                                        onChange={(e) =>
+                                            setFormData((prev) => ({
+                                                ...prev,
+                                                name: e.target.value,
+                                            }))
+                                        }
                                         required
                                     />
                                 </div>
 
                                 <div className="form-control mb-4">
                                     <label className="label mr-2">
-                                        <span className="label-text">Alias</span>
+                                        <span className="label-text">
+                                            Alias
+                                        </span>
                                     </label>
                                     <input
                                         type="text"
                                         placeholder="e.g., D'LIGHT"
                                         className="input input-bordered"
                                         value={formData.alias}
-                                        onChange={(e) => setFormData(prev => ({ ...prev, alias: e.target.value }))}
+                                        onChange={(e) =>
+                                            setFormData((prev) => ({
+                                                ...prev,
+                                                alias: e.target.value,
+                                            }))
+                                        }
                                     />
                                 </div>
 
                                 <div className="form-control mb-4">
                                     <label className="label mr-2">
-                                        <span className="label-text">Role *</span>
+                                        <span className="label-text">
+                                            Role *
+                                        </span>
                                     </label>
                                     <input
                                         type="text"
                                         placeholder="e.g., Executive President"
                                         className="input input-bordered"
                                         value={formData.role}
-                                        onChange={(e) => setFormData(prev => ({ ...prev, role: e.target.value }))}
+                                        onChange={(e) =>
+                                            setFormData((prev) => ({
+                                                ...prev,
+                                                role: e.target.value,
+                                            }))
+                                        }
                                         required
                                     />
                                 </div>
 
                                 <div className="form-control mb-6">
                                     <label className="label mr-2">
-                                        <span className="label-text">Contact</span>
+                                        <span className="label-text">
+                                            Contact
+                                        </span>
                                     </label>
                                     <input
-                                        type="url"
-                                        placeholder="e.g., https://wa.me/+2349152349887"
+                                        type="tel"
+                                        placeholder="e.g., 09152349887"
                                         className="input input-bordered"
                                         value={formData.contact}
-                                        onChange={(e) => setFormData(prev => ({ ...prev, contact: e.target.value }))}
+                                        onChange={(e) =>
+                                            setFormData((prev) => ({
+                                                ...prev,
+                                                contact: e.target.value,
+                                            }))
+                                        }
                                     />
                                 </div>
 
                                 <div className="modal-action">
-                                    <button 
-                                        type="button" 
+                                    <button
+                                        type="button"
                                         onClick={closeModal}
                                         className="btn btn-ghost"
                                     >
                                         Cancel
                                     </button>
-                                    <button 
+                                    <button
                                         type="submit"
                                         className="btn btn-primary"
                                     >
@@ -321,7 +395,10 @@ export default function SignatoriesDashboard() {
                                 </div>
                             </form>
                         </div>
-                        <div className="modal-backdrop" onClick={closeModal}></div>
+                        <div
+                            className="modal-backdrop"
+                            onClick={closeModal}
+                        ></div>
                     </div>
                 )}
             </div>
