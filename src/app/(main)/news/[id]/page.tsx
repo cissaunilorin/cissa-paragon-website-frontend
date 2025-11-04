@@ -115,14 +115,15 @@ export default function AnnouncementPage({
     }
 
     const publishedDate = new Date(announcement.published_at);
-    const date = publishedDate.toLocaleDateString(undefined, {
+    const date = publishedDate.toLocaleDateString("en-GB", {
         year: "numeric",
         month: "long",
         day: "numeric",
     });
-    const time = publishedDate.toLocaleTimeString(undefined, {
+    const time = publishedDate.toLocaleTimeString("en-GB", {
         hour: "2-digit",
         minute: "2-digit",
+        hour12: true,
     });
 
     return (

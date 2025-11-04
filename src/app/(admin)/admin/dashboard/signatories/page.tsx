@@ -230,7 +230,7 @@ export default function SignatoriesDashboard() {
                                                             rel="noopener noreferrer"
                                                             className="link link-primary text-sm"
                                                         >
-                                                            Contact
+                                                            {signatory.contact}
                                                         </a>
                                                     ) : (
                                                         <span className="text-base-content/40">
