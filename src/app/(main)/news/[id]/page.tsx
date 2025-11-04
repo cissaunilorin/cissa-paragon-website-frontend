@@ -1,12 +1,14 @@
 "use client";
 
-import ImageModal from "@/components/ImageModal";
-import { notFound } from "next/navigation";
-import { formatRich } from "@/lib/utils/formatRich";
 import { useState, useEffect } from "react";
-import { getAnnouncementById, type Announcement } from "@/lib/announcements";
+import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Phone } from "lucide-react";
+
+import ImageModal from "@/components/ImageModal";
+import { formatRich } from "@/lib/utils/formatRich";
+import { formatNumberToWhatsappLink } from "@/lib/utils/format";
+import { getAnnouncementById, type Announcement } from "@/lib/announcements";
 
 export default function AnnouncementPage({
     params,
@@ -41,7 +43,9 @@ export default function AnnouncementPage({
                 setAnnouncement(data);
             } catch (error) {
                 console.error("Failed to fetch announcement:", error);
-                setError("Failed to load announcement. Please try again later.");
+                setError(
+                    "Failed to load announcement. Please try again later."
+                );
             } finally {
                 setIsLoading(false);
             }
@@ -161,36 +165,40 @@ export default function AnnouncementPage({
                                     Signed By
                                 </h2>
                                 <ul className="space-y-4">
-                                    {announcement.signatories.map((signatory) => (
-                                        <li key={signatory.id}>
-                                            <p className="font-semibold">
-                                                {signatory.name}
-                                                {signatory.alias && (
-                                                    <span className="opacity-70">
-                                                        {" "}
-                                                        ({signatory.alias})
-                                                    </span>
+                                    {announcement.signatories.map(
+                                        (signatory) => (
+                                            <li key={signatory.id}>
+                                                <p className="font-semibold">
+                                                    {signatory.name}
+                                                    {signatory.alias && (
+                                                        <span className="opacity-70">
+                                                            {" "}
+                                                            ({signatory.alias})
+                                                        </span>
+                                                    )}
+                                                </p>
+                                                <p className="text-sm opacity-70">
+                                                    {signatory.role}
+                                                </p>
+                                                {signatory.contact && (
+                                                    <a
+                                                        href={formatNumberToWhatsappLink(
+                                                            signatory.contact
+                                                        )}
+                                                        className="link link-primary text-sm inline-flex items-center gap-1"
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                    >
+                                                        <Phone
+                                                            className="h-4 w-4"
+                                                            aria-hidden="true"
+                                                        />
+                                                        <span>Contact</span>
+                                                    </a>
                                                 )}
-                                            </p>
-                                            <p className="text-sm opacity-70">
-                                                {signatory.role}
-                                            </p>
-                                            {signatory.contact && (
-                                                <a
-                                                    href={signatory.contact}
-                                                    className="link link-primary text-sm inline-flex items-center gap-1"
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                >
-                                                    <Phone
-                                                        className="h-4 w-4"
-                                                        aria-hidden="true"
-                                                    />
-                                                    <span>Contact</span>
-                                                </a>
-                                            )}
-                                        </li>
-                                    ))}
+                                            </li>
+                                        )
+                                    )}
                                 </ul>
                             </footer>
                         )}
