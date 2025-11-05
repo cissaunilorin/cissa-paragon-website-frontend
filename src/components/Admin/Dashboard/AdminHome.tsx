@@ -1,7 +1,7 @@
 "use client";
 import { getCurrentUser, UserData } from "@/lib/auth";
 import { getAnnouncements, type Announcement } from "@/lib/announcements";
-import { getSignatories, type Signatory } from "@/lib/signatories";
+import { getSignatories } from "@/lib/signatories";
 import { useEffect, useState } from "react";
 import {
     FileText,
@@ -98,7 +98,7 @@ export default function AdminHome() {
                 <div>
                     <h1 className="text-3xl font-bold">Dashboard Overview</h1>
                     <p className="text-base-content/70 mt-2">
-                        Welcome back, {user?.username}! Here's what's happening.
+                        Welcome back, {user?.username}! Here&apos;s what&apos;s happening.
                     </p>
                 </div>
 

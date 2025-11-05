@@ -58,7 +58,7 @@ export default function AdminDashboardLayout({
             console.error("Authentication validation error:", error);
             redirectToLogin();
         }
-    }, [pathname, router, redirectToLogin]);
+    }, [redirectToLogin]);
 
     useEffect(() => {
         validateAuthentication();
