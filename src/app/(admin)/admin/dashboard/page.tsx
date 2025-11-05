@@ -1,25 +1,12 @@
-"use client";
-import { getCurrentUser, UserData } from "@/lib/auth";
-import { useEffect, useState } from "react";
+import { Metadata } from "next";
+import AdminHome from "@/components/Admin/Dashboard/AdminHome";
 
-export default function AdminHome() {
-    const [user, setUser] = useState<UserData | undefined>(undefined);
+export const metadata: Metadata = {
+    title: "Overview",
+    description:
+        "Administrative dashboard for managing the CISSA website, including content updates, user management, and site settings.",
+};
 
-    useEffect(() => {
-        const fetchUser = async () => {
-            const currentUser = await getCurrentUser();
-            setUser(currentUser);
-        };
-
-        fetchUser();
-    }, []);
-
-    return (
-        <div className="space-y-6">
-            <div>
-                <h1 className="text-3xl font-bold">Dashboard Overview</h1>
-                <p className="text-base-content/70 mt-2">Hello Admin {user?.username}</p>
-            </div>
-        </div>
-    );
+export default function AdminDashboardPage() {
+    return <AdminHome />;
 }
