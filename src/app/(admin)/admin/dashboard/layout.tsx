@@ -8,9 +8,11 @@ import {
     Megaphone,
     ChevronLeft,
     ChevronRight,
+    LogOut,
 } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
 import { getAccessToken, isTokenExpired } from "@/lib/utils/token";
+import { getCurrentUser, type UserData } from "@/lib/auth";
 
 export default function AdminDashboardLayout({
     children,
@@ -19,6 +21,7 @@ export default function AdminDashboardLayout({
 }) {
     const pathname = usePathname();
     const router = useRouter();
+    const [user, setUser] = useState<UserData | null>(null);
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [loading, setLoading] = useState(true);
 
@@ -47,6 +50,9 @@ export default function AdminDashboardLayout({
             }
 
             // Token is valid
+            const currentUser = await getCurrentUser();
+            setUser(currentUser || null);
+
             setLoading(false);
         } catch (error) {
             console.error("Authentication validation error:", error);
@@ -99,7 +105,7 @@ export default function AdminDashboardLayout({
             href: "/admin/dashboard/announcements",
             label: "Announcements",
             icon: Megaphone,
-        }
+        },
     ];
 
     return (
@@ -175,6 +181,58 @@ export default function AdminDashboardLayout({
                         })}
                     </ul>
                 </nav>
+
+                {/* User Section */}
+                <div className="p-2 border-t border-base-300">
+                    <div
+                        className={`flex items-center gap-3 px-3 py-2 ${
+                            isCollapsed ? "justify-center" : ""
+                        }`}
+                    >
+                        <div className="avatar avatar-placeholder">
+                            <div className="bg-primary text-primary-content rounded-full w-10">
+                                <span className="text-lg font-semibold">
+                                    {user
+                                        ? user.username
+                                              .charAt(0)
+                                              .toUpperCase()
+                                        : "A"}
+                                </span>
+                            </div>
+                        </div>
+                        {!isCollapsed && (
+                            <div className="flex-1 min-w-0">
+                                <p className="text-sm font-medium text-base-content truncate">
+                                    {user ? user.username : "Admin User"}
+                                </p>
+                                <p className="text-xs text-base-content/70 truncate">
+                                    {user ? user.email : "admin@cissa.com"}
+                                </p>
+                            </div>
+                        )}
+                    </div>
+                </div>
+
+                {/* Logout Button */}
+                <div className="p-2 border-t border-base-300">
+                    <button
+                        onClick={() => {
+                            // Clear token and redirect to login
+                            localStorage.removeItem("access_token");
+                            redirectToLogin();
+                        }}
+                        className={
+                            "w-full flex items-center p-2 rounded-lg justify-center btn btn-soft btn-error"
+                        }
+                        title="Logout"
+                    >
+                        {isCollapsed ? (
+                            <LogOut size={20} />
+                        ) : (
+                            <span className="text-sm font-medium">Logout</span>
+                        )}
+                    </button>
+                </div>
 
                 {/* Toggle Button */}
                 <div className="p-2 border-t border-base-300">
