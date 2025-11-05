@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
     LayoutDashboard,
     Users,
@@ -9,7 +9,8 @@ import {
     ChevronLeft,
     ChevronRight,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { getAccessToken, isTokenExpired } from "@/lib/utils/token";
 
 export default function AdminDashboardLayout({
     children,
@@ -17,7 +18,69 @@ export default function AdminDashboardLayout({
     children: React.ReactNode;
 }) {
     const pathname = usePathname();
+    const router = useRouter();
     const [isCollapsed, setIsCollapsed] = useState(false);
+    const [loading, setLoading] = useState(true);
+
+    const redirectToLogin = useCallback(() => {
+        // Store the attempted URL for redirect after login
+        sessionStorage.setItem("admin_return_url", pathname);
+        router.push("/admin/login");
+    }, [pathname, router]);
+
+    const validateAuthentication = useCallback(async () => {
+        try {
+            const token = getAccessToken();
+
+            // No token found
+            if (!token) {
+                redirectToLogin();
+                return;
+            }
+
+            // Token is expired
+            if (isTokenExpired()) {
+                // Clear expired token
+                localStorage.removeItem("access_token");
+                redirectToLogin();
+                return;
+            }
+
+            // Token is valid
+            setLoading(false);
+        } catch (error) {
+            console.error("Authentication validation error:", error);
+            redirectToLogin();
+        }
+    }, [pathname, router, redirectToLogin]);
+
+    useEffect(() => {
+        validateAuthentication();
+    }, [validateAuthentication]);
+
+    // Handle route changes
+    useEffect(() => {
+        const handleRouteChange = () => {
+            setLoading(true);
+            validateAuthentication();
+        };
+
+        // Re-validate on pathname change
+        handleRouteChange();
+    }, [pathname, validateAuthentication]);
+
+    if (loading) {
+        return (
+            <div className="flex items-center justify-center min-h-screen bg-base-100">
+                <div className="text-center">
+                    <div className="loading loading-spinner loading-lg text-primary mb-4"></div>
+                    <p className="text-base-content/70">
+                        Verifying authentication...
+                    </p>
+                </div>
+            </div>
+        );
+    }
 
     const isActive = (path: string) => pathname === path;
 

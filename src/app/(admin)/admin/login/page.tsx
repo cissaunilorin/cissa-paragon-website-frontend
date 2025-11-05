@@ -42,8 +42,11 @@ export default function AdminLogin() {
                     JSON.stringify(userData.username)
                 );
 
-                // Redirect to admin dashboard
-                router.push("/admin/dashboard");
+                const returnUrl =
+                    sessionStorage.getItem("admin_return_url") ||
+                    "/admin/dashboard";
+                sessionStorage.removeItem("admin_return_url");
+                router.replace(returnUrl);
             }
         } catch (error: unknown) {
             console.error("Login error:", error);
@@ -162,14 +165,12 @@ export default function AdminLogin() {
                             <div className="form-control mt-6">
                                 <button
                                     type="submit"
-                                    className={`btn btn-primary w-full ${
-                                        isLoading ? "loading" : ""
-                                    }`}
+                                    className={"btn btn-primary w-full"}
                                     disabled={isLoading}
                                 >
                                     {isLoading ? (
                                         <>
-                                            <span className="loading loading-spinner loading-sm"></span>
+                                            <span className="loading loading-spinner"></span>
                                             Signing in...
                                         </>
                                     ) : (
