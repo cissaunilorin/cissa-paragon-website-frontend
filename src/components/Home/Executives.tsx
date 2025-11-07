@@ -17,7 +17,7 @@ export default function Executives() {
         {
             name: "Sanni Nurudeen Akorede",
             position: "President",
-            image: "https://img.daisyui.com/images/stock/daisyui-hat-1.webp",
+            image: "/assets/Executives/President.jpg",
             socials: {
                 facebook: "https://facebook.com",
                 twitter: "https://twitter.com",
@@ -27,7 +27,7 @@ export default function Executives() {
         {
             name: "Oyebanji Aminat Oluwatobi",
             position: "Vice President",
-            image: "https://img.daisyui.com/images/stock/daisyui-hat-1.webp",
+            image: "/assets/Executives/VicePresident.jpg",
             socials: {
                 facebook: "https://facebook.com",
                 linkedin: "https://linkedin.com",
@@ -36,7 +36,7 @@ export default function Executives() {
         {
             name: "Shittu Ayomide Ebunoluwa",
             position: "General Secretary",
-            image: "https://img.daisyui.com/images/stock/daisyui-hat-1.webp",
+            image: "/assets/Executives/GeneralSec.jpg",
             socials: {
                 twitter: "https://twitter.com",
                 linkedin: "https://linkedin.com",
@@ -45,7 +45,7 @@ export default function Executives() {
         {
             name: "Oguntuwase Oluwafemi Joseph",
             position: "Assistant General Secretary",
-            image: "https://img.daisyui.com/images/stock/daisyui-hat-1.webp",
+            image: "/assets/Executives/AssistantGeneralSec.jpg",
             socials: {
                 facebook: "https://facebook.com",
                 twitter: "https://twitter.com",
@@ -54,7 +54,7 @@ export default function Executives() {
         {
             name: "Kuforiji Ayobami Waris",
             position: "Public Relations Officer",
-            image: "https://img.daisyui.com/images/stock/daisyui-hat-1.webp",
+            image: "/assets/Executives/PublicRelationOfficer.jpg",
             socials: {
                 facebook: "https://facebook.com",
                 twitter: "https://twitter.com",
@@ -74,7 +74,7 @@ export default function Executives() {
         {
             name: "Shittu Fareedah Adedamola",
             position: "Welfare Secretary",
-            image: "https://img.daisyui.com/images/stock/daisyui-hat-1.webp",
+            image: "/assets/Executives/WelfareSec.jpg",
             socials: {
                 facebook: "https://facebook.com",
                 twitter: "https://twitter.com",
@@ -84,7 +84,7 @@ export default function Executives() {
         {
             name: "Akinleye Akinjuwon Olushola",
             position: "Social Director",
-            image: "https://img.daisyui.com/images/stock/daisyui-hat-1.webp",
+            image: "/assets/Executives/SocialDirector.jpg",
             socials: {
                 twitter: "https://twitter.com",
                 linkedin: "https://linkedin.com",
@@ -93,7 +93,7 @@ export default function Executives() {
         {
             name: "Ashaolu Michael Oluwatoni",
             position: "Sports Director",
-            image: "https://img.daisyui.com/images/stock/daisyui-hat-1.webp",
+            image: "/assets/Executives/SportsDirector.jpg",
             socials: {
                 facebook: "https://facebook.com",
                 twitter: "https://twitter.com",
@@ -103,7 +103,7 @@ export default function Executives() {
         {
             name: "Ikeh Chidiebere Franklin",
             position: "Software Director",
-            image: "https://img.daisyui.com/images/stock/daisyui-hat-1.webp",
+            image: "/assets/Executives/SoftwareDirector.jpg",
             socials: {
                 facebook: "https://facebook.com",
                 twitter: "https://twitter.com",
@@ -132,12 +132,12 @@ export default function Executives() {
                             className="carousel-item w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]"
                         >
                             <div className="card bg-base-100 shadow-lg w-full">
-                                <figure className="px-4 pt-4 relative h-64">
+                                <figure className="px-4 pt-4 relative h-64 w-full">
                                     <Image
                                         src={executive.image}
                                         alt={executive.name}
                                         fill
-                                        className="rounded-xl object-cover"
+                                        className="rounded-xl object-contain"
                                     />
                                 </figure>
                                 <div className="card-body items-center text-center">
