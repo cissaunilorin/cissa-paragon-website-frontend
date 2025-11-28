@@ -7,17 +7,19 @@ import About from "@/components/Home/About";
 import Contact from "@/components/Home/Contact";
 import Executives from "@/components/Home/Executives";
 import Departments from "@/components/Home/Departments";
+import PresidentialWelcome from "@/components/Home/PresidentialWelcome";
 
 export default function Home() {
-    return (
-        <>
-            <Hero />
-            <About />
-            <Departments />
-            {/* <Executives /> */}
-            <Responsibilities />
-            <News />
-            <Contact />
-        </>
-    );
+  return (
+    <>
+      <Hero />
+      <PresidentialWelcome />
+      <About />
+      <Departments />
+      <Executives />
+      <Responsibilities />
+      <News />
+      <Contact />
+    </>
+  );
 }
