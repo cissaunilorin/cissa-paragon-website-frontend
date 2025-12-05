@@ -1,5 +1,3 @@
-"use client";
-
 import Hero from "@/components/Home/Hero";
 import News from "@/components/Home/News";
 import Responsibilities from "@/components/Home/Responsibilities";

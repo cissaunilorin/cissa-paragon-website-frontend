@@ -1,3 +1,5 @@
+"use client";
+
 import { Calendar, Building2, Users, Crown, Award, UserCheck, GraduationCap } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 
