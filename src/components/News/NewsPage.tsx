@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useEffect, useState, useCallback } from "react";
+import { useRouter } from "next/navigation";
 
 import AnnouncementPreview from "@/components/News/NewsPreview";
 import {
@@ -10,7 +11,12 @@ import {
     type AnnouncementsListResponse,
 } from "@/lib/announcements";
 
-export default function NewsPage() {
+export default function NewsPage({
+    searchParams,
+}: {
+    searchParams: Promise<{ page?: string }>;
+}) {
+    const router = useRouter();
     const [announcements, setAnnouncements] = useState<Announcement[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -18,6 +24,17 @@ export default function NewsPage() {
     const [totalPages, setTotalPages] = useState(1);
     const [totalItems, setTotalItems] = useState(0);
     const pageSize = 9;
+
+    // Initialize currentPage from URL params
+    useEffect(() => {
+        const initializePage = async () => {
+            const params = await searchParams;
+            const pageFromUrl = params.page ? parseInt(params.page, 10) : 1;
+            const validPage = isNaN(pageFromUrl) || pageFromUrl < 1 ? 1 : pageFromUrl;
+            setCurrentPage(validPage);
+        };
+        initializePage();
+    }, [searchParams]);
 
     const fetchAnnouncements = useCallback(async () => {
         try {
@@ -39,11 +56,14 @@ export default function NewsPage() {
     }, [currentPage, pageSize]);
 
     useEffect(() => {
-        fetchAnnouncements();
-    }, [fetchAnnouncements]);
+        if (currentPage > 0) {
+            fetchAnnouncements();
+        }
+    }, [fetchAnnouncements, currentPage]);
 
     const handlePageChange = (page: number) => {
         setCurrentPage(page);
+        router.push(`/news?page=${page}`);
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
