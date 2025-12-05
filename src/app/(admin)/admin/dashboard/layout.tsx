@@ -6,6 +6,7 @@ import {
     LayoutDashboard,
     Users,
     Megaphone,
+    ClipboardList,
     ChevronLeft,
     ChevronRight,
     LogOut,
@@ -105,6 +106,11 @@ export default function AdminDashboardLayout({
             href: "/admin/dashboard/announcements",
             label: "Announcements",
             icon: Megaphone,
+        },
+        {
+            href: "/admin/dashboard/tests",
+            label: "Tests",
+            icon: ClipboardList,
         },
     ];
 
