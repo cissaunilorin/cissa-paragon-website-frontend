@@ -17,10 +17,11 @@ export const metadata: Metadata = {
     ],
 };
 
-export default function NewsPageWrapper({
+export default async function NewsPageWrapper({
     searchParams,
 }: {
     searchParams: Promise<{ page?: string }>;
 }) {
-    return <NewsPage searchParams={searchParams} />;
+    const { page } = await searchParams;
+    return <NewsPage initialPage={page} />;
 }

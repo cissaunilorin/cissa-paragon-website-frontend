@@ -12,29 +12,23 @@ import {
 } from "@/lib/announcements";
 
 export default function NewsPage({
-    searchParams,
+    initialPage,
 }: {
-    searchParams: Promise<{ page?: string }>;
+    initialPage?: string;
 }) {
     const router = useRouter();
     const [announcements, setAnnouncements] = useState<Announcement[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [totalItems, setTotalItems] = useState(0);
     const pageSize = 9;
 
-    // Initialize currentPage from URL params
-    useEffect(() => {
-        const initializePage = async () => {
-            const params = await searchParams;
-            const pageFromUrl = params.page ? parseInt(params.page, 10) : 1;
-            const validPage = isNaN(pageFromUrl) || pageFromUrl < 1 ? 1 : pageFromUrl;
-            setCurrentPage(validPage);
-        };
-        initializePage();
-    }, [searchParams]);
+    const [currentPage, setCurrentPage] = useState(() => {
+        const p = parseInt(initialPage ?? "1", 10);
+        return isNaN(p) || p < 1 ? 1 : p;
+    });
+
 
     const fetchAnnouncements = useCallback(async () => {
         try {
