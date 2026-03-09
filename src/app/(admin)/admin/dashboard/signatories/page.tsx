@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import SignatoriesDashboard from "@/components/Admin/Dashboard/SignatoriesDashboard";
+import SignatoriesDashboard from "./_components/SignatoriesDashboardClient";
 
 export const metadata: Metadata = {
     title: "Signatories",

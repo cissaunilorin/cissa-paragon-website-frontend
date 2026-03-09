@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import AdminHome from "@/components/Admin/Dashboard/AdminHome";
+import AdminHome from "./_components/AdminHomeClient";
 
 export const metadata: Metadata = {
     title: "Overview",

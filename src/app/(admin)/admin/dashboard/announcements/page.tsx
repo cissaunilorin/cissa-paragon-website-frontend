@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import AnnouncementsDashboard from "@/components/Admin/Dashboard/AnnouncementsDashboard";
+import AnnouncementsDashboard from "./_components/AnnouncementsDashboardClient";
 
 export const metadata: Metadata = {
     title: "Announcements",

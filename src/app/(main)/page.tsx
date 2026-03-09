@@ -1,11 +1,11 @@
-import Hero from "@/components/Home/Hero";
-import News from "@/components/Home/News";
-import Responsibilities from "@/components/Home/Responsibilities";
-import About from "@/components/Home/About";
-import Contact from "@/components/Home/Contact";
-import Executives from "@/components/Home/Executives";
-import Departments from "@/components/Home/Departments";
-import PresidentialWelcome from "@/components/Home/PresidentialWelcome";
+import Hero from "./_components/Hero";
+import News from "./_components/News";
+import Responsibilities from "./_components/Responsibilities";
+import About from "./_components/About";
+import Contact from "./_components/Contact";
+import Executives from "./_components/Executives";
+import Departments from "./_components/Departments";
+import PresidentialWelcome from "./_components/PresidentialWelcome";
 
 export default function Home() {
   return (

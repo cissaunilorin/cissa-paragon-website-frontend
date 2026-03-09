@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useEffect, useState } from "react";
-import AnnouncementPreview from "../News/NewsPreview";
+import AnnouncementPreview from "../news/_components/NewsPreview";
 import { getAnnouncements, type Announcement } from "@/lib/announcements";
 import Link from "next/link";
 

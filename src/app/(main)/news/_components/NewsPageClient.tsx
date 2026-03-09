@@ -4,7 +4,7 @@ import React from "react";
 import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 
-import AnnouncementPreview from "@/components/News/NewsPreview";
+import AnnouncementPreview from "./NewsPreview";
 import {
     getAnnouncements,
     type Announcement,

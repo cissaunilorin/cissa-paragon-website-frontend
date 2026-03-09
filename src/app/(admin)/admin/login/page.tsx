@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import AdminLogin from "@/components/Admin/AdminLogin";
+import AdminLogin from "./_components/AdminLoginClient";
 
 export const metadata: Metadata = {
     title: "Login",

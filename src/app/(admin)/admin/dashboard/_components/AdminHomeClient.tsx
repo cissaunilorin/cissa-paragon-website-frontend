@@ -193,7 +193,7 @@ export default function AdminHome() {
                                                 </div>
                                             </div>
                                         ) : (
-                                            <div className="w-12 h-12 rounded bg-base-300 flex items-center justify-center flex-shrink-0">
+                                            <div className="w-12 h-12 rounded bg-base-300 flex items-center justify-center shrink-0">
                                                 <FileText size={20} className="text-base-content/40" />
                                             </div>
                                         )}
