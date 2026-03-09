@@ -76,7 +76,7 @@ export default function Executives() {
     {
       name: "Shanu Mariam Oluwabunmi",
       position: "Financial Secretary",
-      image: "https://img.daisyui.com/images/stock/daisyui-hat-1.webp",
+      image: "/assets/Executives/FinancialSec.jpeg",
       socials: {
         facebook: "https://facebook.com",
         twitter: "https://twitter.com",
