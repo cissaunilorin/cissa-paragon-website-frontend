@@ -33,11 +33,12 @@ export default function AnnouncementsDashboard() {
     const [total, setTotal] = useState(0);
     const [submitting, setSubmitting] = useState(false);
 
+    const [signatorySearch, setSignatorySearch] = useState("");
+
     const [formData, setFormData] = useState({
         title: "",
         category: "",
         body: "",
-        session: "",
         published_at: "",
         signatories: [] as string[],
         image: null as File | null,
@@ -81,7 +82,6 @@ export default function AnnouncementsDashboard() {
             !formData.title ||
             !formData.category ||
             !formData.body ||
-            !formData.session ||
             !formData.published_at
         ) {
             alert("Please fill in all required fields");
@@ -97,7 +97,7 @@ export default function AnnouncementsDashboard() {
             title: formData.title,
             category: formData.category,
             body: formData.body,
-            session: formData.session,
+            session: "2025/2026 ACADEMIC SESSION",
             published_at: formData.published_at,
             signatories: formData.signatories,
             image: formData.image as File,
@@ -144,11 +144,11 @@ export default function AnnouncementsDashboard() {
             title: announcement.title,
             category: announcement.category,
             body: announcement.body,
-            session: announcement.session,
             published_at: announcement.published_at,
             signatories: announcement.signatories.map((s) => s.id),
             image: null,
         });
+        setSignatorySearch("");
         setIsModalOpen(true);
     };
 
@@ -171,11 +171,11 @@ export default function AnnouncementsDashboard() {
             title: "",
             category: "",
             body: "",
-            session: "",
             published_at: "",
             signatories: [],
             image: null,
         });
+        setSignatorySearch("");
         setIsModalOpen(true);
     };
 
@@ -186,11 +186,11 @@ export default function AnnouncementsDashboard() {
             title: "",
             category: "",
             body: "",
-            session: "",
             published_at: "",
             signatories: [],
             image: null,
         });
+        setSignatorySearch("");
     };
 
     const handleSignatoryToggle = (signatoryId: string) => {
@@ -499,25 +499,42 @@ export default function AnnouncementsDashboard() {
                 {/* Modal */}
                 {isModalOpen && (
                     <div className="modal modal-open">
-                        <div className="modal-box max-w-6xl">
-                            <h3 className="font-bold text-lg mb-4">
-                                {editingAnnouncement
-                                    ? "Edit Announcement"
-                                    : "Create New Announcement"}
-                            </h3>
+                        <div className="modal-box max-w-3xl w-full">
+                            {/* Modal Header */}
+                            <div className="flex items-center justify-between mb-6">
+                                <div>
+                                    <h3 className="font-bold text-xl">
+                                        {editingAnnouncement
+                                            ? "Edit Announcement"
+                                            : "Create New Announcement"}
+                                    </h3>
+                                    <p className="text-sm text-base-content/50 mt-0.5">
+                                        2025/2026 Academic Session
+                                    </p>
+                                </div>
+                                <button
+                                    type="button"
+                                    onClick={closeModal}
+                                    className="btn btn-sm btn-circle btn-ghost"
+                                >
+                                    ✕
+                                </button>
+                            </div>
 
-                            <form onSubmit={handleSubmit}>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <form onSubmit={handleSubmit} className="space-y-5">
+                                {/* Row 1: Title + Category */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div className="form-control">
-                                        <label className="label mr-2">
-                                            <span className="label-text">
-                                                Title *
+                                        <label className="label pb-1">
+                                            <span className="label-text font-medium">
+                                                Title
+                                                <span className="text-error ml-0.5">*</span>
                                             </span>
                                         </label>
                                         <input
                                             type="text"
                                             placeholder="Enter announcement title"
-                                            className="input input-bordered"
+                                            className="input input-bordered w-full"
                                             value={formData.title}
                                             onChange={(e) =>
                                                 setFormData((prev) => ({
@@ -530,13 +547,14 @@ export default function AnnouncementsDashboard() {
                                     </div>
 
                                     <div className="form-control">
-                                        <label className="label mr-2">
-                                            <span className="label-text">
-                                                Category *
+                                        <label className="label pb-1">
+                                            <span className="label-text font-medium">
+                                                Category
+                                                <span className="text-error ml-0.5">*</span>
                                             </span>
                                         </label>
                                         <select
-                                            className="select select-bordered"
+                                            className="select select-bordered w-full"
                                             value={formData.category}
                                             onChange={(e) =>
                                                 setFormData((prev) => ({
@@ -546,97 +564,95 @@ export default function AnnouncementsDashboard() {
                                             }
                                             required
                                         >
-                                            <option value="">
-                                                Select category
+                                            <option value="" disabled>
+                                                Select a category
                                             </option>
-                                            <option value="PRESS RELEASE">
-                                                Press Release
-                                            </option>
+                                            <option value="PRESS RELEASE">Press Release</option>
                                             <option value="EVENT">Event</option>
-                                            <option value="NOTICE">
-                                                Notice
-                                            </option>
-                                            <option value="ANNOUNCEMENT">
-                                                Announcement
-                                            </option>
+                                            <option value="NOTICE">Notice</option>
+                                            <option value="ANNOUNCEMENT">Announcement</option>
                                         </select>
                                     </div>
                                 </div>
 
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                                    <div className="form-control">
-                                        <label className="label mr-2">
-                                            <span className="label-text">
-                                                Session *
-                                            </span>
-                                        </label>
-                                        <input
-                                            type="text"
-                                            placeholder="e.g., 2025/2026 ACADEMIC SESSION"
-                                            className="input input-bordered"
-                                            value={formData.session}
-                                            onChange={(e) =>
-                                                setFormData((prev) => ({
-                                                    ...prev,
-                                                    session: e.target.value,
-                                                }))
-                                            }
-                                            required
-                                        />
-                                    </div>
-
-                                    <div className="form-control">
-                                        <label className="label mr-2">
-                                            <span className="label-text">
-                                                Published Date *
-                                            </span>
-                                        </label>
-                                        <input
-                                            type="datetime-local"
-                                            className="input input-bordered"
-                                            value={formData.published_at}
-                                            onChange={(e) =>
-                                                setFormData((prev) => ({
-                                                    ...prev,
-                                                    published_at:
-                                                        e.target.value,
-                                                }))
-                                            }
-                                            required={!editingAnnouncement}
-                                        />
-                                    </div>
-                                </div>
-
-                                <div className="form-control mb-4">
-                                    <label className="label mr-2">
-                                        <span className="label-text">
-                                            Image{" "}
-                                            {editingAnnouncement ? "" : "*"}
+                                {/* Row 2: Published Date (full width) */}
+                                <div className="form-control">
+                                    <label className="label pb-1">
+                                        <span className="label-text font-medium">
+                                            Published Date
+                                            {!editingAnnouncement && <span className="text-error ml-0.5">*</span>}
                                         </span>
                                     </label>
                                     <input
-                                        type="file"
-                                        accept="image/*"
-                                        className="file-input file-input-bordered"
+                                        type="datetime-local"
+                                        className="input input-bordered w-full"
+                                        value={formData.published_at}
                                         onChange={(e) =>
                                             setFormData((prev) => ({
                                                 ...prev,
-                                                image:
-                                                    e.target.files?.[0] || null,
+                                                published_at: e.target.value,
                                             }))
                                         }
                                         required={!editingAnnouncement}
                                     />
                                 </div>
 
-                                <div className="form-control mb-4">
-                                    <label className="label mr-2">
-                                        <span className="label-text">
-                                            Body *
+                                {/* Row 3: Image upload */}
+                                <div className="form-control">
+                                    <label className="label pb-1">
+                                        <span className="label-text font-medium">
+                                            Cover Image
+                                            {!editingAnnouncement && <span className="text-error ml-0.5">*</span>}
+                                        </span>
+                                        {editingAnnouncement && (
+                                            <span className="label-text-alt text-base-content/50">
+                                                Leave empty to keep existing image
+                                            </span>
+                                        )}
+                                    </label>
+                                    <div className="border-2 border-dashed border-base-300 rounded-lg p-4 flex items-center gap-4 hover:border-primary/50 transition-colors">
+                                        <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-base-200 flex items-center justify-center">
+                                            <ImageIcon size={20} className="text-base-content/40" />
+                                        </div>
+                                        <div className="flex-1 min-w-0">
+                                            <p className="text-sm font-medium text-base-content/70">
+                                                {formData.image
+                                                    ? formData.image.name
+                                                    : "Choose an image file"}
+                                            </p>
+                                            <p className="text-xs text-base-content/40 mt-0.5">
+                                                PNG, JPG, WEBP up to 10MB
+                                            </p>
+                                        </div>
+                                        <label className="btn btn-sm btn-outline cursor-pointer">
+                                            Browse
+                                            <input
+                                                type="file"
+                                                accept="image/*"
+                                                className="hidden"
+                                                onChange={(e) =>
+                                                    setFormData((prev) => ({
+                                                        ...prev,
+                                                        image: e.target.files?.[0] || null,
+                                                    }))
+                                                }
+                                                required={!editingAnnouncement}
+                                            />
+                                        </label>
+                                    </div>
+                                </div>
+
+                                {/* Row 4: Body */}
+                                <div className="form-control">
+                                    <label className="label pb-1">
+                                        <span className="label-text font-medium">
+                                            Body
+                                            <span className="text-error ml-0.5">*</span>
                                         </span>
                                     </label>
                                     <textarea
-                                        className="textarea textarea-bordered h-64 w-full"
+                                        className="textarea textarea-bordered w-full"
+                                        style={{ minHeight: "180px" }}
                                         placeholder="Enter announcement content..."
                                         value={formData.body}
                                         onChange={(e) =>
@@ -649,45 +665,118 @@ export default function AnnouncementsDashboard() {
                                     />
                                 </div>
 
-                                <div className="form-control mb-6">
-                                    <label className="label">
-                                        <span className="label-text">
-                                            Signatories
+                                {/* Row 5: Signatories — chip-based multi-select */}
+                                <div className="form-control">
+                                    <label className="label pb-1">
+                                        <span className="label-text font-medium">Signatories</span>
+                                        <span className="label-text-alt text-base-content/50">
+                                            {formData.signatories.length} selected
                                         </span>
                                     </label>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 max-h-40 overflow-y-auto border rounded p-3">
-                                        {signatories.map((signatory) => (
-                                            <label
-                                                key={signatory.id}
-                                                className="label cursor-pointer"
-                                            >
-                                                <span className="label-text">
-                                                    {signatory.name}{" "}
-                                                    {signatory.alias &&
-                                                        `(${signatory.alias})`}
-                                                    <br />
-                                                    <span className="text-xs opacity-70">
-                                                        {signatory.role}
+
+                                    {/* Selected chips */}
+                                    {formData.signatories.length > 0 && (
+                                        <div className="flex flex-wrap gap-2 mb-2">
+                                            {formData.signatories.map((id) => {
+                                                const s = signatories.find((sig) => sig.id === id);
+                                                if (!s) return null;
+                                                return (
+                                                    <span
+                                                        key={id}
+                                                        className="badge badge-primary gap-1.5 py-3 px-3"
+                                                    >
+                                                        <span className="text-xs font-medium">
+                                                            {s.alias || s.name}
+                                                        </span>
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => handleSignatoryToggle(id)}
+                                                            className="opacity-70 hover:opacity-100 leading-none"
+                                                            aria-label={`Remove ${s.name}`}
+                                                        >
+                                                            ✕
+                                                        </button>
                                                     </span>
-                                                </span>
-                                                <input
-                                                    type="checkbox"
-                                                    className="checkbox checkbox-primary"
-                                                    checked={formData.signatories.includes(
-                                                        signatory.id
-                                                    )}
-                                                    onChange={() =>
-                                                        handleSignatoryToggle(
-                                                            signatory.id
-                                                        )
-                                                    }
-                                                />
-                                            </label>
-                                        ))}
+                                                );
+                                            })}
+                                        </div>
+                                    )}
+
+                                    {/* Search input */}
+                                    <input
+                                        type="text"
+                                        placeholder="Search signatories..."
+                                        className="input input-bordered input-sm w-full mb-2"
+                                        value={signatorySearch}
+                                        onChange={(e) => setSignatorySearch(e.target.value)}
+                                    />
+
+                                    {/* Filtered list */}
+                                    <div className="border border-base-300 rounded-lg divide-y divide-base-200 max-h-48 overflow-y-auto">
+                                        {signatories
+                                            .filter((s) => {
+                                                const q = signatorySearch.toLowerCase();
+                                                return (
+                                                    s.name.toLowerCase().includes(q) ||
+                                                    (s.alias?.toLowerCase().includes(q) ?? false) ||
+                                                    s.role.toLowerCase().includes(q)
+                                                );
+                                            })
+                                            .map((signatory) => {
+                                                const isSelected = formData.signatories.includes(signatory.id);
+                                                return (
+                                                    <button
+                                                        key={signatory.id}
+                                                        type="button"
+                                                        onClick={() => handleSignatoryToggle(signatory.id)}
+                                                        className={`w-full flex items-center gap-3 px-3 py-2.5 text-left transition-colors ${
+                                                            isSelected
+                                                                ? "bg-primary/10"
+                                                                : "hover:bg-base-200"
+                                                        }`}
+                                                    >
+                                                        <span
+                                                            className={`w-4 h-4 rounded border-2 flex-shrink-0 flex items-center justify-center text-xs transition-colors ${
+                                                                isSelected
+                                                                    ? "bg-primary border-primary text-primary-content"
+                                                                    : "border-base-300"
+                                                            }`}
+                                                        >
+                                                            {isSelected && "✓"}
+                                                        </span>
+                                                        <span className="flex-1 min-w-0">
+                                                            <span className="text-sm font-medium block truncate">
+                                                                {signatory.name}
+                                                                {signatory.alias && (
+                                                                    <span className="text-base-content/50 font-normal ml-1">
+                                                                        ({signatory.alias})
+                                                                    </span>
+                                                                )}
+                                                            </span>
+                                                            <span className="text-xs text-base-content/50 block">
+                                                                {signatory.role}
+                                                            </span>
+                                                        </span>
+                                                    </button>
+                                                );
+                                            })}
+                                        {signatories.filter((s) => {
+                                            const q = signatorySearch.toLowerCase();
+                                            return (
+                                                s.name.toLowerCase().includes(q) ||
+                                                (s.alias?.toLowerCase().includes(q) ?? false) ||
+                                                s.role.toLowerCase().includes(q)
+                                            );
+                                        }).length === 0 && (
+                                            <p className="text-center text-sm text-base-content/40 py-6">
+                                                No signatories match your search
+                                            </p>
+                                        )}
                                     </div>
                                 </div>
 
-                                <div className="modal-action">
+                                {/* Actions */}
+                                <div className="modal-action mt-2 pt-4 border-t border-base-200">
                                     <button
                                         type="button"
                                         onClick={closeModal}
@@ -709,9 +798,9 @@ export default function AnnouncementsDashboard() {
                                                     : "Creating..."}
                                             </>
                                         ) : editingAnnouncement ? (
-                                            "Update"
+                                            "Update Announcement"
                                         ) : (
-                                            "Create"
+                                            "Create Announcement"
                                         )}
                                     </button>
                                 </div>
