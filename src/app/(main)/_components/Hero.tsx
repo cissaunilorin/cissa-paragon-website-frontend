@@ -1,54 +1,100 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { Newspaper } from "lucide-react";
-import { Phone } from "lucide-react";
+import gsap from "gsap";
+import { ArrowRight } from "lucide-react";
 
 export default function Hero() {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const subTextRef = useRef<HTMLParagraphElement>(null);
+    const btnRef = useRef<HTMLAnchorElement>(null);
+
+    const [headlineText, setHeadlineText] = useState("Hello, CISSAite. You're in the right place.");
+    const [isMounted, setIsMounted] = useState(false);
+
+    useEffect(() => {
+        const headlines = [
+            "Hello, CISSAite. You're in the right place.",
+            "Hello, CISSAite. We've been expecting you.",
+            "Hey CISSAite, your association is here.",
+            "Welcome, CISSAite. This one's built for you.",
+            "CISSAite? You belong here."
+        ];
+        setHeadlineText(headlines[Math.floor(Math.random() * headlines.length)]);
+        setIsMounted(true);
+    }, []);
+
+    useEffect(() => {
+        if (!isMounted) return;
+
+        const ctx = gsap.context(() => {
+            const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
+
+            tl.to(".word-anim", {
+                y: 0,
+                opacity: 1,
+                stagger: 0.05,
+                duration: 1.2,
+                delay: 0.2
+            })
+            .fromTo(subTextRef.current,
+                { y: 30, opacity: 0 },
+                { y: 0, opacity: 1, duration: 1 },
+                "-=0.8"
+            )
+            .fromTo(btnRef.current,
+                { y: 30, opacity: 0 },
+                { y: 0, opacity: 1, duration: 1 },
+                "-=0.8"
+            );
+
+        }, containerRef);
+
+        return () => ctx.revert();
+    }, [isMounted, headlineText]);
+
     return (
         <div
+            ref={containerRef}
             id="home"
-            className="hero min-h-screen relative overflow-x-hidden" // added overflow-x-hidden
+            className="hero min-h-screen relative overflow-hidden flex items-end justify-start"
             style={{
                 backgroundImage: "url(/assets/ov-3.png)",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
             }}
         >
-            <div className="hero-overlay bg-gradient-to-r from-black/60 to-black/40"></div>
-            <div className="hero-content text-neutral-content text-center">
-                <div className="max-w-4xl backdrop-blur-sm border-4 border-base-100/5 p-6 md:p-10 rounded-xl shadow-2xl">
-                    <h1 className="mb-6 text-3xl sm:text-5xl md:text-7xl font-bold leading-tight whitespace-normal break-words">
-                        Where{" "}
-                        <span className="text-secondary">Communication</span>{" "}
-                        Meets <span className="text-secondary">Innovation</span>
-                    </h1>
-                    <p className="mb-8 text-base md:text-xl max-w-2xl mx-auto whitespace-normal">
-                        With CISSA at its core, the faculty thrives through
-                        collaboration, creativity, and excellence.
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Link href="/news" className="btn btn-primary btn-lg ">
-                            <Newspaper className="w-5 h-5 mr-2" />
-                            Latest News
-                        </Link>
-                        <Link href="/#contact" className="btn btn-outline btn-lg">
-                            <Phone className="w-5 h-5 mr-2" />
-                            Contact Us
-                        </Link>
-                    </div>
-                </div>
-            </div>
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-                <svg
-                    className="w-6 h-6 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+            <div className="absolute inset-0 bg-black/50 z-0"></div>
+
+            <div className="relative z-10 w-full max-w-[90vw] px-6 md:px-10 pb-20 md:pb-10 text-left text-white">
+                <h1 className="font-black text-5xl sm:text-7xl md:text-8xl lg:text-9xl leading-[1.1] md:leading-none tracking-tight mb-4 md:mb-8 max-w-full">
+                     {headlineText.split(" ").map((word, index) => (
+                        <span key={index} className="inline-block whitespace-nowrap mr-3 md:mr-6 last:mr-0">
+                             <span className="inline-block opacity-0 translate-y-20 word-anim will-change-transform">
+                                {word}
+                             </span>
+                        </span>
+                    ))}
+                </h1>
+
+                <p 
+                    ref={subTextRef} 
+                    className="text-lg md:text-2xl font-normal text-gray-200 max-w-2xl mb-4 md:mb-8 leading-relaxed opacity-0"
                 >
-                    <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                    ></path>
-                </svg>
+                    Your hub for academics, events, opportunities, and everything in between.
+                </p>
+
+                <Link 
+                    ref={btnRef}
+                    href="#about" 
+                    className="group relative inline-flex items-center justify-center px-4 py-2 md:px-8 md:py-4 text-md md:text-lg font-bold text-black transition-all duration-300 bg-white hover:bg-gray-200 rounded-md overflow-hidden opacity-0"
+                >
+                    <span className="relative z-10 flex items-center gap-2">
+                        Explore Now
+                        <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                    </span>
+                </Link>
             </div>
         </div>
     );
