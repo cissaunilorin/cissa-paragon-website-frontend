@@ -13,7 +13,7 @@ export default function Home() {
     <>
       <Hero />
       <WhatWeDo />
-      {/* <PresidentialWelcome /> */}
+      <PresidentialWelcome />
       {/* <About /> */}
       {/* <Departments /> */}
       {/* <Executives /> */}
