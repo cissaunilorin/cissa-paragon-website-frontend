@@ -64,7 +64,7 @@ export default function Hero() {
             <div
                 ref={containerRef}
                 id="home"
-                className="hero min-h-screen lg:min-h-full relative overflow-hidden flex items-end justify-start lg:rounded-2xl flex-1"
+                className="hero min-h-screen lg:min-h-full relative overflow-hidden flex items-end justify-start lg:items-center lg:justify-center lg:rounded-2xl flex-1"
                 style={{
                     backgroundImage: "url(/assets/ov-3.png)",
                     backgroundSize: "cover",
@@ -73,12 +73,12 @@ export default function Hero() {
             >
                 <div className="absolute inset-0 bg-black/50 z-0"></div>
 
-                <div className="relative z-10 w-full max-w-[90vw] px-6 md:px-10 pb-20 md:pb-10 text-left text-white">
-                    <h1 className="font-black text-5xl md:text-8xl leading-[1.1] md:leading-none tracking-tight mb-4 md:mb-8 max-w-full">
+                <div className="relative z-10 w-full max-w-[90vw] px-6 md:px-10 pb-20 md:pb-10 lg:pb-0 text-left lg:text-center text-white lg:max-w-7xl lg:mx-auto">
+                    <h1 className="font-bold text-5xl md:text-8xl leading-[1.06] md:leading-none tracking-tight mb-4 md:mb-8 max-w-full lg:max-w-7xl lg:mx-auto">
                         {headlineText.split(" ").map((word, index) => (
                             <span
                                 key={index}
-                                className="inline-block whitespace-nowrap mr-3 md:mr-6 last:mr-0"
+                                className="inline-block whitespace-nowrap mr-3 md:mr-6 last:mr-0 lg:mr-4"
                             >
                                 <span className="inline-block opacity-0 translate-y-20 word-anim will-change-transform">
                                     {word}
@@ -89,7 +89,7 @@ export default function Hero() {
 
                     <p
                         ref={subTextRef}
-                        className="text-lg md:text-2xl font-normal text-gray-200 max-w-2xl mb-4 md:mb-8 leading-relaxed opacity-0"
+                        className="text-lg md:text-2xl font-normal text-gray-200 max-w-2xl lg:max-w-2xl mx-auto mb-4 md:mb-8 leading-relaxed opacity-0"
                     >
                         Your hub for academics, events, opportunities, and
                         everything in between.
@@ -98,7 +98,7 @@ export default function Hero() {
                     <Link
                         ref={btnRef}
                         href="#about"
-                        className="group relative inline-flex items-center justify-center px-4 py-2 md:px-8 md:py-4 text-md md:text-lg font-bold text-black transition-all duration-300 bg-white hover:bg-gray-200 rounded-md overflow-hidden opacity-0"
+                        className="group relative inline-flex items-center justify-center px-4 py-2 md:px-8 md:py-4 text-md md:text-lg font-semibold text-black transition-all duration-300 bg-white hover:bg-gray-200 rounded-md overflow-hidden opacity-0"
                     >
                         <span className="relative z-10 flex items-center gap-2">
                             Explore Now
