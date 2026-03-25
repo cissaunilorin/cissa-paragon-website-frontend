@@ -1,4 +1,5 @@
 import Hero from "./_components/Hero";
+import WhatWeDo from "./_components/WhatWeDo";
 import News from "./_components/News";
 import Responsibilities from "./_components/Responsibilities";
 import About from "./_components/About";
@@ -11,6 +12,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <WhatWeDo />
       {/* <PresidentialWelcome /> */}
       {/* <About /> */}
       {/* <Departments /> */}
