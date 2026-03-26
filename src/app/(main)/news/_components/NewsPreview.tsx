@@ -7,17 +7,11 @@ export default function AnnouncementPreview({
 }: {
     announcement: Announcement;
 }) {
-
     const publishedDate = new Date(announcement.published_at);
     const date = publishedDate.toLocaleDateString("en-GB", {
         year: "numeric",
         month: "short",
         day: "numeric",
-    });
-    const time = publishedDate.toLocaleTimeString("en-GB", {
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: true,
     });
 
     return (
@@ -26,30 +20,26 @@ export default function AnnouncementPreview({
             className="group block h-full"
             aria-label={`Read announcement: ${announcement.title}`}
         >
-            <article className="card bg-base-100 shadow-md border border-base-200 overflow-hidden transition-transform duration-200 group-hover:-translate-y-1">
-                {announcement.image_url && (
-                    <figure className="relative w-full aspect-video">
-                        <Image
-                            src={announcement.image_url}
-                            alt={announcement.title}
-                            fill
-                            className="object-cover transition-transform duration-200 group-hover:scale-[1.02]"
-                        />
-                    </figure>
+            <article className="relative aspect-square overflow-hidden rounded-2xl bg-base-300 shadow-md transition-transform duration-300 group-hover:-translate-y-1">
+                {announcement.image_url ? (
+                    <Image
+                        src={announcement.image_url}
+                        alt={announcement.title}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                    />
+                ) : (
+                    <div className="absolute inset-0 bg-base-300" />
                 )}
-                <div className="card-body p-5 space-y-3">
-                    <div className="flex flex-wrap items-center gap-2 text-xs font-medium uppercase tracking-wide">
-                        <span className="badge badge-primary badge-sm font-semibold">
-                            {announcement.category}
-                        </span>
-                        <span className="opacity-70">{date}</span>
-                        {time && (
-                            <span className="opacity-70">
-                                {time}
-                            </span>
-                        )}
+
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/30 to-transparent transition duration-300 group-hover:brightness-110" />
+
+                <div className="absolute inset-x-0 bottom-0 z-10 p-5 text-white">
+                    <div className="mb-3 flex items-center justify-start gap-3 text-xs md:text-sm font-semibold uppercase tracking-[0.2em] text-white/85">
+                        <span>{date}</span>
                     </div>
-                    <h3 className="card-title text-base leading-snug line-clamp-3 group-hover:text-primary transition-colors duration-200">
+
+                    <h3 className="line-clamp-2 text-lg font-bold leading-tight text-white transition-colors duration-200 group-hover:text-white/95 md:text-xl">
                         {announcement.title}
                     </h3>
                 </div>
