@@ -42,7 +42,7 @@ export default function News() {
     );
 
     return (
-        <section id="news" className="py-20">
+        <section id="news" className="py-20 bg-base-200">
             <div className="container mx-auto max-w-6xl px-4">
                 <div className="mb-12 flex flex-col gap-6 md:flex-row md:flex-nowrap md:items-center md:justify-between">
                     <h2 className="text-left text-4xl font-bold tracking-tight text-base-content md:text-6xl">

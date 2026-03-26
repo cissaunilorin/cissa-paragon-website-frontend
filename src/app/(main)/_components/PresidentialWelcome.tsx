@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function PresidentialWelcome() {
     return (
-        <section className="bg-base-100 pb-16 pt-12 md:pb-20 md:pt-14 lg:pb-24 lg:pt-16">
+        <section className="bg-base-200 pb-16 pt-12 md:pb-20 md:pt-14 lg:pb-24 lg:pt-16">
             <div className="container mx-auto px-4">
                 <div className="mx-auto max-w-5xl">
                     <div className="mb-10 max-w-full text-center">
