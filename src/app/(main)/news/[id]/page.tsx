@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Phone } from "lucide-react";
 
-import ImageModal from "@/components/shared/ImageModal";
+import ImageModal from "@/components/ImageModal";
 import { formatRich } from "@/lib/utils/formatRich";
 import { formatNumberToWhatsappLink } from "@/lib/utils/format";
 import { getAnnouncementById } from "@/lib/announcements";
