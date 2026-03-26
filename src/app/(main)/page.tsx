@@ -7,6 +7,7 @@ import Contact from "./_components/Contact";
 import Executives from "./_components/Executives";
 import Departments from "./_components/Departments";
 import PresidentialWelcome from "./_components/PresidentialWelcome";
+import UpcomingEvent from "./_components/UpcomingEvent";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Hero />
       <WhatWeDo />
       <PresidentialWelcome />
+      <UpcomingEvent />
       {/* <About /> */}
       {/* <Departments /> */}
       {/* <Executives /> */}
