@@ -73,59 +73,61 @@ export default function WhatWeDo() {
     return (
         <section className="bg-base-100 py-16 md:py-20 lg:py-24">
             <div className="container mx-auto px-4">
-                <div className="mb-10 max-w-full text-center">
-                    <p className="text-base font-bold uppercase tracking-[0.18em] text-primary md:text-2xl">
-                        CISSA shows up for its members
-                    </p>
-                </div>
+                <div className="mx-auto max-w-6xl">
+                    <div className="mb-10 max-w-full text-center">
+                        <p className="text-base font-bold uppercase tracking-[0.18em] text-primary md:text-2xl">
+                            CISSA shows up for its members
+                        </p>
+                    </div>
 
-                <div className="grid gap-6 md:grid-cols-3">
-                    {cards.map((card) => {
-                        const Icon = card.icon;
+                    <div className="grid gap-6 md:grid-cols-3">
+                        {cards.map((card) => {
+                            const Icon = card.icon;
 
-                        return (
-                            <article
-                                key={card.lineTwo}
-                                className="card h-full border border-base-300 bg-base-200/50 shadow-sm"
-                            >
-                                <div className="card-body gap-6 p-6 md:p-7 lg:p-8">
-                                    <div className="flex justify-start">
-                                        <IconSlot icon={Icon} />
-                                    </div>
+                            return (
+                                <article
+                                    key={card.lineTwo}
+                                    className="card h-full bg-base-200/50 shadow-sm"
+                                >
+                                    <div className="card-body gap-6 p-6 md:p-7 lg:p-8">
+                                        <div className="flex justify-start">
+                                            <IconSlot icon={Icon} />
+                                        </div>
 
-                                    <div className="space-y-4">
-                                        <h3 className="text-3xl font-bold leading-[1.05] tracking-tight text-base-content lg:text-[2.5rem]">
-                                            <span className="block">
-                                                {card.lineOne}
-                                            </span>
-                                            <span className="block text-primary">
-                                                {card.lineTwo}
-                                            </span>
-                                        </h3>
-
-                                        <p className="max-w-md md:text-lg text-base leading-relaxed text-base-content/80">
-                                            {card.description}
-                                        </p>
-                                    </div>
-
-                                    <div className="mt-auto flex flex-wrap gap-3 pt-2">
-                                        {card.ctas.map((cta) => (
-                                            <Link
-                                                key={cta.label}
-                                                href={cta.href}
-                                                className="group relative btn btn-neutral btn-sm rounded-full border-0 px-5 normal-case text-base md:text-lg font-semibold text-neutral-content shadow-none"
-                                            >
-                                                <span className="relative z-10 flex items-center gap-2">
-                                                    {cta.label}
-                                                    <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                                        <div className="space-y-4">
+                                            <h3 className="text-3xl font-bold leading-[1.05] tracking-tight text-base-content lg:text-[2.5rem]">
+                                                <span className="block">
+                                                    {card.lineOne}
                                                 </span>
-                                            </Link>
-                                        ))}
+                                                <span className="block text-primary">
+                                                    {card.lineTwo}
+                                                </span>
+                                            </h3>
+
+                                            <p className="max-w-md md:text-lg text-base leading-relaxed text-base-content/80">
+                                                {card.description}
+                                            </p>
+                                        </div>
+
+                                        <div className="mt-auto flex flex-wrap gap-3 pt-2">
+                                            {card.ctas.map((cta) => (
+                                                <Link
+                                                    key={cta.label}
+                                                    href={cta.href}
+                                                    className="group relative btn btn-neutral btn-sm rounded-full border-0 px-5 normal-case text-base md:text-lg font-semibold text-neutral-content shadow-none"
+                                                >
+                                                    <span className="relative z-10 flex items-center gap-2">
+                                                        {cta.label}
+                                                        <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                                                    </span>
+                                                </Link>
+                                            ))}
+                                        </div>
                                     </div>
-                                </div>
-                            </article>
-                        );
-                    })}
+                                </article>
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
         </section>
