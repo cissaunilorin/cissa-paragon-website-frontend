@@ -44,19 +44,10 @@ export default function News() {
     return (
         <section id="news" className="py-20 bg-base-200">
             <div className="container mx-auto max-w-6xl px-4">
-                <div className="mb-12 flex flex-col gap-6 md:flex-row md:flex-nowrap md:items-center md:justify-between">
-                    <h2 className="text-left text-4xl font-bold tracking-tight text-base-content md:text-6xl">
-                        <span className="block text-primary">Latest</span>
-                        <span className="block">News</span>
-                    </h2>
-
-                    <Link
-                        href="/news"
-                        className="inline-flex items-center gap-2 self-start md:self-end whitespace-nowrap rounded-full bg-primary px-6 py-3 text-base font-bold text-primary-content shadow-sm transition-transform duration-200 hover:-translate-y-0.5 hover:bg-primary/90 md:text-lg"
-                    >
-                        View all news
-                        <ArrowRight className="h-4 w-4" />
-                    </Link>
+                <div className="mb-10 max-w-full text-center">
+                    <p className="text-base font-bold uppercase tracking-[0.18em] text-primary md:text-2xl">
+                        Latest News
+                    </p>
                 </div>
 
                 {isLoading ? (
@@ -89,6 +80,18 @@ export default function News() {
                         )}
                     </div>
                 )}
+
+                <div className="mt-10 flex justify-center md:mt-12">
+                    <Link
+                        href="/news"
+                        className="btn btn-outline btn-primary rounded-full px-6 text-base font-bold normal-case shadow-none transition-transform duration-200 hover:-translate-y-0.5 md:text-lg"
+                    >
+                        <span className="inline-flex items-center gap-2">
+                            View all news
+                            <ArrowRight className="h-4 w-4" />
+                        </span>
+                    </Link>
+                </div>
             </div>
         </section>
     );

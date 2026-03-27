@@ -1,6 +1,6 @@
 import Hero from "./_components/Hero";
 import WhatWeDo from "./_components/WhatWeDo";
-import News from "./_components/News";
+import News from "./_components/LatestNews";
 import Responsibilities from "./_components/Responsibilities";
 import About from "./_components/About";
 import Contact from "./_components/Contact";
