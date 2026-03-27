@@ -1,6 +1,53 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Mail, Twitter, Youtube } from "lucide-react";
+import {
+    Mail,
+    MessageCircleMore,
+    MessagesSquare,
+    Music2,
+    Twitter,
+    Youtube,
+    Instagram,
+} from "lucide-react";
+
+const socialLinks = [
+    {
+        label: "X",
+        href: "https://x.com/cissa_unilorin?s=21",
+        icon: Twitter,
+        hoverClassName: "hover:text-sky-400",
+    },
+    {
+        label: "Instagram",
+        href: "https://www.instagram.com/cissaunilorin?igsh=MWJqaXRnMXB3djJ5ag==",
+        icon: Instagram,
+        hoverClassName: "hover:text-fuchsia-400",
+    },
+    {
+        label: "TikTok",
+        href: "https://www.tiktok.com/@cissa_unilorin?_r=1&_t=ZM-91XFVYEl1uF",
+        icon: Music2,
+        hoverClassName: "hover:text-cyan-300",
+    },
+    {
+        label: "YouTube",
+        href: "https://youtube.com/@cissapulse?si=VJDMiDFlFSlCtSQp",
+        icon: Youtube,
+        hoverClassName: "hover:text-red-400",
+    },
+    {
+        label: "WhatsApp TV",
+        href: "https://wa.me/7059834118",
+        icon: MessageCircleMore,
+        hoverClassName: "hover:text-emerald-400",
+    },
+    {
+        label: "WhatsApp Group",
+        href: "https://chat.whatsapp.com/G5LkBmXDxQa1mYWBvhrMaa",
+        icon: MessagesSquare,
+        hoverClassName: "hover:text-emerald-400",
+    },
+];
 
 export default function Footer() {
     return (
@@ -83,21 +130,24 @@ export default function Footer() {
                             <span>info@cissa-unilorin.org</span>
                         </a>
 
-                        <div className="flex items-center gap-3 pt-1">
-                            <a
-                                href="#"
-                                aria-label="CISSA on X"
-                                className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white/70 transition-colors duration-200 hover:text-sky-400 hover:bg-white/15"
-                            >
-                                <Twitter className="h-5 w-5" />
-                            </a>
-                            <a
-                                href="#"
-                                aria-label="CISSA on YouTube"
-                                className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white/70 transition-colors duration-200 hover:text-red-400 hover:bg-white/15"
-                            >
-                                <Youtube className="h-5 w-5" />
-                            </a>
+                        <div className="flex flex-wrap gap-3 pt-1">
+                            {socialLinks.map((social) => {
+                                const SocialIcon = social.icon;
+
+                                return (
+                                    <a
+                                        key={social.label}
+                                        href={social.href}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        aria-label={social.label}
+                                        title={social.label}
+                                        className={`inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white/70 transition-colors duration-200 hover:bg-white/15 ${social.hoverClassName}`}
+                                    >
+                                        <SocialIcon className="h-5 w-5" />
+                                    </a>
+                                );
+                            })}
                         </div>
                     </div>
                 </div>

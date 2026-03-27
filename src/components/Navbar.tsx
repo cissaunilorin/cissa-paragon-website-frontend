@@ -4,7 +4,18 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Facebook, Instagram, Home, Menu, Newspaper, Twitter, X } from "lucide-react";
+import {
+    Home,
+    Instagram,
+    Menu,
+    MessageCircleMore,
+    MessagesSquare,
+    Music2,
+    Newspaper,
+    Twitter,
+    X,
+    Youtube,
+} from "lucide-react";
 
 const navLinks = [
     { label: "Home", href: "/", icon: Home },
@@ -12,9 +23,12 @@ const navLinks = [
 ];
 
 const socialLinks = [
-    { label: "Facebook", href: "https://facebook.com", icon: Facebook },
-    { label: "Twitter", href: "https://twitter.com", icon: Twitter },
-    { label: "Instagram", href: "https://instagram.com", icon: Instagram },
+    { label: "X", href: "https://x.com/cissa_unilorin?s=21", icon: Twitter },
+    { label: "Instagram", href: "https://www.instagram.com/cissaunilorin?igsh=MWJqaXRnMXB3djJ5ag==", icon: Instagram },
+    { label: "TikTok", href: "https://www.tiktok.com/@cissa_unilorin?_r=1&_t=ZM-91XFVYEl1uF", icon: Music2 },
+    { label: "YouTube", href: "https://youtube.com/@cissapulse?si=VJDMiDFlFSlCtSQp", icon: Youtube },
+    { label: "WhatsApp TV", href: "https://wa.me/7059834118", icon: MessageCircleMore },
+    { label: "WhatsApp Group", href: "https://chat.whatsapp.com/G5LkBmXDxQa1mYWBvhrMaa", icon: MessagesSquare },
 ];
 
 export default function Navbar() {
@@ -177,7 +191,7 @@ export default function Navbar() {
                             </nav>
                         </div>
 
-                        <div className="mt-8 flex items-center justify-between gap-4">
+                        <div className="mt-8 flex flex-col items-start gap-4">
                             <p className="text-[0.68rem] uppercase tracking-[0.32em] text-white/70">
                                 Connect
                             </p>
