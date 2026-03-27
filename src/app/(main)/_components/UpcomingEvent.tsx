@@ -74,6 +74,18 @@ export default function UpcomingEvent({ event = upcomingEvent }: UpcomingEventPr
                     </Link>
                 </div>
             </div>
+
+            <div className="mt-10 flex justify-center md:mt-12">
+                <Link
+                    href="#"
+                    className="btn btn-outline btn-primary rounded-full px-6 text-base font-bold normal-case shadow-none transition-transform duration-200 hover:-translate-y-0.5 md:text-lg"
+                >
+                    <span className="inline-flex items-center gap-2">
+                        View all events
+                        <ArrowRight className="h-4 w-4" />
+                    </span>
+                </Link>
+            </div>
         </section>
     );
 }
