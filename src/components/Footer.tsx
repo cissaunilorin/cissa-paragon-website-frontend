@@ -10,7 +10,7 @@ import {
     Instagram,
 } from "lucide-react";
 
-const socialLinks = [
+export const socialLinks = [
     {
         label: "X",
         href: "https://x.com/cissa_unilorin?s=21",
@@ -110,7 +110,7 @@ export default function Footer() {
                                 </Link>
                             </li>
                             <li>
-                                <Link className="link link-hover text-white/75 hover:text-white" href="#">
+                                <Link className="link link-hover text-white/75 hover:text-white" href="/contact">
                                     Contact
                                 </Link>
                             </li>

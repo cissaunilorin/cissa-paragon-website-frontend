@@ -66,12 +66,12 @@ export default function Hero() {
                 id="home"
                 className="hero min-h-screen lg:min-h-full relative overflow-hidden flex items-end justify-start lg:items-center lg:justify-center lg:rounded-2xl flex-1"
                 style={{
-                    backgroundImage: "url(/assets/ov-3.png)",
+                    backgroundImage: "url(/assets/fac3-5.jpg)",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                 }}
             >
-                <div className="absolute inset-0 bg-black/50 z-0"></div>
+                <div className="absolute inset-0 bg-black/55 z-0"></div>
 
                 <div className="relative z-10 w-full max-w-[90vw] px-6 md:px-10 pb-20 md:pb-10 lg:pb-0 text-left lg:text-center text-white lg:max-w-7xl lg:mx-auto">
                     <h1 className="font-bold text-5xl md:text-8xl leading-[1.06] md:leading-none tracking-tight mb-4 md:mb-8 max-w-full lg:max-w-7xl lg:mx-auto">
