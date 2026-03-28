@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Hero from "./_components/Hero";
+import ContactInfo from "./_components/ContactInfo";
 
 export const metadata: Metadata = {
 	title: "Contact | CISSA",
@@ -15,5 +16,10 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-	return <Hero />;
+	return (
+		<>
+			<Hero />
+			<ContactInfo />
+		</>
+	);
 }

@@ -10,7 +10,7 @@ import {
     Instagram,
 } from "lucide-react";
 
-const socialLinks = [
+export const socialLinks = [
     {
         label: "X",
         href: "https://x.com/cissa_unilorin?s=21",
