@@ -1,10 +1,12 @@
 "use client";
 
-import React from "react";
 import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
-import AnnouncementPreview from "./AnnouncementPreview";
+import AnnouncementPreview, {
+    AnnouncementPreviewSkeleton,
+} from "./AnnouncementPreview";
 import {
     getAnnouncements,
     type Announcement,
@@ -22,13 +24,13 @@ export default function AnnouncementsPage({
     const [error, setError] = useState<string | null>(null);
     const [totalPages, setTotalPages] = useState(1);
     const [totalItems, setTotalItems] = useState(0);
-    const pageSize = 9;
 
     const [currentPage, setCurrentPage] = useState(() => {
         const p = parseInt(initialPage ?? "1", 10);
         return isNaN(p) || p < 1 ? 1 : p;
     });
 
+    const pageSize = 9;
 
     const fetchAnnouncements = useCallback(async () => {
         try {
@@ -36,9 +38,10 @@ export default function AnnouncementsPage({
             setError(null);
             const data: AnnouncementsListResponse = await getAnnouncements(
                 currentPage,
-                pageSize
+                pageSize,
             );
             setAnnouncements(data.items);
+            setCurrentPage(data.current_page);
             setTotalPages(data.total_pages);
             setTotalItems(data.total_items);
         } catch (error) {
@@ -61,24 +64,39 @@ export default function AnnouncementsPage({
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
+    const PageHeader = () => (
+        <header className="max-w-4xl space-y-4">
+            <h1 className="text-4xl font-bold tracking-tight text-base-content md:text-6xl">
+                Latest News
+            </h1>
+            <p className="max-w-2xl text-base leading-7 text-base-content/60 md:text-lg">
+                Stay current with the latest announcements, updates, and stories from the faculty.
+            </p>
+        </header>
+    );
+
     const LoadingSkeleton = () => (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[...Array(pageSize)].map((_, index) => (
-                <div
-                    key={index}
-                    className="card bg-base-100 shadow-md border border-base-200 overflow-hidden"
-                >
-                    <div className="skeleton h-48 w-full"></div>
-                    <div className="card-body p-5 space-y-3">
-                        <div className="flex gap-2">
-                            <div className="skeleton h-4 w-16"></div>
-                            <div className="skeleton h-4 w-20"></div>
-                        </div>
-                        <div className="skeleton h-6 w-full"></div>
-                        <div className="skeleton h-6 w-3/4"></div>
+        <div className="space-y-12 md:space-y-14">
+            <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+                {[...Array(pageSize)].map((_, index) => (
+                    <AnnouncementPreviewSkeleton key={index} />
+                ))}
+            </div>
+
+            <div className="mt-12 flex w-full flex-col items-start justify-between gap-6 border-t border-base-200/60 pt-8 sm:flex-row sm:items-center">
+                <div className="skeleton h-4 w-52 max-w-full" />
+
+                <div className="flex flex-wrap items-center justify-end gap-4 sm:gap-5">
+                    <div className="skeleton h-10 w-10 rounded-full" />
+                    <div className="flex flex-wrap items-center justify-end gap-3 sm:gap-4">
+                        <div className="skeleton h-10 w-10 rounded-full" />
+                        <div className="skeleton h-10 w-10 rounded-full" />
+                        <div className="skeleton h-10 w-10 rounded-full" />
+                        <div className="skeleton h-10 w-10 rounded-full" />
                     </div>
+                    <div className="skeleton h-10 w-10 rounded-full" />
                 </div>
-            ))}
+            </div>
         </div>
     );
 
@@ -116,50 +134,61 @@ export default function AnnouncementsPage({
         };
 
         return (
-            <div className="flex flex-col items-center gap-4 pt-16">
-                <div className="text-sm text-base-content/70">
-                    Showing{" "}
-                    {Math.min((currentPage - 1) * pageSize + 1, totalItems)} to{" "}
-                    {Math.min(currentPage * pageSize, totalItems)} of{" "}
-                    {totalItems} announcements
+            <div className="mt-12 flex w-full flex-col items-start justify-between gap-6 border-t border-base-200/60 pt-8 sm:flex-row sm:items-center">
+                <div className="text-sm text-base-content/55">
+                    Showing {Math.min((currentPage - 1) * pageSize + 1, totalItems)} to{" "}
+                    {Math.min(currentPage * pageSize, totalItems)} of {totalItems} results
                 </div>
 
-                <div className="join">
+                <div className="flex flex-wrap items-center justify-end gap-4 sm:gap-5">
                     <button
-                        className="join-item btn"
+                        className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-base-100 text-base-content/50 transition hover:bg-base-200 hover:text-base-content disabled:cursor-not-allowed disabled:opacity-40"
                         disabled={currentPage === 1}
                         onClick={() => handlePageChange(currentPage - 1)}
+                        aria-label="Previous page"
                     >
-                        «
+                        <ChevronLeft className="h-4 w-4" aria-hidden="true" />
                     </button>
 
-                    {getVisiblePages().map((page, index) =>
-                        page === "..." ? (
-                            <button
-                                key={`dots-${index}`}
-                                className="join-item btn btn-disabled"
-                            >
-                                ...
-                            </button>
-                        ) : (
-                            <button
-                                key={page}
-                                className={`join-item btn ${
-                                    currentPage === page ? "btn-active" : ""
-                                }`}
-                                onClick={() => handlePageChange(page as number)}
-                            >
-                                {page}
-                            </button>
-                        )
-                    )}
+                    <div className="flex flex-wrap items-center justify-end gap-3 sm:gap-4">
+                        {getVisiblePages().map((page, index) =>
+                            page === "..." ? (
+                                <span
+                                    key={`dots-${index}`}
+                                    className="px-1 text-sm text-base-content/40"
+                                >
+                                    ...
+                                </span>
+                            ) : (
+                                <button
+                                    key={page}
+                                    className={`inline-flex h-10 min-w-10 items-center justify-center rounded-full px-4 text-sm font-medium transition ${
+                                        currentPage === page
+                                            ? "bg-primary text-primary-content shadow-sm"
+                                            : "bg-base-100 text-base-content/70 hover:bg-base-200 hover:text-base-content"
+                                    }`}
+                                    onClick={() =>
+                                        handlePageChange(page as number)
+                                    }
+                                    aria-current={
+                                        currentPage === page
+                                            ? "page"
+                                            : undefined
+                                    }
+                                >
+                                    {page}
+                                </button>
+                            ),
+                        )}
+                    </div>
 
                     <button
-                        className="join-item btn"
+                        className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-base-100 text-base-content/50 transition hover:bg-base-200 hover:text-base-content disabled:cursor-not-allowed disabled:opacity-40"
                         disabled={currentPage === totalPages}
                         onClick={() => handlePageChange(currentPage + 1)}
+                        aria-label="Next page"
                     >
-                        »
+                        <ChevronRight className="h-4 w-4" aria-hidden="true" />
                     </button>
                 </div>
             </div>
@@ -167,25 +196,14 @@ export default function AnnouncementsPage({
     };
 
     return (
-        <main className="min-h-screen bg-base-100 pt-24 md:pt-32 pb-16">
-            <div className="container mx-auto px-4 max-w-6xl">
-                <header className="text-center mb-12">
-                    <p className="text-sm uppercase tracking-wide text-primary font-semibold">
-                        Faculty Updates
-                    </p>
-                    <h1 className="mt-3 text-4xl md:text-5xl font-bold text-base-content">
-                        <span className="text-primary">News</span> &amp;
-                        Announcements
-                    </h1>
-                    <p className="mt-4 text-lg text-base-content/70 max-w-2xl mx-auto">
-                        Dive into the latest news and announcements across the Faculty of
-                        Communication and Information Sciences.
-                    </p>
-                </header>
+        <main className="min-h-screen bg-base-100 pb-16">
+            <div className="container mx-auto max-w-6xl px-4">
+                <div className="mt-12 space-y-12 md:mt-16 md:space-y-14">
+                    <PageHeader />
 
-                {isLoading ? (
-                    <LoadingSkeleton />
-                ) : error ? (
+                    {isLoading ? (
+                        <LoadingSkeleton />
+                    ) : error ? (
                     <div className="text-center py-16">
                         <div className="alert alert-error max-w-md mx-auto">
                             <svg
@@ -211,33 +229,26 @@ export default function AnnouncementsPage({
                         </button>
                     </div>
                 ) : (
-                    <>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <section>
                             {announcements.length > 0 ? (
-                                announcements.map((announcement) => (
-                                    <AnnouncementPreview
-                                        key={announcement.id}
-                                        announcement={announcement}
-                                    />
-                                ))
+                                <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+                                    {announcements.map((announcement) => (
+                                        <AnnouncementPreview
+                                            key={announcement.id}
+                                            announcement={announcement}
+                                        />
+                                    ))}
+                                </div>
                             ) : (
-                                <div className="col-span-full text-center py-20">
-                                    <div className="text-6xl mb-4 opacity-20">
-                                        📢
-                                    </div>
-                                    <p className="text-base-content/60 text-lg mb-2">
-                                        No news available
-                                    </p>
-                                    <p className="text-base-content/40 text-sm">
-                                        Check back soon for the latest updates and announcements.
-                                    </p>
+                                <div className="flex min-h-56 items-center justify-center text-center text-base-content/60">
+                                    Nothing here yet. Check back soon.
                                 </div>
                             )}
-                        </div>
 
-                        <PaginationControls />
-                    </>
-                )}
+                            <PaginationControls />
+                        </section>
+                    )}
+                </div>
             </div>
         </main>
     );

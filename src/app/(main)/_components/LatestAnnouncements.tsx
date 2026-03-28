@@ -2,7 +2,9 @@
 
 import React from "react";
 import { useEffect, useState } from "react";
-import AnnouncementPreview from "../news/_components/AnnouncementPreview";
+import AnnouncementPreview, {
+    AnnouncementPreviewSkeleton,
+} from "../news/_components/AnnouncementPreview";
 import { getAnnouncements, type Announcement } from "@/lib/announcements";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -33,10 +35,7 @@ export default function LatestAnnouncements() {
     const LoadingSkeleton = () => (
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {[...Array(3)].map((_, index) => (
-                <div
-                    key={index}
-                    className="aspect-square rounded-2xl bg-base-300 animate-pulse"
-                />
+                <AnnouncementPreviewSkeleton key={index} />
             ))}
         </div>
     );
