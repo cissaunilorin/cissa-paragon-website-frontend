@@ -197,7 +197,7 @@ export default function AnnouncementsPage({
 
     return (
         <main className="min-h-screen bg-base-100 pb-16">
-            <div className="container mx-auto max-w-6xl px-4">
+            <div className="container mx-auto max-w-7xl px-4">
                 <div className="mt-12 space-y-12 md:mt-16 md:space-y-14">
                     <PageHeader />
 
