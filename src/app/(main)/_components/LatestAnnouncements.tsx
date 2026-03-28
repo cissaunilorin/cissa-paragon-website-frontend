@@ -42,7 +42,7 @@ export default function LatestAnnouncements() {
 
     return (
         <section id="news" className="py-20 bg-base-200">
-            <div className="container mx-auto max-w-6xl px-4">
+            <div className="container mx-auto max-w-7xl px-4">
                 <div className="mb-10 max-w-full text-center">
                     <p className="text-base font-bold uppercase tracking-[0.18em] text-primary md:text-2xl">
                         Latest News
