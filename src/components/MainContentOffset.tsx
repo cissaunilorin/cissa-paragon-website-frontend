@@ -8,7 +8,8 @@ export default function MainContentOffset({
     children: React.ReactNode;
 }>) {
     const pathname = usePathname();
-    const shouldOffsetContent = pathname !== "/";
+    const pathsWithoutOffset = ["/", "/contact"];
+    const shouldOffsetContent = !pathsWithoutOffset.includes(pathname);
 
     return (
         <main className={shouldOffsetContent ? "pt-4 lg:pt-8" : ""}>

@@ -20,6 +20,7 @@ import {
 const navLinks = [
     { label: "Home", href: "/", icon: Home },
     { label: "News", href: "/news", icon: Newspaper },
+    { label: "Contact", href: "/contact", icon: MessageCircleMore },
 ];
 
 const socialLinks = [
@@ -34,6 +35,11 @@ const socialLinks = [
 export default function Navbar() {
     const pathname = usePathname();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [hasMounted, setHasMounted] = useState(false);
+
+    useEffect(() => {
+        setHasMounted(true);
+    }, []);
 
     useEffect(() => {
         setIsMobileMenuOpen(false);
@@ -97,8 +103,9 @@ export default function Navbar() {
                             {navLinks.map((link) => {
                                 const Icon = link.icon;
                                 const isActive =
-                                    pathname === link.href ||
-                                    (link.href === "/news" && pathname.startsWith("/news"));
+                                    hasMounted &&
+                                    (pathname === link.href ||
+                                        (link.href === "/news" && pathname.startsWith("/news")));
 
                                 return (
                                     <li key={link.href}>
@@ -168,8 +175,9 @@ export default function Navbar() {
                                 <ul className="flex flex-col items-end gap-3 sm:gap-4">
                                     {navLinks.map((link) => {
                                         const isActive =
-                                            pathname === link.href ||
-                                            (link.href === "/news" && pathname.startsWith("/news"));
+                                            hasMounted &&
+                                            (pathname === link.href ||
+                                                (link.href === "/news" && pathname.startsWith("/news")));
 
                                         return (
                                             <li key={link.href} className="w-full text-right">

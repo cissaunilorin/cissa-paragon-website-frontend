@@ -110,7 +110,7 @@ export default function Footer() {
                                 </Link>
                             </li>
                             <li>
-                                <Link className="link link-hover text-white/75 hover:text-white" href="#">
+                                <Link className="link link-hover text-white/75 hover:text-white" href="/contact">
                                     Contact
                                 </Link>
                             </li>
