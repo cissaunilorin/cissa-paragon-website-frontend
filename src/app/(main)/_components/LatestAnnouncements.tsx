@@ -2,12 +2,12 @@
 
 import React from "react";
 import { useEffect, useState } from "react";
-import AnnouncementPreview from "../news/_components/NewsPreview";
+import AnnouncementPreview from "../news/_components/AnnouncementPreview";
 import { getAnnouncements, type Announcement } from "@/lib/announcements";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-export default function News() {
+export default function LatestAnnouncements() {
     const [announcements, setAnnouncements] = useState<Announcement[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);

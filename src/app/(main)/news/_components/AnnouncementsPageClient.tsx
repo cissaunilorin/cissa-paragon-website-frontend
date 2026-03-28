@@ -4,14 +4,14 @@ import React from "react";
 import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 
-import AnnouncementPreview from "./NewsPreview";
+import AnnouncementPreview from "./AnnouncementPreview";
 import {
     getAnnouncements,
     type Announcement,
     type AnnouncementsListResponse,
 } from "@/lib/announcements";
 
-export default function NewsPage({
+export default function AnnouncementsPage({
     initialPage,
 }: {
     initialPage?: string;
@@ -178,7 +178,7 @@ export default function NewsPage({
                         Announcements
                     </h1>
                     <p className="mt-4 text-lg text-base-content/70 max-w-2xl mx-auto">
-                        Dive into the latest happenings across the Faculty of
+                        Dive into the latest news and announcements across the Faculty of
                         Communication and Information Sciences.
                     </p>
                 </header>
@@ -226,11 +226,10 @@ export default function NewsPage({
                                         📢
                                     </div>
                                     <p className="text-base-content/60 text-lg mb-2">
-                                        No announcements available
+                                        No news available
                                     </p>
                                     <p className="text-base-content/40 text-sm">
-                                        Check back soon for the latest updates
-                                        and news.
+                                        Check back soon for the latest updates and announcements.
                                     </p>
                                 </div>
                             )}
