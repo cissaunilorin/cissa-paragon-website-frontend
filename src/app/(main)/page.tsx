@@ -1,6 +1,6 @@
 import Hero from "./_components/Hero";
 import WhatWeDo from "./_components/WhatWeDo";
-import News from "./_components/LatestNews";
+import LatestAnnouncements from "./_components/LatestAnnouncements";
 import PresidentialWelcome from "./_components/PresidentialWelcome";
 import UpcomingEvent from "./_components/UpcomingEvent";
 
@@ -11,7 +11,7 @@ export default function Home() {
             <WhatWeDo />
             <PresidentialWelcome />
             <UpcomingEvent />
-            <News />
+            <LatestAnnouncements />
         </>
     );
 }

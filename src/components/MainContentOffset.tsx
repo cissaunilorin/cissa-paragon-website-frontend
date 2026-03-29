@@ -12,7 +12,7 @@ export default function MainContentOffset({
     const shouldOffsetContent = !pathsWithoutOffset.includes(pathname);
 
     return (
-        <main className={shouldOffsetContent ? "pt-4 lg:pt-8" : ""}>
+        <main className={shouldOffsetContent ? "pt-24 md:pt-32" : ""}>
             {children}
         </main>
     );

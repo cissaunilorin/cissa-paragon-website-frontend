@@ -2,12 +2,14 @@
 
 import React from "react";
 import { useEffect, useState } from "react";
-import AnnouncementPreview from "../news/_components/NewsPreview";
+import AnnouncementPreview, {
+    AnnouncementPreviewSkeleton,
+} from "../news/_components/AnnouncementPreview";
 import { getAnnouncements, type Announcement } from "@/lib/announcements";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-export default function News() {
+export default function LatestAnnouncements() {
     const [announcements, setAnnouncements] = useState<Announcement[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -33,17 +35,14 @@ export default function News() {
     const LoadingSkeleton = () => (
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {[...Array(3)].map((_, index) => (
-                <div
-                    key={index}
-                    className="aspect-square rounded-2xl bg-base-300 animate-pulse"
-                />
+                <AnnouncementPreviewSkeleton key={index} />
             ))}
         </div>
     );
 
     return (
         <section id="news" className="py-20 bg-base-200">
-            <div className="container mx-auto max-w-6xl px-4">
+            <div className="container mx-auto max-w-7xl px-4">
                 <div className="mb-10 max-w-full text-center">
                     <p className="text-base font-bold uppercase tracking-[0.18em] text-primary md:text-2xl">
                         Latest News

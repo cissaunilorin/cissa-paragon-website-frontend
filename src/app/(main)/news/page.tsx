@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import NewsPage from "./_components/NewsPageClient";
+import AnnouncementsPage from "./_components/AnnouncementsPageClient";
 
 export const metadata: Metadata = {
     title: "News & Announcements",
@@ -17,11 +17,11 @@ export const metadata: Metadata = {
     ],
 };
 
-export default async function NewsPageWrapper({
+export default async function AnnouncementsPageWrapper({
     searchParams,
 }: {
     searchParams: Promise<{ page?: string }>;
 }) {
     const { page } = await searchParams;
-    return <NewsPage initialPage={page} />;
+    return <AnnouncementsPage initialPage={page} />;
 }
