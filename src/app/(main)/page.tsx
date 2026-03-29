@@ -1,23 +1,17 @@
 import Hero from "./_components/Hero";
-import News from "./_components/News";
-import Responsibilities from "./_components/Responsibilities";
-import About from "./_components/About";
-import Contact from "./_components/Contact";
-import Executives from "./_components/Executives";
-import Departments from "./_components/Departments";
+import WhatWeDo from "./_components/WhatWeDo";
+import LatestAnnouncements from "./_components/LatestAnnouncements";
 import PresidentialWelcome from "./_components/PresidentialWelcome";
+import UpcomingEvent from "./_components/UpcomingEvent";
 
 export default function Home() {
-  return (
-    <>
-      <Hero />
-      <PresidentialWelcome />
-      <About />
-      <Departments />
-      <Executives />
-      <Responsibilities />
-      <News />
-      <Contact />
-    </>
-  );
+    return (
+        <>
+            <Hero />
+            <WhatWeDo />
+            <PresidentialWelcome />
+            <UpcomingEvent />
+            <LatestAnnouncements />
+        </>
+    );
 }

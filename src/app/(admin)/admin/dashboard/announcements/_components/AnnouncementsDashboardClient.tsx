@@ -611,7 +611,7 @@ export default function AnnouncementsDashboard() {
                                         )}
                                     </label>
                                     <div className="border-2 border-dashed border-base-300 rounded-lg p-4 flex items-center gap-4 hover:border-primary/50 transition-colors">
-                                        <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-base-200 flex items-center justify-center">
+                                        <div className="shrink-0 w-10 h-10 rounded-lg bg-base-200 flex items-center justify-center">
                                             <ImageIcon size={20} className="text-base-content/40" />
                                         </div>
                                         <div className="flex-1 min-w-0">
@@ -736,7 +736,7 @@ export default function AnnouncementsDashboard() {
                                                         }`}
                                                     >
                                                         <span
-                                                            className={`w-4 h-4 rounded border-2 flex-shrink-0 flex items-center justify-center text-xs transition-colors ${
+                                                            className={`w-4 h-4 rounded border-2 shrink-0 flex items-center justify-center text-xs transition-colors ${
                                                                 isSelected
                                                                     ? "bg-primary border-primary text-primary-content"
                                                                     : "border-base-300"
