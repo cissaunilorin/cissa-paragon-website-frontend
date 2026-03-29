@@ -16,7 +16,7 @@ export default function ImageModal({
         <>
             {imageUrl && (
                 <figure
-                    className="relative w-full aspect-video rounded-md overflow-hidden group cursor-zoom-in"
+                    className="relative w-full aspect-video rounded-none overflow-hidden group cursor-zoom-in"
                     role="button"
                     tabIndex={0}
                     aria-label="View full image"
@@ -34,8 +34,8 @@ export default function ImageModal({
                         fill
                         className="object-cover transition-transform group-hover:scale-[1.02]"
                     />
-                    <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 flex items-center justify-center text-xs text-white tracking-wide">
-                        Click to view
+                    <div className="absolute inset-0 bg-black/30 opacity-100 md:opacity-0 group-hover:opacity-100 flex items-center justify-center text-xs text-white tracking-wide">
+                        Click to view full image
                     </div>
                 </figure>
             )}

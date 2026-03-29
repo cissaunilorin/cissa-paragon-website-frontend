@@ -117,8 +117,8 @@ export default async function AnnouncementPage({
 
     return (
         <main className="min-h-screen bg-base-100 pb-16">
-            <div className="container mx-auto px-4 max-w-4xl">
-                <div className="mb-6 pt-2">
+            <div className="container mx-auto px-0 max-w-4xl">
+                <div className="mb-6 pt-2 px-4">
                     <Link
                         href="/news"
                         className="inline-flex items-center gap-1 text-sm text-base-content/55 underline-offset-4 transition-colors hover:text-base-content/80 hover:underline"
@@ -130,7 +130,7 @@ export default async function AnnouncementPage({
                 </div>
 
                 <article className="space-y-10">
-                    <header>
+                    <header className="px-4">
                         <p className="text-xs uppercase tracking-[0.22em] text-base-content/55">
                             {date}
                         </p>
@@ -153,7 +153,7 @@ export default async function AnnouncementPage({
                         </div>
                     )}
 
-                    <div className="mx-auto flex w-full max-w-3xl justify-center">
+                    <div className="mx-auto flex w-full max-w-3xl justify-center px-4">
                         <section className="prose">
                             {formatRich(announcement.body)}
                         </section>
@@ -166,7 +166,7 @@ export default async function AnnouncementPage({
 
                     {announcement.signatories &&
                         announcement.signatories.length > 0 && (
-                            <footer className="pt-12">
+                            <footer className="pt-12 px-4">
                                 <h2 className="mb-4 text-xs font-semibold uppercase tracking-[0.22em] text-base-content/55">
                                     Signed By
                                 </h2>
