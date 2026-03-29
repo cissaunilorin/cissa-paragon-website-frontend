@@ -16,7 +16,7 @@ export default function ImageModal({
         <>
             {imageUrl && (
                 <figure
-                    className="relative w-full aspect-video rounded-md overflow-hidden shadow-lg group cursor-zoom-in"
+                    className="relative w-full aspect-video rounded-md overflow-hidden group cursor-zoom-in"
                     role="button"
                     tabIndex={0}
                     aria-label="View full image"
@@ -44,7 +44,7 @@ export default function ImageModal({
                     className="modal modal-open"
                     onClose={() => setIsOpen(false)}
                 >
-                    <div className="modal-box max-w-5xl p-0 shadow-xl rounded-md">
+                    <div className="modal-box max-w-5xl p-0 rounded-md">
                         <div className="relative w-full">
                             <Image
                                 src={imageUrl}

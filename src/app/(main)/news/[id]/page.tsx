@@ -1,9 +1,10 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { Phone } from "lucide-react";
+import { ChevronLeft, Phone } from "lucide-react";
 
 import ImageModal from "@/components/ImageModal";
+import ShareRow from "./ShareRow";
 import { formatRich } from "@/lib/utils/formatRich";
 import { formatNumberToWhatsappLink } from "@/lib/utils/format";
 import { getAnnouncementById } from "@/lib/announcements";
@@ -113,49 +114,60 @@ export default async function AnnouncementPage({
         month: "long",
         day: "numeric",
     });
-    const time = publishedDate.toLocaleTimeString("en-GB", {
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: true,
-    });
 
     return (
-        <main className="min-h-screen bg-base-100 pt-16 md:pt-20 pb-16">
+        <main className="min-h-screen bg-base-100 pb-16">
             <div className="container mx-auto px-4 max-w-4xl">
-                <article className="mt-6 space-y-6">
-                    <header className="space-y-4">
-                        <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-wide font-semibold">
-                            <span className="badge badge-primary badge-sm">
-                                {announcement.category}
-                            </span>
-                            <span className="opacity-70">{date}</span>
-                            {time && <span className="opacity-70">{time}</span>}
-                            {announcement.session && (
-                                <span className="opacity-70">
-                                    {announcement.session}
-                                </span>
-                            )}
-                        </div>
-                        <h1 className="text-3xl md:text-4xl font-bold leading-tight">
+                <div className="mb-6 pt-2">
+                    <Link
+                        href="/news"
+                        className="inline-flex items-center gap-1 text-sm text-base-content/55 underline-offset-4 transition-colors hover:text-base-content/80 hover:underline"
+                        aria-label="Back to news"
+                    >
+                        <ChevronLeft className="h-4 w-4" aria-hidden="true" />
+                        <span>Back to news</span>
+                    </Link>
+                </div>
+
+                <article className="space-y-10">
+                    <header>
+                        <p className="text-xs uppercase tracking-[0.22em] text-base-content/55">
+                            {date}
+                        </p>
+                        {announcement.session && (
+                            <p className="mt-1.5 text-xs uppercase tracking-[0.22em] text-base-content/55">
+                                {announcement.session}
+                            </p>
+                        )}
+                        <h1 className="mt-4 max-w-full text-4xl font-bold leading-[1.05] tracking-tight md:text-5xl">
                             {announcement.title}
                         </h1>
                     </header>
 
                     {announcement.image_url && (
-                        <ImageModal
-                            imageUrl={announcement.image_url}
-                            title={announcement.title}
-                        />
+                        <div className="w-full aspect-video">
+                            <ImageModal
+                                imageUrl={announcement.image_url}
+                                title={announcement.title}
+                            />
+                        </div>
                     )}
 
-                    <section className="prose max-w-none">
-                        {formatRich(announcement.body)}
-                    </section>
+                    <div className="mx-auto flex w-full max-w-3xl justify-center">
+                        <section className="prose">
+                            {formatRich(announcement.body)}
+                        </section>
+                    </div>
+
+                    <ShareRow
+                        announcementId={id}
+                        announcementTitle={announcement.title}
+                    />
 
                     {announcement.signatories &&
                         announcement.signatories.length > 0 && (
-                            <footer className="border-t border-base-200 pt-6">
-                                <h2 className="text-sm font-semibold uppercase tracking-wide mb-4">
+                            <footer className="pt-12">
+                                <h2 className="mb-4 text-xs font-semibold uppercase tracking-[0.22em] text-base-content/55">
                                     Signed By
                                 </h2>
                                 <ul className="space-y-4">
