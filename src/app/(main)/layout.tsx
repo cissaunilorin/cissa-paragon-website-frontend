@@ -1,6 +1,7 @@
 import "../globals.css";
-import Navbar from "@/components/shared/Navbar";
-import Footer from "@/components/shared/Footer";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import MainContentOffset from "@/components/MainContentOffset";
 
 import { Metadata } from "next";
 
@@ -29,7 +30,7 @@ export default function RootLayout({
     return (
         <>
             <Navbar />
-            {children}
+            <MainContentOffset>{children}</MainContentOffset>
             <Footer />
         </>
     );

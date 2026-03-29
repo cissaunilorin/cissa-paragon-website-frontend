@@ -2,11 +2,14 @@
 
 import React from "react";
 import { useEffect, useState } from "react";
-import AnnouncementPreview from "../news/_components/NewsPreview";
+import AnnouncementPreview, {
+    AnnouncementPreviewSkeleton,
+} from "../news/_components/AnnouncementPreview";
 import { getAnnouncements, type Announcement } from "@/lib/announcements";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
-export default function News() {
+export default function LatestAnnouncements() {
     const [announcements, setAnnouncements] = useState<Announcement[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -30,50 +33,35 @@ export default function News() {
     }, []);
 
     const LoadingSkeleton = () => (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {[...Array(3)].map((_, index) => (
-                <div key={index} className="card bg-base-100 shadow-md border border-base-200 overflow-hidden">
-                    <div className="skeleton h-48 w-full"></div>
-                    <div className="card-body p-5 space-y-3">
-                        <div className="flex gap-2">
-                            <div className="skeleton h-4 w-16"></div>
-                            <div className="skeleton h-4 w-20"></div>
-                        </div>
-                        <div className="skeleton h-6 w-full"></div>
-                        <div className="skeleton h-6 w-3/4"></div>
-                    </div>
-                </div>
+                <AnnouncementPreviewSkeleton key={index} />
             ))}
         </div>
     );
 
     return (
         <section id="news" className="py-20 bg-base-200">
-            <div className="container mx-auto px-4">
-                <div className="text-center mb-12">
-                    <h2 className="text-4xl md:text-5xl font-bold text-base-content mb-4">
-                        Latest <span className="text-primary">News</span> &amp;
-                        Announcements
-                    </h2>
-                    <p className="text-lg text-base-content/70 max-w-2xl mx-auto">
-                        Stay updated with important faculty updates, events, and
-                        opportunities.
+            <div className="container mx-auto max-w-7xl px-4">
+                <div className="mb-10 max-w-full text-center">
+                    <p className="text-base font-bold uppercase tracking-[0.18em] text-primary md:text-2xl">
+                        Latest News
                     </p>
                 </div>
 
                 {isLoading ? (
                     <LoadingSkeleton />
                 ) : error ? (
-                    <div className="text-center py-16">
-                        <div className="alert alert-error max-w-md mx-auto">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+                    <div className="py-16 text-center">
+                        <div className="alert alert-error mx-auto max-w-md">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                             <span>{error}</span>
                         </div>
                     </div>
                 ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                         {announcements.length > 0 ? (
                             announcements.map((announcement) => (
                                 <AnnouncementPreview
@@ -82,7 +70,7 @@ export default function News() {
                                 />
                             ))
                         ) : (
-                            <div className="col-span-full text-center py-16 opacity-70">
+                            <div className="col-span-full py-16 text-center opacity-70">
                                 <p>
                                     No announcements available right now. Check back
                                     soon.
@@ -92,9 +80,15 @@ export default function News() {
                     </div>
                 )}
 
-                <div className="mt-10 text-center">
-                    <Link href="/news" className="btn btn-outline">
-                        View all faculty news
+                <div className="mt-10 flex justify-center md:mt-12">
+                    <Link
+                        href="/news"
+                        className="btn btn-outline btn-primary rounded-full px-6 text-base font-bold normal-case shadow-none transition-transform duration-200 hover:-translate-y-0.5 md:text-lg"
+                    >
+                        <span className="inline-flex items-center gap-2">
+                            View all news
+                            <ArrowRight className="h-4 w-4" />
+                        </span>
                     </Link>
                 </div>
             </div>
