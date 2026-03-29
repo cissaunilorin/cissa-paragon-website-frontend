@@ -166,7 +166,7 @@ export default async function AnnouncementPage({
 
                     {announcement.signatories &&
                         announcement.signatories.length > 0 && (
-                            <footer className="pt-12 px-4">
+                            <footer className="pt-4 px-4">
                                 <h2 className="mb-4 text-xs font-semibold uppercase tracking-[0.22em] text-base-content/55">
                                     Signed By
                                 </h2>
