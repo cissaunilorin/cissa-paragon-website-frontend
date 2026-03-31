@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
+    CalendarDays,
     Home,
     Instagram,
     Menu,
@@ -19,6 +20,7 @@ import {
 
 const navLinks = [
     { label: "Home", href: "/", icon: Home },
+    { label: "Events", href: "/events", icon: CalendarDays },
     { label: "News", href: "/news", icon: Newspaper },
     { label: "Contact", href: "/contact", icon: MessageCircleMore },
 ];
@@ -105,7 +107,8 @@ export default function Navbar() {
                                 const isActive =
                                     hasMounted &&
                                     (pathname === link.href ||
-                                        (link.href === "/news" && pathname.startsWith("/news")));
+                                        ((link.href === "/news" || link.href === "/events") &&
+                                            pathname.startsWith(link.href)));
 
                                 return (
                                     <li key={link.href}>
@@ -177,7 +180,8 @@ export default function Navbar() {
                                         const isActive =
                                             hasMounted &&
                                             (pathname === link.href ||
-                                                (link.href === "/news" && pathname.startsWith("/news")));
+                                                ((link.href === "/news" || link.href === "/events") &&
+                                                    pathname.startsWith(link.href)));
 
                                         return (
                                             <li key={link.href} className="w-full text-right">

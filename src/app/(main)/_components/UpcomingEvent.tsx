@@ -19,7 +19,7 @@ const upcomingEvent: UpcomingEventData = {
     time: "4:00 PM",
     location: "Faculty of CIS Auditorium, University of Ilorin",
     ctaLabel: "View Event",
-    ctaHref: "#",
+    ctaHref: "/events/freshers-welcome-night-2026",
 };
 
 type UpcomingEventProps = {
@@ -77,7 +77,7 @@ export default function UpcomingEvent({ event = upcomingEvent }: UpcomingEventPr
 
             <div className="mt-10 flex justify-center md:mt-12">
                 <Link
-                    href="#"
+                    href="/events"
                     className="btn btn-outline btn-primary rounded-full px-6 text-base font-bold normal-case shadow-none transition-transform duration-200 hover:-translate-y-0.5 md:text-lg"
                 >
                     <span className="inline-flex items-center gap-2">
