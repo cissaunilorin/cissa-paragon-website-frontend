@@ -5,7 +5,7 @@ import EventTabs from "./_components/EventTabs";
 import { eventsData } from "./_components/eventsData";
 
 export const metadata: Metadata = {
-	title: "Events | CISSA",
+	title: "Events",
 	description:
 		"Stay updated on upcoming and past events from the Communication and Information Sciences Students Association, University of Ilorin.",
 };

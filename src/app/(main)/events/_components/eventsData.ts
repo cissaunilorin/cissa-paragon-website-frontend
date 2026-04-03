@@ -43,7 +43,7 @@ export const eventsData: Event[] = [
         title: "Freshers' Welcome Night",
         description:
             "A high-energy welcome experience for new students featuring mentorship, music, introductions to CISSA leaders, and practical guidance for settling into life on campus.",
-        image_url: "/assets/ov-2.png",
+        image_url: "/assets/events/ev-2.jpg",
         location: "Faculty of CIS Auditorium, University of Ilorin",
         location_type: "physical",
         start_date: "2026-04-12",
@@ -59,7 +59,7 @@ export const eventsData: Event[] = [
         title: "CISSA Innovation Week",
         description:
             "A three-day hybrid programme focused on design thinking, software showcases, and career conversations with alumni, partners, and faculty mentors.",
-        image_url: "/assets/overview.png",
+        image_url: "/assets/events/ev-3.jpg",
         location: "Faculty of CIS Auditorium and Google Meet",
         location_type: "hybrid",
         start_date: "2026-05-18",
@@ -75,7 +75,7 @@ export const eventsData: Event[] = [
         title: "Data Literacy Masterclass",
         description:
             "An online masterclass that introduced practical data interpretation skills, research tools, and the communication habits needed to present findings clearly.",
-        image_url: null,
+        image_url: "/assets/events/ev-1.jpg",
         location: "Google Meet",
         location_type: "online",
         start_date: "2026-02-10",
@@ -91,7 +91,7 @@ export const eventsData: Event[] = [
         title: "Departmental Orientation",
         description:
             "A physical orientation session that brought together students, representatives, and coordinators for a shared look at departmental expectations and support channels.",
-        image_url: "/assets/fac2.jpg",
+        image_url: "/assets/events/ev-2.jpg",
         location: "College Auditorium, University of Ilorin",
         location_type: "physical",
         start_date: "2025-12-06",

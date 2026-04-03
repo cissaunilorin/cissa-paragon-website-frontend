@@ -16,13 +16,13 @@ export async function generateMetadata({
 
     if (!event) {
         return {
-            title: "Event Not Found | CISSA",
+            title: "Event Not Found",
             description: "The requested event could not be found.",
         };
     }
 
     return {
-        title: `${event.title} | CISSA`,
+        title: `${event.title}`,
         description: event.description.slice(0, 160),
     };
 }
