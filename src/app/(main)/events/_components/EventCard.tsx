@@ -2,34 +2,18 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Globe, MapPin } from "lucide-react";
+import { Globe, MapPin } from "lucide-react";
 
 import { type Event } from "./eventsData";
 
-function formatEventDate(event: Event) {
+function getStartDateParts(event: Event) {
     const startDate = new Date(`${event.start_date}T00:00:00`);
-    const startMonth = startDate.toLocaleDateString("en-US", { month: "long" });
-    const startDay = startDate.getDate();
-    const startYear = startDate.getFullYear();
-
-    if (!event.end_date) {
-        return `${startMonth} ${startDay}, ${startYear}`;
-    }
-
-    const endDate = new Date(`${event.end_date}T00:00:00`);
-    const endMonth = endDate.toLocaleDateString("en-US", { month: "long" });
-    const endDay = endDate.getDate();
-    const endYear = endDate.getFullYear();
-
-    if (startYear === endYear && startMonth === endMonth) {
-        return `${startMonth} ${startDay} - ${endDay}, ${endYear}`;
-    }
-
-    if (startYear === endYear) {
-        return `${startMonth} ${startDay} - ${endMonth} ${endDay}, ${endYear}`;
-    }
-
-    return `${startMonth} ${startDay}, ${startYear} - ${endMonth} ${endDay}, ${endYear}`;
+    return {
+        time: event.start_time,
+        day: startDate.getDate(),
+        month: startDate.toLocaleDateString("en-US", { month: "short" }),
+        year: startDate.getFullYear(),
+    };
 }
 
 function LocationIcon({ locationType }: { locationType: Event["location_type"] }) {
@@ -50,69 +34,58 @@ function LocationIcon({ locationType }: { locationType: Event["location_type"] }
 }
 
 export default function EventCard({ event }: { event: Event }) {
-    const hasEndTime = Boolean(event.end_time);
+    const startDate = getStartDateParts(event);
 
     return (
-        <article className="grid gap-6 py-8 md:grid-cols-[minmax(0,0.36fr)_minmax(0,0.64fr)] md:items-stretch md:gap-8 md:py-10">
-            <div className="relative aspect-[4/3] w-full overflow-hidden bg-base-300 md:aspect-auto md:min-h-[15rem] md:self-stretch">
-                {event.image_url ? (
-                    <Image
-                        src={event.image_url}
-                        alt={event.title}
-                        fill
-                        sizes="(min-width: 768px) 36vw, 100vw"
-                        className="object-contain"
-                    />
-                ) : (
-                    <div className="absolute inset-0 bg-base-300" aria-hidden="true" />
-                )}
-            </div>
-
-            <div className="flex flex-col justify-between gap-6">
-                <div className="space-y-4">
-                    <div className="space-y-2">
-                        <h2 className="text-2xl font-bold tracking-tight text-base-content md:text-3xl">
-                            {event.title}
-                        </h2>
-
-                        <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-base-content/70 md:text-[0.98rem]">
-                            <span>{formatEventDate(event)}</span>
-
-                            <span>
-                                {event.start_time}
-                                {hasEndTime ? ` - ${event.end_time}` : ""}
-                            </span>
-                        </div>
+        <Link href={`/events/${event.id}`} className="group relative block py-6 md:py-8">
+            <article className="relative grid grid-cols-1 gap-5 md:grid-cols-[minmax(5.5rem,0.58fr)_minmax(14rem,1.2fr)_minmax(0,2.4fr)] md:items-center md:gap-8">
+                <div className="relative flex items-center">
+                    <div className="flex min-w-0 flex-1 flex-col justify-center md:max-w-24 md:flex-none md:items-start">
+                        <span className="text-sm font-medium tracking-wide">{startDate.time}</span>
+                        <span className="text-5xl font-bold leading-none tracking-tight md:text-6xl">{startDate.day}</span>
+                        <span className="mt-1 text-sm font-medium">
+                            {startDate.month}, {startDate.year}
+                        </span>
                     </div>
+                </div>
+
+                <div className="relative aspect-16/10 w-full overflow-hidden bg-base-300 md:w-64 md:self-stretch">
+                    {event.image_url ? (
+                        <Image
+                            src={event.image_url}
+                            alt={event.title}
+                            fill
+                            sizes="(min-width: 768px) 16rem, 100vw"
+                            className="object-cover"
+                        />
+                    ) : (
+                        <div className="absolute inset-0 bg-base-300" aria-hidden="true" />
+                    )}
+                </div>
+
+                <div className="min-w-0 space-y-3 md:pl-2">
+                    <h2 className="text-xl font-bold uppercase tracking-[0.12em] text-base-content md:text-2xl">
+                        {event.title}
+                    </h2>
 
                     <div className="flex items-start gap-2 text-sm text-base-content/70 md:text-[0.98rem]">
-                        <span className="mt-0.5 inline-flex items-center gap-1.5 text-base-content/70">
+                        <span className="mt-0.5 inline-flex items-center gap-1.5 text-primary" aria-hidden="true">
                             <LocationIcon locationType={event.location_type} />
                         </span>
-                        <span>{event.location}</span>
+                        <span className="min-w-0">{event.location}</span>
                     </div>
 
                     <p className="line-clamp-3 max-w-3xl text-sm leading-6 text-base-content/65 md:text-base md:leading-7">
                         {event.description}
                     </p>
-                </div>
 
-                <div className="flex flex-wrap items-center gap-3">
                     {event.requires_ticket && (
-                        <span className="inline-flex items-center rounded-full bg-base-200 px-3 py-1 text-xs font-medium text-base-content/75">
+                        <span className="inline-flex w-fit items-center rounded-full bg-base-200 px-3 py-1 text-xs font-medium text-base-content/75">
                             Ticket required
                         </span>
                     )}
-
-                    <Link
-                        href={`/events/${event.id}`}
-                        className="group inline-flex items-center gap-1 text-sm font-semibold text-primary transition hover:text-primary/80"
-                    >
-                        <span>View event</span>
-                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                    </Link>
                 </div>
-            </div>
-        </article>
+            </article>
+        </Link>
     );
 }
