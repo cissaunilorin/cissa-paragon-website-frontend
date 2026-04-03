@@ -5,7 +5,7 @@ import { type Event } from "./eventsData";
 
 export default function EventsList({ events }: { events: Event[] }) {
     return (
-        <ul className="divide-y divide-base-200/70">
+        <ul className="divide-y divide-primary/70">
             {events.map((event) => (
                 <li key={event.id}>
                     <EventCard event={event} />
