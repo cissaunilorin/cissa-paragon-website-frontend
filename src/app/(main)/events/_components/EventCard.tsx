@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Globe, MapPin } from "lucide-react";
 
-import { type Event } from "./eventsData";
+import { type Event } from "@/lib/eventsData";
 
 function getStartDateParts(event: Event) {
     const startDate = new Date(`${event.start_date}T00:00:00`);

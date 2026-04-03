@@ -1,8 +1,9 @@
 import { Metadata } from "next";
 
+import { eventsData } from "@/lib/eventsData";
+
 import EventsHeader from "./_components/EventsHeader";
 import EventTabs from "./_components/EventTabs";
-import { eventsData } from "./_components/eventsData";
 
 export const metadata: Metadata = {
 	title: "Events",

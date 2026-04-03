@@ -1,90 +1,67 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
 
-type UpcomingEventData = {
-    imageUrl: string;
-    name: string;
-    date: string;
-    time: string;
-    location: string;
-    ctaLabel: string;
-    ctaHref: string;
-};
+import EventCard from "@/app/(main)/events/_components/EventCard";
+import { eventsData, getEventStatus } from "@/lib/eventsData";
 
-const upcomingEvent: UpcomingEventData = {
-    imageUrl: "/assets/ov-2.png",
-    name: "CISSA Freshers' Welcome Night",
-    date: "Saturday, April 12 2026",
-    time: "4:00 PM",
-    location: "Faculty of CIS Auditorium, University of Ilorin",
-    ctaLabel: "View Event",
-    ctaHref: "/events/freshers-welcome-night-2026",
-};
+function sortBySoonestUpcoming(a: (typeof eventsData)[number], b: (typeof eventsData)[number]) {
+    return a.start_date.localeCompare(b.start_date) || a.start_time.localeCompare(b.start_time);
+}
 
-type UpcomingEventProps = {
-    event?: UpcomingEventData;
-};
+export default function UpcomingEvent() {
+    const upcomingEvents = eventsData
+        .filter((event) => getEventStatus(event) === "upcoming")
+        .sort(sortBySoonestUpcoming)
+        .slice(0, 3);
 
-export default function UpcomingEvent({ event = upcomingEvent }: UpcomingEventProps) {
     return (
         <section className="px-6 py-16 md:px-10 md:py-24">
-            <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-2 md:gap-14">
-                <div
-                    className="relative aspect-4/3 w-full overflow-hidden bg-base-300/30"
-                >
-                    <Image
-                        src={event.imageUrl}
-                        alt="CISSA upcoming event"
-                        fill
-                        sizes="(min-width: 768px) 50vw, 100vw"
-                        className="object-cover"
-                        priority
-                    />
-                </div>
-
-                <div className="max-w-2xl space-y-7 md:space-y-8">
-                    <p className="text-sm md:text-lg font-bold uppercase tracking-[0.28em] text-base-content/55">
+            <div className="mx-auto max-w-6xl">
+                <div className="mb-10 max-w-full text-center">
+                    <p className="text-base font-bold uppercase tracking-[0.18em] text-primary md:text-2xl">
                         What&apos;s coming up
                     </p>
-
-                    <div className="space-y-4 md:space-y-5">
-                        <h2 className="text-3xl font-bold tracking-tight text-base-content md:text-5xl">
-                            {event.name}
-                        </h2>
-
-                        <p className="text-base font-medium text-base-content/75 md:text-lg">
-                            {event.date} · {event.time}
-                        </p>
-
-                        <div className="flex items-start gap-2 text-sm text-base-content/70 md:text-base">
-                            <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
-                            <span>{event.location}</span>
-                        </div>
-                    </div>
-
-                    <Link
-                        href={event.ctaHref}
-                        className="group btn btn-ghost px-4 text-sm font-semibold text-base-content hover:bg-transparent hover:text-base-content/70 md:px-5 md:text-base"
-                    >
-                        <span className="inline-flex items-center gap-2">
-                            {event.ctaLabel}
-                            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                        </span>
-                    </Link>
                 </div>
-            </div>
 
-            <div className="mt-10 flex justify-center md:mt-12">
-                <Link
-                    href="/events"
-                    className="btn btn-outline btn-primary rounded-full px-6 text-base font-bold normal-case shadow-none transition-transform duration-200 hover:-translate-y-0.5 md:text-lg"
-                >
-                    <span className="inline-flex items-center gap-2">
-                        View all events
-                        <ArrowRight className="h-4 w-4" />
-                    </span>
-                </Link>
+                {upcomingEvents.length === 0 ? (
+                    <>
+                        <div className="rounded-2xl border border-base-200 bg-base-100 px-6 py-10 text-center text-base-content/60">
+                            No upcoming events right now. Check back soon.
+                        </div>
+
+                        <div className="mt-8 flex justify-center md:mt-10">
+                            <Link
+                                href="/events"
+                                className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-base-content/70 transition-colors hover:text-base-content focus-visible:outline-none focus-visible:underline"
+                            >
+                                View all events
+                                <ArrowRight className="h-4 w-4" />
+                            </Link>
+                        </div>
+                    </>
+                ) : (
+                    <>
+                        <ul className="divide-y divide-primary/70">
+                            {upcomingEvents.map((event) => (
+                                <li key={event.id}>
+                                    <EventCard event={event} />
+                                </li>
+                            ))}
+                        </ul>
+
+                        <div className="mt-8 flex justify-center md:mt-10">
+                            <Link
+                                href="/events"
+                                className="group inline-flex items-center gap-2 rounded-full border border-transparent px-4 py-2 text-sm font-semibold uppercase tracking-wide text-base-content/70 transition-all duration-200 hover:border-base-300 hover:bg-base-100 hover:text-base-content active:border-base-300 active:bg-base-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+                            >
+                                <span className="transition-colors group-hover:underline group-active:underline">
+                                    View all events
+                                </span>
+                                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-active:translate-x-1" />
+                            </Link>
+                        </div>
+                    </>
+                )}
             </div>
         </section>
     );

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { eventsData } from "../_components/eventsData";
+import { eventsData } from "@/lib/eventsData";
 
 import BackLink from "./_components/BackLink";
 import EventDetails from "./_components/EventDetails";

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Calendar, Clock, ExternalLink, Globe, MapPin } from "lucide-react";
 
-import type { Event } from "../../_components/eventsData";
+import type { Event } from "@/lib/eventsData";
 
 function formatEventDate(startDateString: string, endDateString: string | null) {
     const startDate = new Date(`${startDateString}T00:00:00`);

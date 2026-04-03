@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from "react";
 
+import { getEventStatus, type Event } from "@/lib/eventsData";
+
 import EventsList from "./EventsList";
-import { getEventStatus, type Event } from "./eventsData";
 
 type TabKey = "upcoming" | "past";
 

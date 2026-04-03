@@ -1,7 +1,7 @@
 "use client";
 
 import EventCard from "./EventCard";
-import { type Event } from "./eventsData";
+import { type Event } from "@/lib/eventsData";
 
 export default function EventsList({ events }: { events: Event[] }) {
     return (
