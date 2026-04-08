@@ -1,29 +1,26 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { type Dispatch, type SetStateAction } from "react";
 
-import { getEventStatus, type Event } from "@/lib/eventsData";
+import { type Event } from "@/lib/events";
 
+import EventCardSkeleton from "./EventCardSkeleton";
 import EventsList from "./EventsList";
 
 type TabKey = "upcoming" | "past";
 
-export default function EventTabs({ events }: { events: Event[] }) {
-    const upcomingEvents = events.filter((event) => getEventStatus(event) === "upcoming");
-    const pastEvents = events.filter((event) => getEventStatus(event) === "past");
-
-    const [activeTab, setActiveTab] = useState<TabKey>(
-        upcomingEvents.length > 0 ? "upcoming" : "past",
-    );
-
-    useEffect(() => {
-        if (!upcomingEvents.length && activeTab === "upcoming") {
-            setActiveTab("past");
-        }
-    }, [activeTab, upcomingEvents.length]);
-
-    const activeEvents = activeTab === "upcoming" ? upcomingEvents : pastEvents;
-    const isEmpty = activeEvents.length === 0;
+export default function EventTabs({
+    events,
+    loading,
+    activeTab,
+    onTabChange,
+}: {
+    events: Event[];
+    loading: boolean;
+    activeTab: TabKey;
+    onTabChange: Dispatch<SetStateAction<TabKey>>;
+}) {
+    const isEmpty = events.length === 0;
 
     return (
         <section className="space-y-6">
@@ -33,7 +30,7 @@ export default function EventTabs({ events }: { events: Event[] }) {
                     role="tab"
                     aria-selected={activeTab === "upcoming"}
                     className={`tab ${activeTab === "upcoming" ? "tab-active" : ""}`}
-                    onClick={() => setActiveTab("upcoming")}
+                    onClick={() => onTabChange("upcoming")}
                 >
                     Upcoming
                 </button>
@@ -42,20 +39,28 @@ export default function EventTabs({ events }: { events: Event[] }) {
                     role="tab"
                     aria-selected={activeTab === "past"}
                     className={`tab ${activeTab === "past" ? "tab-active" : ""}`}
-                    onClick={() => setActiveTab("past")}
+                    onClick={() => onTabChange("past")}
                 >
                     Past
                 </button>
             </div>
 
-            {isEmpty ? (
+            {loading ? (
+                <ul className="divide-y divide-primary/30">
+                    {Array.from({ length: 3 }).map((_, index) => (
+                        <li key={index}>
+                            <EventCardSkeleton />
+                        </li>
+                    ))}
+                </ul>
+            ) : isEmpty ? (
                 <div className="flex min-h-56 items-center justify-center text-center text-base-content/60">
                     {activeTab === "upcoming"
                         ? "No upcoming events right now. Check back soon."
                         : "No past events yet."}
                 </div>
             ) : (
-                <EventsList events={activeEvents} />
+                <EventsList events={events} />
             )}
         </section>
     );
