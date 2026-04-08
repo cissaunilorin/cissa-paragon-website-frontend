@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Calendar, Clock, ExternalLink, Globe, MapPin } from "lucide-react";
 
-import type { Event } from "@/lib/eventsData";
+import type { Event } from "@/lib/events";
 
 function formatEventDate(startDateString: string, endDateString: string | null) {
     const startDate = new Date(`${startDateString}T00:00:00`);
@@ -35,11 +35,10 @@ function LocationIcon({ locationType }: { locationType: Event["location_type"] }
         return <Globe className="h-4 w-4 shrink-0" aria-hidden="true" />;
     }
 
-    if (locationType === "hybrid") {
+    if (locationType === "physical") {
         return (
             <span className="inline-flex items-center gap-1.5" aria-hidden="true">
                 <MapPin className="h-4 w-4 shrink-0" />
-                <Globe className="h-4 w-4 shrink-0" />
             </span>
         );
     }
