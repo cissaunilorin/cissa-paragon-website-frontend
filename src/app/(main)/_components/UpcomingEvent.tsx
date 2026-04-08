@@ -1,18 +1,52 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 import Link from "next/link";
-import { ArrowRight, MapPin } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import EventCard from "@/app/(main)/events/_components/EventCard";
-import { eventsData, getEventStatus } from "@/lib/eventsData";
-
-function sortBySoonestUpcoming(a: (typeof eventsData)[number], b: (typeof eventsData)[number]) {
-    return a.start_date.localeCompare(b.start_date) || a.start_time.localeCompare(b.start_time);
-}
+import EventCardSkeleton from "@/app/(main)/events/_components/EventCardSkeleton";
+import { type Event, getEvents } from "@/lib/events";
 
 export default function UpcomingEvent() {
-    const upcomingEvents = eventsData
-        .filter((event) => getEventStatus(event) === "upcoming")
-        .sort(sortBySoonestUpcoming)
-        .slice(0, 3);
+    const [events, setEvents] = useState<Event[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
+
+    useEffect(() => {
+        let isActive = true;
+
+        const loadEvents = async () => {
+            try {
+                const response = await getEvents(1, 3, {
+                    time_status: "upcoming",
+                });
+
+                if (!isActive) return;
+
+                setEvents(response.items);
+            } catch {
+                if (!isActive) return;
+
+                setError(true);
+            } finally {
+                if (!isActive) return;
+
+                setLoading(false);
+            }
+        };
+
+        loadEvents();
+
+        return () => {
+            isActive = false;
+        };
+    }, []);
+
+    if (error || (!loading && events.length === 0)) {
+        return null;
+    }
 
     return (
         <section className="px-6 py-16 md:px-10 md:py-24">
@@ -23,26 +57,12 @@ export default function UpcomingEvent() {
                     </p>
                 </div>
 
-                {upcomingEvents.length === 0 ? (
-                    <>
-                        <div className="rounded-2xl border border-base-200 bg-base-100 px-6 py-10 text-center text-base-content/60">
-                            No upcoming events right now. Check back soon.
-                        </div>
-
-                        <div className="mt-8 flex justify-center md:mt-10">
-                            <Link
-                                href="/events"
-                                className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-base-content/70 transition-colors hover:text-base-content focus-visible:outline-none focus-visible:underline"
-                            >
-                                View all events
-                                <ArrowRight className="h-4 w-4" />
-                            </Link>
-                        </div>
-                    </>
+                {loading ? (
+                    <EventCardSkeleton />
                 ) : (
                     <>
-                        <ul className="divide-y divide-primary/70">
-                            {upcomingEvents.map((event) => (
+                        <ul className="divide-y divide-primary/30">
+                            {events.map((event) => (
                                 <li key={event.id}>
                                     <EventCard event={event} />
                                 </li>
