@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import EventsDashboardClient from "./_components/EventsDashboardClient";
 
 export const metadata: Metadata = {
-    title: "Events | CISSA Admin",
+    title: "Events",
     description: "Manage site events",
 };
 
