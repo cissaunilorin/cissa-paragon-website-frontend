@@ -6,6 +6,7 @@ import {
     LayoutDashboard,
     Users,
     Megaphone,
+    Calendar,
     ChevronLeft,
     ChevronRight,
     LogOut,
@@ -106,6 +107,11 @@ export default function AdminDashboardLayout({
             label: "Announcements",
             icon: Megaphone,
         },
+        {
+            href: "/admin/dashboard/events",
+            label: "Events",
+            icon: Calendar,
+        },
     ];
 
     return (
@@ -168,7 +174,7 @@ export default function AdminDashboardLayout({
                                     >
                                         <Icon
                                             size={20}
-                                            className="flex-shrink-0"
+                                            className="shrink-0"
                                         />
                                         {!isCollapsed && (
                                             <span className="font-medium">
