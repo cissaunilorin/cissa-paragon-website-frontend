@@ -26,7 +26,7 @@ export interface EventsListResponse {
 }
 
 export interface EventsFilters {
-    past?: boolean;
+    time_status?: "upcoming" | "past";
     title?: string;
     location_type?: "physical" | "online";
 }
@@ -39,7 +39,7 @@ export const getEvents = async (
     const params: {
         page: number;
         page_size: number;
-        past?: boolean;
+        time_status?: "upcoming" | "past";
         title?: string;
         location_type?: "physical" | "online";
     } = {
@@ -47,7 +47,7 @@ export const getEvents = async (
         page_size: pageSize,
     };
 
-    if (filters?.past !== undefined) params.past = filters.past;
+    if (filters?.time_status != undefined) params.time_status = filters.time_status;
     if (filters?.title !== undefined) params.title = filters.title;
     if (filters?.location_type !== undefined)
         params.location_type = filters.location_type;
