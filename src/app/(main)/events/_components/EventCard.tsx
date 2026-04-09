@@ -59,8 +59,8 @@ export default function EventCard({ event }: { event: Event }) {
     return (
         <article className="relative bg-base-100 py-6 md:p-6">
             <div className="grid grid-cols-1 gap-5 md:grid-cols-[minmax(5.5rem,0.58fr)_minmax(14rem,1.2fr)_minmax(0,2.4fr)] md:items-center md:gap-8">
-                <div className="relative flex items-center justify-center">
-                    <div className="flex min-w-0 flex-1 flex-col items-center justify-center text-center md:max-w-24 md:flex-none">
+                <div className="relative flex items-center justify-start">
+                    <div className="flex min-w-0 flex-col items-center justify-center text-center md:max-w-24 md:flex-none">
                         <span className="text-sm font-medium tracking-wide">
                             {startDate.time}
                         </span>

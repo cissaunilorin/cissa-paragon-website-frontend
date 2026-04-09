@@ -24,7 +24,7 @@ export default function EventTabs({
 
     return (
         <section className="space-y-6">
-            <div role="tablist" aria-label="Events tabs" className="tabs tabs-bordered tabs-lg">
+            <div role="tablist" aria-label="Events tabs" className="tabs tabs-border tabs-xl justify-center md:justify-start">
                 <button
                     type="button"
                     role="tab"
@@ -32,7 +32,7 @@ export default function EventTabs({
                     className={`tab ${activeTab === "upcoming" ? "tab-active" : ""}`}
                     onClick={() => onTabChange("upcoming")}
                 >
-                    Upcoming
+                    Coming Up
                 </button>
                 <button
                     type="button"
@@ -41,7 +41,7 @@ export default function EventTabs({
                     className={`tab ${activeTab === "past" ? "tab-active" : ""}`}
                     onClick={() => onTabChange("past")}
                 >
-                    Past
+                    Past Events
                 </button>
             </div>
 
