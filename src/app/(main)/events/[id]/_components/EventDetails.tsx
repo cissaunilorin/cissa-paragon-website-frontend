@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Calendar, Clock, ExternalLink, Globe, MapPin } from "lucide-react";
 
 import type { Event } from "@/lib/events";
+import { formatRich } from "@/lib/utils/formatRich";
 
 function formatEventDate(startDateString: string, endDateString: string | null) {
     const startDate = new Date(`${startDateString}T00:00:00`);
@@ -99,7 +100,7 @@ export default function EventDetails({ event }: { event: Event }) {
 
                 <div className="border-t border-base-200/70 pt-6">
                     <div className="prose max-w-none text-base-content/80 md:prose-lg">
-                        <p>{event.description}</p>
+                        {formatRich(event.description)}
                     </div>
 
                     {event.requires_ticket && event.ticket_url && (

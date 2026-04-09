@@ -44,7 +44,7 @@ export default function UpcomingEvent() {
         };
     }, []);
 
-    if (error || (!loading && events.length === 0)) {
+    if (error) {
         return null;
     }
 
@@ -59,6 +59,10 @@ export default function UpcomingEvent() {
 
                 {loading ? (
                     <EventCardSkeleton />
+                ) : events.length === 0 ? (
+                    <div className="rounded-2xl border border-base-200 bg-base-100 px-6 py-10 text-center text-base-content/60">
+                        No upcoming events right now. Check back soon.
+                    </div>
                 ) : (
                     <>
                         <ul className="divide-y divide-primary/30">

@@ -6,6 +6,19 @@ import { Globe, MapPin } from "lucide-react";
 
 import { type Event } from "@/lib/events";
 
+function getExcerpt(body: string) {
+    const cleanedBody = body
+        .replace(/[*_`]+/g, "")
+        .replace(/\s+/g, " ")
+        .trim();
+
+    if (cleanedBody.length <= 180) {
+        return cleanedBody;
+    }
+
+    return `${cleanedBody.slice(0, 180).trimEnd()}…`;
+}
+
 function getStartDateParts(event: Event) {
     const startDate = new Date(`${event.start_date}T00:00:00`);
     return {
@@ -95,7 +108,7 @@ export default function EventCard({ event }: { event: Event }) {
                     </div>
 
                     <p className="line-clamp-3 max-w-3xl text-sm leading-6 text-base-content/65 md:text-base md:leading-7">
-                        {event.description}
+                        {getExcerpt(event.description)}
                     </p>
 
                     <Link
