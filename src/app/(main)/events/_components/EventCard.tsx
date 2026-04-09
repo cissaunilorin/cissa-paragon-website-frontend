@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Globe, MapPin } from "lucide-react";
 
 import { type Event } from "@/lib/events";
+import { formatTimeTo12Hour } from "@/lib/utils/format";
 
 function getExcerpt(body: string) {
     const cleanedBody = body
@@ -22,7 +23,7 @@ function getExcerpt(body: string) {
 function getStartDateParts(event: Event) {
     const startDate = new Date(`${event.start_date}T00:00:00`);
     return {
-        time: event.start_time,
+        time: formatTimeTo12Hour(event.start_time),
         day: startDate.getDate(),
         month: startDate.toLocaleDateString("en-US", { month: "short" }),
         year: startDate.getFullYear(),
@@ -58,8 +59,8 @@ export default function EventCard({ event }: { event: Event }) {
     return (
         <article className="relative bg-base-100 py-6 md:p-6">
             <div className="grid grid-cols-1 gap-5 md:grid-cols-[minmax(5.5rem,0.58fr)_minmax(14rem,1.2fr)_minmax(0,2.4fr)] md:items-center md:gap-8">
-                <div className="relative flex items-center">
-                    <div className="flex min-w-0 flex-1 flex-col justify-center md:max-w-24 md:flex-none md:items-start">
+                <div className="relative flex items-center justify-center">
+                    <div className="flex min-w-0 flex-1 flex-col items-center justify-center text-center md:max-w-24 md:flex-none">
                         <span className="text-sm font-medium tracking-wide">
                             {startDate.time}
                         </span>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Calendar, Clock, ExternalLink, Globe, MapPin } from "lucide-react";
 
 import type { Event } from "@/lib/events";
+import { formatTimeTo12Hour } from "@/lib/utils/format";
 import { formatRich } from "@/lib/utils/formatRich";
 
 function formatEventDate(startDateString: string, endDateString: string | null) {
@@ -82,8 +83,10 @@ export default function EventDetails({ event }: { event: Event }) {
                         <div className="flex items-start gap-2">
                             <Clock className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
                             <span>
-                                {event.start_time}
-                                {event.end_time ? ` - ${event.end_time}` : ""}
+                                {formatTimeTo12Hour(event.start_time)}
+                                {event.end_time
+                                    ? ` - ${formatTimeTo12Hour(event.end_time)}`
+                                    : ""}
                             </span>
                         </div>
 
