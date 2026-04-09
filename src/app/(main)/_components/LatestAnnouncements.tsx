@@ -83,12 +83,12 @@ export default function LatestAnnouncements() {
                 <div className="mt-10 flex justify-center md:mt-12">
                     <Link
                         href="/news"
-                        className="btn btn-outline btn-primary rounded-full px-6 text-base font-bold normal-case shadow-none transition-transform duration-200 hover:-translate-y-0.5 md:text-lg"
+                        className="group inline-flex items-center gap-2 rounded-full border border-transparent px-4 py-2 text-sm font-semibold uppercase tracking-wide text-base-content/70 transition-all duration-200 hover:border-base-300 hover:bg-base-100 hover:text-base-content active:border-base-300 active:bg-base-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
                     >
-                        <span className="inline-flex items-center gap-2">
+                        <span className="transition-colors group-hover:underline group-active:underline">
                             View all news
-                            <ArrowRight className="h-4 w-4" />
                         </span>
+                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-active:translate-x-1" />
                     </Link>
                 </div>
             </div>
