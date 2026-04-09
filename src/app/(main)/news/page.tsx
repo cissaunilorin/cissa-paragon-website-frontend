@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { use, useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -16,9 +16,10 @@ import {
 export default function AnnouncementsPage({
     searchParams,
 }: {
-    searchParams: { page?: string };
+    searchParams: Promise<{ page?: string }>;
 }) {
     const router = useRouter();
+    const resolvedSearchParams = use(searchParams);
     const [announcements, setAnnouncements] = useState<Announcement[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -28,7 +29,7 @@ export default function AnnouncementsPage({
     const pageSize = 9;
 
     const [currentPage, setCurrentPage] = useState(() => {
-        const p = parseInt(searchParams.page ?? "1", 10);
+        const p = parseInt(resolvedSearchParams.page ?? "1", 10);
         return Number.isNaN(p) || p < 1 ? 1 : p;
     });
 
