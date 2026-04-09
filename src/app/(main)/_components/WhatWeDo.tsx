@@ -22,7 +22,7 @@ const cards: WhatWeDoCard[] = [
         ctas: [
             {
                 label: "Explore resources",
-                href: "#",
+                href: "/news",
             },
         ],
     },
@@ -35,7 +35,7 @@ const cards: WhatWeDoCard[] = [
         ctas: [
             {
                 label: "See upcoming events",
-                href: "#",
+                href: "/events",
             },
         ],
     },
@@ -48,7 +48,7 @@ const cards: WhatWeDoCard[] = [
         ctas: [
             {
                 label: "Reach out to us",
-                href: "#",
+                href: "/contact",
             },
         ],
     },
