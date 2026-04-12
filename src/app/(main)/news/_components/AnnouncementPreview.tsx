@@ -51,7 +51,7 @@ export default function AnnouncementPreview({
                 </div>
 
                 <div className="space-y-2 px-0">
-                    <h4 className="line-clamp-2 text-lg font-medium leading-snug text-base-content transition-colors duration-200 group-hover:text-base-content/90 md:text-xl">
+                    <h4 className="line-clamp-2 text-lg uppercase font-bold leading-snug text-base-content transition-colors duration-200 group-hover:text-base-content/90 md:text-xl">
                         {announcement.title}
                     </h4>
 
