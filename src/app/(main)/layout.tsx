@@ -12,7 +12,7 @@ export const metadata: Metadata = {
         default: "Home | CISSA",
     },
     description:
-        "CISSA is the official student association for Communication and Information Sciences students at the University of Ilorin. We aim to enhance the student experience through various activities, events, and support services.",
+        "CISSA is the official student association for Communication and Information Sciences students at the University of Ilorin.",
     keywords: [
         "CISSA",
         "Communication and Information Sciences",
