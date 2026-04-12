@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ChevronLeft, Phone } from "lucide-react";
 
 import ImageModal from "@/components/ImageModal";
-import ShareRow from "./ShareRow";
+import ShareRow from "./_components/ShareRow";
 import { formatRich } from "@/lib/utils/formatRich";
 import { formatNumberToWhatsappLink } from "@/lib/utils/format";
 import { getAnnouncementById } from "@/lib/announcements";

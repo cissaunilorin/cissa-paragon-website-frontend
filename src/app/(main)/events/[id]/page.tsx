@@ -8,6 +8,7 @@ import { formatTimeTo12Hour } from "@/lib/utils/format";
 import { formatRich } from "@/lib/utils/formatRich";
 
 import BackLink from "./_components/BackLink";
+import ShareRow from "./_components/ShareRow";
 
 function formatEventDate(startDateString: string, endDateString: string | null) {
     const startDate = new Date(`${startDateString}T00:00:00`);
@@ -128,7 +129,7 @@ export default async function EventPage({
                             </div>
                         </header>
 
-                        <div className="border-t border-base-200/70 pt-6">
+                        <div className="border-t border-base-200/70 pt-6 space-y-8 md:space-y-10">
                             <div className="prose max-w-none text-base-content/80 md:prose-lg">
                                 {formatRich(event.description)}
                             </div>
@@ -146,6 +147,8 @@ export default async function EventPage({
                                     </Link>
                                 </div>
                             )}
+
+                            <ShareRow eventId={event.id} eventTitle={event.title} />
                         </div>
                     </div>
                 </article>
