@@ -4,9 +4,11 @@ export interface Executive {
   image: string;
   socials?: {
     whatsapp?: string;
-    facebook?: string;
+    instagram?: string;
     twitter?: string;
     linkedin?: string;
+    tiktok?: string;
+    snapchat?: string;
   };
 }
 
@@ -16,10 +18,9 @@ export const executives: Executive[] = [
     position: "President",
     image: "/assets/Executives/President.jpg",
     socials: {
-      whatsapp: undefined,
-      facebook: "https://facebook.com",
-      twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com",
+      whatsapp: "09152349887",
+      twitter: "https://x.com/dreal_nurudeen",
+      linkedin: "http://www.linkedin.com/in/sanni-nurudeen-akorede",
     },
   },
   {
@@ -27,9 +28,9 @@ export const executives: Executive[] = [
     position: "Vice President",
     image: "/assets/Executives/VicePresident.jpg",
     socials: {
-      whatsapp: undefined,
-      facebook: "https://facebook.com",
-      linkedin: "https://linkedin.com",
+      whatsapp: "09096981054",
+      twitter: "https://x.com/_hermyheenat",
+      linkedin: "https://www.linkedin.com/in/aminat-oyebanji-2b99a330b",
     },
   },
   {
@@ -37,9 +38,9 @@ export const executives: Executive[] = [
     position: "General Secretary",
     image: "/assets/Executives/GeneralSec.jpg",
     socials: {
-      whatsapp: undefined,
-      twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com",
+      whatsapp: "08084070943",
+      tiktok: "https://www.tiktok.com/@ebun1277",
+      snapchat: "https://snapchat.com/t/v4y9LXbO"
     },
   },
   {
@@ -47,9 +48,9 @@ export const executives: Executive[] = [
     position: "Assistant General Secretary",
     image: "/assets/Executives/AssistantGeneralSec.jpg",
     socials: {
-      whatsapp: undefined,
-      facebook: "https://facebook.com",
-      twitter: "https://twitter.com",
+      whatsapp: "07034972272",
+      instagram: "https://www.instagram.com/oluwafemi31_",
+      twitter: "https://x.com/theoluwafemi_",
     },
   },
   {
@@ -57,10 +58,9 @@ export const executives: Executive[] = [
     position: "Public Relations Officer",
     image: "/assets/Executives/PublicRelationOfficer.jpg",
     socials: {
-      whatsapp: undefined,
-      facebook: "https://facebook.com",
-      twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com",
+      whatsapp: "09167369415",
+      instagram: "https://www.instagram.com/ayobami.w.k",
+      twitter: "https://x.com/aw_kuforiji",
     },
   },
   {
@@ -68,10 +68,9 @@ export const executives: Executive[] = [
     position: "Financial Secretary",
     image: "/assets/Executives/FinancialSec.jpeg",
     socials: {
-      whatsapp: undefined,
-      facebook: "https://facebook.com",
-      twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com",
+      whatsapp: "09030857396",
+      twitter: "https://x.com/Bummie___",
+      tiktok: "https://tiktok.com/@bummie____"
     },
   },
   {
@@ -79,10 +78,7 @@ export const executives: Executive[] = [
     position: "Welfare Secretary",
     image: "/assets/Executives/WelfareSec.jpg",
     socials: {
-      whatsapp: undefined,
-      facebook: "https://facebook.com",
-      twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com",
+      whatsapp: "09134434959",
     },
   },
   {
@@ -90,9 +86,9 @@ export const executives: Executive[] = [
     position: "Social Director",
     image: "/assets/Executives/SocialDirector.jpg",
     socials: {
-      whatsapp: undefined,
-      twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com",
+      whatsapp: "08073617300",
+      twitter: "https://x.com/irregularstilez",
+      instagram: "https://www.instagram.com/clicksbystilez"
     },
   },
   {
@@ -100,10 +96,9 @@ export const executives: Executive[] = [
     position: "Sports Director",
     image: "/assets/Executives/SportsDirector.jpg",
     socials: {
-      whatsapp: undefined,
-      facebook: "https://facebook.com",
-      twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com",
+      whatsapp: "07010635009",
+      instagram: "https://www.instagram.com/ashaolu.micheal",
+      twitter: "https://x.com/Toni2kul",
     },
   },
   {
@@ -111,10 +106,9 @@ export const executives: Executive[] = [
     position: "Software Director",
     image: "/assets/Executives/SoftwareDirector.jpg",
     socials: {
-      whatsapp: undefined,
-      facebook: "https://facebook.com",
-      twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com",
+      whatsapp: "09079016973",
+      twitter: "https://x.com/builtbyfranklin",
+      linkedin: "https://www.linkedin.com/in/franklin-ikeh",
     },
   },
 ];
