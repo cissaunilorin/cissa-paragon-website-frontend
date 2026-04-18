@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import Hero from "./_components/Hero";
 import Departments from "./_components/Departments";
+import WhatWeDo from "./_components/WhatWeDo";
 import WhoWeAre from "./_components/WhoWeAre";
 
 export const metadata: Metadata = {
@@ -16,6 +17,7 @@ export default function AboutPage() {
 			<Hero />
 			<WhoWeAre />
 			<Departments />
+			<WhatWeDo />
 		</>
 	);
 }
