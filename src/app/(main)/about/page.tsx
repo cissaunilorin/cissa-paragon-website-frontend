@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import Hero from "./_components/Hero";
+import WhoWeAre from "./_components/WhoWeAre";
 
 export const metadata: Metadata = {
 	title: "About Us",
@@ -9,5 +10,10 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-	return <Hero />;
+	return (
+		<>
+			<Hero />
+			<WhoWeAre />
+		</>
+	);
 }
