@@ -9,120 +9,12 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
-
-interface Executive {
-  name: string;
-  position: string;
-  image: string;
-  socials?: {
-    facebook?: string;
-    twitter?: string;
-    linkedin?: string;
-  };
-}
+import { executives } from "../../../lib/executives";
 
 export default function Executives() {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
-  const executives: Executive[] = [
-    {
-      name: "Sanni Nurudeen Akorede",
-      position: "President",
-      image: "/assets/Executives/President.jpg",
-      socials: {
-        facebook: "https://facebook.com",
-        twitter: "https://twitter.com",
-        linkedin: "https://linkedin.com",
-      },
-    },
-    {
-      name: "Oyebanji Aminat Oluwatobi",
-      position: "Vice President",
-      image: "/assets/Executives/VicePresident.jpg",
-      socials: {
-        facebook: "https://facebook.com",
-        linkedin: "https://linkedin.com",
-      },
-    },
-    {
-      name: "Shittu Ayomide Ebunoluwa",
-      position: "General Secretary",
-      image: "/assets/Executives/GeneralSec.jpg",
-      socials: {
-        twitter: "https://twitter.com",
-        linkedin: "https://linkedin.com",
-      },
-    },
-    {
-      name: "Oguntuwase Oluwafemi Joseph",
-      position: "Assistant General Secretary",
-      image: "/assets/Executives/AssistantGeneralSec.jpg",
-      socials: {
-        facebook: "https://facebook.com",
-        twitter: "https://twitter.com",
-      },
-    },
-    {
-      name: "Kuforiji Ayobami Waris",
-      position: "Public Relations Officer",
-      image: "/assets/Executives/PublicRelationOfficer.jpg",
-      socials: {
-        facebook: "https://facebook.com",
-        twitter: "https://twitter.com",
-        linkedin: "https://linkedin.com",
-      },
-    },
-    {
-      name: "Shanu Mariam Oluwabunmi",
-      position: "Financial Secretary",
-      image: "/assets/Executives/FinancialSec.jpeg",
-      socials: {
-        facebook: "https://facebook.com",
-        twitter: "https://twitter.com",
-        linkedin: "https://linkedin.com",
-      },
-    },
-    {
-      name: "Shittu Fareedah Adedamola",
-      position: "Welfare Secretary",
-      image: "/assets/Executives/WelfareSec.jpg",
-      socials: {
-        facebook: "https://facebook.com",
-        twitter: "https://twitter.com",
-        linkedin: "https://linkedin.com",
-      },
-    },
-    {
-      name: "Akinleye Akinjuwon Olushola",
-      position: "Social Director",
-      image: "/assets/Executives/SocialDirector.jpg",
-      socials: {
-        twitter: "https://twitter.com",
-        linkedin: "https://linkedin.com",
-      },
-    },
-    {
-      name: "Ashaolu Michael Oluwatoni",
-      position: "Sports Director",
-      image: "/assets/Executives/SportsDirector.jpg",
-      socials: {
-        facebook: "https://facebook.com",
-        twitter: "https://twitter.com",
-        linkedin: "https://linkedin.com",
-      },
-    },
-    {
-      name: "Ikeh Chidiebere Franklin",
-      position: "Software Director",
-      image: "/assets/Executives/SoftwareDirector.jpg",
-      socials: {
-        facebook: "https://facebook.com",
-        twitter: "https://twitter.com",
-        linkedin: "https://linkedin.com",
-      },
-    },
-  ];
 
   const checkScroll = () => {
     if (carouselRef.current) {
