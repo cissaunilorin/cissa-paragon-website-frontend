@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
     CalendarDays,
+    Info,
     Home,
     Instagram,
     Menu,
@@ -20,6 +21,7 @@ import {
 
 const navLinks = [
     { label: "Home", href: "/", icon: Home },
+    { label: "About", href: "/about", icon: Info },
     { label: "Events", href: "/events", icon: CalendarDays },
     { label: "News", href: "/news", icon: Newspaper },
     { label: "Contact", href: "/contact", icon: MessageCircleMore },
