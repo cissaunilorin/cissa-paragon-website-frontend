@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { ChevronDown } from "lucide-react";
 
 export default function Hero() {
 	const containerRef = useRef<HTMLDivElement>(null);
@@ -49,7 +48,7 @@ export default function Hero() {
 				id="about"
 				className="hero min-h-screen lg:min-h-full relative overflow-hidden flex items-end justify-start lg:items-center lg:justify-center lg:rounded-2xl flex-1"
 				style={{
-					backgroundImage: "url(/assets/fac4.jpg)",
+					backgroundImage: "url(/assets/ov-2.png)",
 					backgroundSize: "cover",
 					backgroundPosition: "center",
 				}}
