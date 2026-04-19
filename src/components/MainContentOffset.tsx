@@ -8,7 +8,7 @@ export default function MainContentOffset({
     children: React.ReactNode;
 }>) {
     const pathname = usePathname();
-    const pathsWithoutOffset = ["/", "/contact"];
+    const pathsWithoutOffset = ["/", "/contact", "/about"];
     const shouldOffsetContent = !pathsWithoutOffset.includes(pathname);
 
     return (
