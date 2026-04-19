@@ -74,7 +74,7 @@ export default function Navbar() {
     return (
         <div className="fixed inset-x-0 top-0 z-50 pointer-events-none">
             <div className="mx-auto w-full lg:max-w-[80vw] px-3 mt-4 pointer-events-auto transition-all duration-300 sm:px-4 lg:px-6 lg:mt-8">
-                <header className="flex h-16 items-center justify-between gap-4 rounded-4xl border border-[#d7d0c4] bg-[#f7f0e7]/95 px-4 shadow-[0_12px_30px_rgba(34,24,15,0.16)] backdrop-blur-xl lg:h-16 lg:px-6">
+                <header className="flex h-16 items-center justify-between gap-4 rounded-4xl border border-[#d7d0c4] bg-base-100/70 px-4 shadow-[0_12px_30px_rgba(34,24,15,0.16)] backdrop-blur-xl lg:h-16 lg:px-6">
                     <Link href="/" className="flex min-w-0 items-center gap-2.5 lg:gap-3">
                         <div className="avatar shrink-0">
                             <div className="h-8 w-8 overflow-hidden rounded-full ring-1 ring-black/5 lg:h-10 lg:w-10">

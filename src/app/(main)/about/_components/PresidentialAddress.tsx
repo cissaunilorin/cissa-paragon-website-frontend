@@ -6,7 +6,7 @@ export default function PresidentialAddress() {
 			<div className="container mx-auto px-4">
 				<div className="mx-auto max-w-7xl">
 					<div className="mb-12 text-center md:mb-14">
-						<p className="text-sm font-bold uppercase tracking-[0.22em] text-primary md:text-xl">
+						<p className="text-base font-bold uppercase tracking-[0.22em] text-primary md:text-2xl">
 							A Message from the President
 						</p>
 					</div>
