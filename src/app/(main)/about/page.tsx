@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import Hero from "./_components/Hero";
+import PresidentialAddress from "./_components/PresidentialAddress";
 import Departments from "./_components/Departments";
 import WhatWeDo from "./_components/WhatWeDo";
 import OurStructure from "./_components/OurStructure";
@@ -18,6 +19,7 @@ export default function AboutPage() {
 		<>
 			<Hero />
 			<WhoWeAre />
+			<PresidentialAddress />
 			<Departments />
 			<WhatWeDo />
 			<OurStructure />

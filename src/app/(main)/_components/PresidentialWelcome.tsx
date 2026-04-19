@@ -22,16 +22,16 @@ export default function PresidentialWelcome() {
                                 &ldquo;
                             </span>
                             It is my great pleasure to welcome you to the
-                            official website of the Faculty Student
-                            Association. Through this platform, we aim to keep
-                            you informed about the events, achievements, and
-                            opportunities that shape our community. Together,
-                            let&apos;s make our mark.
+                            official website of the Faculty Student Association!
+                            As the President, I am honored to lead this vibrant
+                            community of scholars and leaders. Our faculty is a
+                            hub of academic excellence, innovation, and personal
+                            growth...
                         </blockquote>
 
                         <div className="mt-6 flex items-center gap-3">
                             <Link
-                                href="#"
+                                href="/about#presidential-address"
                                 className="group inline-flex items-center gap-2 text-sm font-semibold text-base-content/70 transition-colors hover:text-primary md:text-base"
                             >
                                 Read the full presidential address
