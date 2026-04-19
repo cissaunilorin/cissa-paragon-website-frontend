@@ -122,7 +122,7 @@ function ExecutiveCard({ executive }: { executive: Executive }) {
 
 export default function MeetTheTeam() {
 	return (
-		<section className="bg-base-100 py-16 md:py-20 lg:py-24">
+		<section className="bg-base-200 py-16 md:py-20 lg:py-24">
 			<div className="container mx-auto px-4">
 				<div className="mx-auto max-w-7xl">
 					<div className="mb-12 text-center md:mb-14">

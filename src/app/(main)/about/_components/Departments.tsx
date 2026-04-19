@@ -59,7 +59,7 @@ const departments = [
 
 export default function Departments() {
 	return (
-		<section className="bg-base-200 py-16 md:py-20 lg:py-24">
+		<section className="bg-base-100 py-16 md:py-20 lg:py-24">
 			<div className="container mx-auto px-4">
 				<div className="mx-auto max-w-7xl">
 					<div className="mb-12 text-center md:mb-14">
@@ -75,7 +75,7 @@ export default function Departments() {
 							return (
 							<article
 								key={department.name}
-								className="bg-base-100 p-6 md:p-8"
+								className="p-6 md:p-8"
 							>
 								<div className="space-y-6">
 									<div className="flex items-center gap-3">
