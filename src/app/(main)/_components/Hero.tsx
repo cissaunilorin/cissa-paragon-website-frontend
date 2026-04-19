@@ -97,11 +97,11 @@ export default function Hero() {
 
                     <Link
                         ref={btnRef}
-                        href="#about"
+                        href="/about"
                         className="group relative inline-flex items-center justify-center px-4 py-2 md:px-8 md:py-4 text-md md:text-lg font-semibold text-black transition-all duration-300 bg-white hover:bg-gray-200 rounded-md overflow-hidden opacity-0"
                     >
                         <span className="relative z-10 flex items-center gap-2">
-                            Explore Now
+                            Explore CISSA
                             <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                         </span>
                     </Link>
