@@ -23,7 +23,7 @@ export default function WhoWeAre() {
 								Our Story
 							</p>
 							<p className="max-w-prose text-base text-center md:text-left font-normal leading-8 text-base-content/80 md:text-lg md:leading-9">
-								The Communication and Information Sciences Students'
+								The Communication and Information Sciences Students&apos;
 								Association (CISSA) of the University of Ilorin was
 								established in June 2008 to unify students across all
 								departments within the Faculty of Communication and
