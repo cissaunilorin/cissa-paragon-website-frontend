@@ -8,6 +8,7 @@ import {
     Users,
     Megaphone,
     Calendar,
+    BookOpen,
     ChevronLeft,
     ChevronRight,
     LogOut,
@@ -89,6 +90,7 @@ export default function AdminDashboardShell({
         { href: "/admin/dashboard/signatories", label: "Signatories", icon: Users },
         { href: "/admin/dashboard/announcements", label: "Announcements", icon: Megaphone },
         { href: "/admin/dashboard/events", label: "Events", icon: Calendar },
+        { href: "/admin/dashboard/materials", label: "Materials", icon: BookOpen },
     ];
 
     return (
