@@ -5,16 +5,12 @@ import Image from "next/image";
 import { useState } from "react";
 
 import { executives, type Executive } from "@/lib/executives";
-
-function formatWhatsAppLink(value: string) {
-	const digits = value.replace(/\D/g, "");
-	return digits.length > 0 ? `https://wa.me/${digits}` : null;
-}
+import { formatNumberToWhatsappLink } from "@/lib/utils/format";
 
 function ExecutiveCard({ executive }: { executive: Executive }) {
 	const [imageUnavailable, setImageUnavailable] = useState(false);
 	const whatsappLink = executive.socials?.whatsapp
-		? formatWhatsAppLink(executive.socials.whatsapp)
+		? formatNumberToWhatsappLink(executive.socials.whatsapp)
 		: null;
 
 	return (
