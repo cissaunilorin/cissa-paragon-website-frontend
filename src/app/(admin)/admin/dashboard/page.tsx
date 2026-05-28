@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { FileText, Users, Calendar, TrendingUp, Plus, Eye, Clock } from "lucide-react";
+import { FileText, Users, Calendar, TrendingUp, Plus, Eye, Clock, BookOpen } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -102,6 +102,10 @@ export default function AdminDashboardPage() {
                     <Link href="/admin/dashboard/signatories" className="btn btn-outline gap-2">
                         <Users size={16} />
                         Manage Signatories
+                    </Link>
+                    <Link href="/admin/dashboard/materials" className="btn btn-outline gap-2">
+                        <BookOpen size={16} />
+                        Manage Materials
                     </Link>
                 </div>
             </div>
@@ -230,6 +234,10 @@ export default function AdminDashboardPage() {
                                 <Link href="/admin/dashboard/signatories" className="btn btn-outline btn-sm justify-start">
                                     <Users size={16} />
                                     Add Signatory
+                                </Link>
+                                <Link href="/admin/dashboard/materials" className="btn btn-outline btn-sm justify-start">
+                                    <BookOpen size={16} />
+                                    Manage Materials
                                 </Link>
                                 <a
                                     href="/"
