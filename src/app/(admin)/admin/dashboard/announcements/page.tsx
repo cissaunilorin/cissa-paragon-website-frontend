@@ -348,7 +348,7 @@ export default function AnnouncementsPage() {
                                                 <td>
                                                     <div className="flex gap-2">
                                                         <a
-                                                            href={`/news/${announcement.id}`}
+                                                            href={`/news/${announcement.slug}`}
                                                             target="_blank"
                                                             rel="noopener noreferrer"
                                                             className="btn btn-ghost btn-sm"

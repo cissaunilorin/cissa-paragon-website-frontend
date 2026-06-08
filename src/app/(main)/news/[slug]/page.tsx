@@ -11,13 +11,13 @@ import { getAnnouncementById } from "@/lib/announcements";
 export default async function AnnouncementPage({
     params,
 }: {
-    params: Promise<{ id: string }>;
+    params: Promise<{ slug: string }>;
 }) {
-    const { id } = await params;
+    const { slug } = await params;
 
     let announcement;
     try {
-        announcement = await getAnnouncementById(id);
+        announcement = await getAnnouncementById(slug);
 
         if (!announcement) {
             notFound();
@@ -79,7 +79,7 @@ export default async function AnnouncementPage({
                     </div>
 
                     <ShareRow
-                        announcementId={id}
+                        announcementSlug={announcement.slug}
                         announcementTitle={announcement.title}
                     />
 

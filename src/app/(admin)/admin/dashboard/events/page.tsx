@@ -355,7 +355,7 @@ export default function EventsPage() {
                                                 <td>
                                                     <div className="flex gap-2">
                                                         <a
-                                                            href={`/events/${event.id}`}
+                                                            href={`/events/${event.slug}`}
                                                             target="_blank"
                                                             rel="noopener noreferrer"
                                                             className="btn btn-ghost btn-sm"

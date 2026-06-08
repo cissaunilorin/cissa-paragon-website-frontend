@@ -202,7 +202,7 @@ export default function AdminDashboardPage() {
 
                                         <div className="flex gap-1">
                                             <a
-                                                href={`/news/${announcement.id}`}
+                                                href={`/news/${announcement.slug}`}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="btn btn-ghost btn-xs"

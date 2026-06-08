@@ -55,13 +55,13 @@ function LocationIcon({ locationType }: { locationType: "online" | "physical" | 
 export default async function EventPage({
     params,
 }: {
-    params: Promise<{ id: string }>;
+    params: Promise<{ slug: string }>;
 }) {
-    const { id } = await params;
+    const { slug } = await params;
 
     let event;
     try {
-        event = await getEventById(id);
+        event = await getEventById(slug);
 
         if (!event) {
             notFound();
@@ -148,7 +148,7 @@ export default async function EventPage({
                                 </div>
                             )}
 
-                            <ShareRow eventId={event.id} eventTitle={event.title} />
+                            <ShareRow eventSlug={event.slug} eventTitle={event.title} />
                         </div>
                     </div>
                 </article>

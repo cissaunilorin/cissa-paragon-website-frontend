@@ -3,6 +3,7 @@ import { Signatory } from "./signatories";
 
 export interface Announcement {
     id: string;
+    slug: string;
     title: string;
     image_url: string;
     category: string;

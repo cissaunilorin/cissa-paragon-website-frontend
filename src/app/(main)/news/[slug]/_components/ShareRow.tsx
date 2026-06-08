@@ -3,32 +3,32 @@
 import { useEffect, useState } from "react";
 import { Link as LinkIcon, MessageCircle, Twitter } from "lucide-react";
 
-function getCurrentPageUrl(eventId: string) {
+function getCurrentPageUrl(announcementSlug: string) {
     const siteUrl = typeof window !== "undefined"
         ? window.location.origin.replace(/\/$/, "")
         : "";
 
-    return `${siteUrl}/events/${eventId}`;
+    return `${siteUrl}/news/${announcementSlug}`;
 }
 
 export default function ShareRow({
-    eventId,
-    eventTitle,
+    announcementSlug,
+    announcementTitle,
 }: {
-    eventId: string;
-    eventTitle: string;
+    announcementSlug: string;
+    announcementTitle: string;
 }) {
     const [copied, setCopied] = useState(false);
 
-    const currentPageUrl = getCurrentPageUrl(eventId);
+    const currentPageUrl = getCurrentPageUrl(announcementSlug);
 
     const xShareUrl = `https://x.com/intent/tweet?${new URLSearchParams({
         url: currentPageUrl,
-        text: eventTitle,
+        text: announcementTitle,
     }).toString()}`;
 
     const whatsappShareUrl = `https://wa.me/?${new URLSearchParams({
-        text: `${eventTitle} ${currentPageUrl}`,
+        text: `${announcementTitle} ${currentPageUrl}`,
     }).toString()}`;
 
     useEffect(() => {

@@ -92,7 +92,7 @@ export default function EventCard({ event }: { event: Event }) {
 
                 <div className="min-w-0 space-y-3 md:pl-2">
                     <Link
-                        href={`/events/${event.id}`}
+                        href={`/events/${event.slug}`}
                         className="inline-block text-left text-xl font-bold uppercase tracking-[0.12em] text-base-content transition-colors hover:underline focus-visible:underline focus-visible:outline-none md:text-2xl"
                     >
                         <h2>{event.title}</h2>
@@ -113,7 +113,7 @@ export default function EventCard({ event }: { event: Event }) {
                     </p>
 
                     <Link
-                        href={`/events/${event.id}`}
+                        href={`/events/${event.slug}`}
                         className="inline-flex w-fit items-center rounded-full border border-base-300 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-primary transition-colors hover:bg-primary hover:text-base-100 active:bg-primary active:text-base-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
                     >
                         Learn more

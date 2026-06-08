@@ -2,6 +2,7 @@ import apiClient from "./api";
 
 export interface Event {
     id: string;
+    slug: string;
     title: string;
     description: string;
     image_url: string | null;

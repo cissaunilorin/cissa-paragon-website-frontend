@@ -24,12 +24,12 @@ function getAbsoluteImageUrl(imageUrl: string) {
 export async function generateMetadata({
     params,
 }: {
-    params: Promise<{ id: string }>;
+    params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-    const { id } = await params;
+    const { slug } = await params;
 
     try {
-        const announcement = await getAnnouncementById(id);
+        const announcement = await getAnnouncementById(slug);
 
         if (!announcement) {
             return {

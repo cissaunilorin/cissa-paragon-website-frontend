@@ -30,7 +30,7 @@ export default function AnnouncementPreview({
 
     return (
         <Link
-            href={`/news/${announcement.id}`}
+            href={`/news/${announcement.slug}`}
             className="group block h-full"
             aria-label={`Read announcement: ${announcement.title}`}
         >
