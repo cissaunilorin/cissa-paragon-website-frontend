@@ -4,7 +4,9 @@ import { useEffect, useState } from "react";
 import { Link as LinkIcon, MessageCircle, Twitter } from "lucide-react";
 
 function getCurrentPageUrl(eventId: string) {
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "";
+    const siteUrl = typeof window !== "undefined"
+        ? window.location.origin.replace(/\/$/, "")
+        : "";
 
     return `${siteUrl}/events/${eventId}`;
 }
