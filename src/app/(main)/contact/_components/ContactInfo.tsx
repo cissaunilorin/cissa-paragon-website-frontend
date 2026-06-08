@@ -20,11 +20,11 @@ export default function ContactInfo() {
 				<div className="space-y-10">
 					<div className="space-y-4">
 						<Link
-							href="mailto:info@cissa-unilorin.org"
+							href="mailto:officialcissaunilorin1@gmail.com"
 							className="inline-flex items-center gap-3 text-base font-semibold text-neutral-900 transition-colors duration-200 hover:text-primary md:text-xl"
 						>
 							<Mail className="h-5 w-5 md:h-8 md:w-8 shrink-0" />
-							<span>info@cissa-unilorin.org</span>
+							<span>officialcissaunilorin1@gmail.com</span>
 						</Link>
 					</div>
 

@@ -123,11 +123,11 @@ export default function Footer() {
                         </p>
 
                         <a
-                            href="mailto:info@cissa-unilorin.org"
+                            href="mailto:officialcissaunilorin1@gmail.com"
                             className="inline-flex items-center gap-2 text-sm text-white/75 transition-colors duration-200 hover:text-white md:text-[0.95rem]"
                         >
                             <Mail className="h-4 w-4 shrink-0" />
-                            <span>info@cissa-unilorin.org</span>
+                            <span>officialcissaunilorin1@gmail.com</span>
                         </a>
 
                         <div className="flex flex-wrap gap-3 pt-1">
