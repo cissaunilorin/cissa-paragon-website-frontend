@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { ArrowRight, GraduationCap, ShieldCheck, Users } from "lucide-react";
+import { ArrowRight, Megaphone, ShieldCheck, Users } from "lucide-react";
 
 type WhatWeDoCard = {
-    icon: typeof GraduationCap;
+    icon: typeof Megaphone;
     lineOne: string;
     lineTwo: string;
     description: string;
@@ -14,14 +14,14 @@ type WhatWeDoCard = {
 
 const cards: WhatWeDoCard[] = [
     {
-        icon: GraduationCap,
-        lineOne: "Want to go further",
-        lineTwo: "in your studies?",
+        icon: Megaphone,
+        lineOne: "Stay in the know",
+        lineTwo: "with CISSA news",
         description:
-            "From peer tutorials to tech bootcamps and career talks, CISSA connects you with the resources to grow academically and professionally.",
+            "Updates, announcements, and stories from across the CISSA community.",
         ctas: [
             {
-                label: "Explore resources",
+                label: "Read latest news",
                 href: "/news",
             },
         ],
