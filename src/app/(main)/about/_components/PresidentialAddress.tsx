@@ -29,7 +29,7 @@ export default function PresidentialAddress() {
 									Sanni Nurudeen Akorede
 								</h3>
 								<p className="text-sm font-medium uppercase tracking-[0.2em] text-base-content/60 md:text-base">
-									17th CISSA President
+									18th CISSA President
 								</p>
 								<p className="text-sm uppercase tracking-[0.18em] text-base-content/55 md:text-base">
 									2025/2026 Academic Session
