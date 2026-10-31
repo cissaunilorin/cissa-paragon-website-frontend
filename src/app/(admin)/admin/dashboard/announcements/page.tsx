@@ -92,7 +92,7 @@ export default function AnnouncementsPage() {
             title: formData.title,
             category: formData.category,
             body: formData.body,
-            session: "2025/2026 ACADEMIC SESSION",
+            session: "2026/2027 Academic Session",
             published_at: formData.published_at,
             signatories: formData.signatories,
             image: formData.image as File,
@@ -425,7 +425,7 @@ export default function AnnouncementsPage() {
                                         {editingAnnouncement ? "Edit Announcement" : "Create New Announcement"}
                                     </h3>
                                     <p className="mt-0.5 text-sm text-base-content/50">
-                                        2025/2026 Academic Session
+                                        2026/2027 Academic Session
                                     </p>
                                 </div>
                                 <button

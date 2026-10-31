@@ -43,7 +43,7 @@ export default function EventsPage() {
         end_time: "",
         requires_ticket: false,
         ticket_url: "",
-        session: "2025/2026 ACADEMIC SESSION",
+        session: "2026/2027 Academic Session",
     });
 
     const fetchEvents = useCallback(async () => {
@@ -78,7 +78,7 @@ export default function EventsPage() {
             end_time: "",
             requires_ticket: false,
             ticket_url: "",
-            session: "2025/2026 ACADEMIC SESSION",
+            session: "2026/2027 Academic Session",
         });
     };
 
@@ -432,7 +432,7 @@ export default function EventsPage() {
                                         {editingEvent ? "Edit Event" : "Create New Event"}
                                     </h3>
                                     <p className="mt-0.5 text-sm text-base-content/50">
-                                        2025/2026 Academic Session
+                                        2026/2027 Academic Session
                                     </p>
                                 </div>
                                 <button

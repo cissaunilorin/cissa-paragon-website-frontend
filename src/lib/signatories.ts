@@ -2,7 +2,7 @@ import apiClient from "./api";
 
 export interface Signatory {
     id: string;
-    name: string; // e.g. "SANNI, Nurudeen Akorede"
+    name: string; // e.g. "Kuforiji Ayobami Waris"
     alias?: string; // e.g. "D'LIGHT"
     role: string; // e.g. "Executive President"
     contact?: string; // e.g. WhatsApp link

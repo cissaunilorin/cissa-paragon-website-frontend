@@ -1,32 +1,31 @@
 export default function EventCardSkeleton() {
     return (
-        <article className="relative bg-base-100 py-6 md:p-6" aria-hidden="true">
-            <div className="grid grid-cols-1 gap-5 md:grid-cols-[minmax(5.5rem,0.58fr)_minmax(14rem,1.2fr)_minmax(0,2.4fr)] md:items-center md:gap-8">
-                <div className="relative flex items-center">
-                    <div className="flex min-w-0 flex-1 flex-col justify-center gap-2 md:max-w-24 md:flex-none md:items-start">
-                        <div className="h-4 w-16 rounded-full bg-base-300 animate-pulse" />
-                        <div className="h-14 w-20 rounded-2xl bg-base-300 animate-pulse md:h-16 md:w-24" />
-                        <div className="h-4 w-24 rounded-full bg-base-300 animate-pulse" />
-                    </div>
+        <article
+            className="group relative rounded-3xl border border-base-300/80 bg-base-100 p-5 sm:p-6 shadow-xs"
+            aria-hidden="true"
+        >
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-[auto_16rem_1fr] lg:grid-cols-[auto_18rem_1fr] md:items-center md:gap-7">
+                {/* Date display (Desktop) */}
+                <div className="hidden md:flex min-w-24 flex-col items-center justify-center rounded-2xl bg-base-200/60 p-4 text-center border border-base-200">
+                    <div className="h-3 w-12 rounded-full bg-base-300 animate-pulse" />
+                    <div className="h-9 w-14 rounded-xl bg-base-300 animate-pulse my-2" />
+                    <div className="h-3 w-10 rounded-full bg-base-300 animate-pulse" />
                 </div>
 
-                <div className="relative aspect-16/10 w-full overflow-hidden rounded-md bg-base-300 animate-pulse md:w-64 md:self-stretch" />
+                {/* Event Image */}
+                <div className="relative aspect-16/10 w-full overflow-hidden rounded-2xl bg-base-300 animate-pulse md:self-stretch" />
 
-                <div className="min-w-0 space-y-3 md:pl-2">
-                    <div className="h-7 w-11/12 rounded-full bg-base-300 animate-pulse md:h-8" />
-
-                    <div className="flex items-start gap-2">
-                        <div className="mt-0.5 h-4 w-4 shrink-0 rounded-full bg-base-300 animate-pulse" />
-                        <div className="h-5 w-4/5 rounded-full bg-base-300 animate-pulse md:h-[1.15rem]" />
-                    </div>
+                {/* Content details */}
+                <div className="min-w-0 space-y-3">
+                    <div className="h-6 w-3/4 rounded-full bg-base-300 animate-pulse" />
+                    <div className="h-4 w-1/3 rounded-full bg-base-300 animate-pulse" />
 
                     <div className="space-y-2 pt-1">
-                        <div className="h-4 w-full rounded-full bg-base-300 animate-pulse md:h-5" />
-                        <div className="h-4 w-11/12 rounded-full bg-base-300 animate-pulse md:h-5" />
-                        <div className="h-4 w-5/6 rounded-full bg-base-300 animate-pulse md:h-5" />
+                        <div className="h-3.5 w-full rounded-full bg-base-300 animate-pulse" />
+                        <div className="h-3.5 w-4/5 rounded-full bg-base-300 animate-pulse" />
                     </div>
 
-                    <div className="h-10 w-32 rounded-full bg-base-300 animate-pulse" />
+                    <div className="h-9 w-28 rounded-full bg-base-300 animate-pulse" />
                 </div>
             </div>
         </article>

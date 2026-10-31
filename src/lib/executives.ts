@@ -14,59 +14,19 @@ export interface Executive {
 
 export const executives: Executive[] = [
   {
-    name: "Sanni Nurudeen Akorede",
+    name: "Kuforiji Ayobami Waris",
     position: "President",
     image: "/assets/Executives/President.jpg",
     socials: {
-      whatsapp: "09152349887",
-      twitter: "https://x.com/dreal_nurudeen",
-      linkedin: "http://www.linkedin.com/in/sanni-nurudeen-akorede",
-    },
-  },
-  {
-    name: "Oyebanji Aminat Oluwatobi",
-    position: "Vice President",
-    image: "/assets/Executives/VicePresident.jpg",
-    socials: {
-      whatsapp: "09096981054",
-      twitter: "https://x.com/_hermyheenat",
-      linkedin: "https://www.linkedin.com/in/aminat-oyebanji-2b99a330b",
-    },
-  },
-  {
-    name: "Shittu Ayomide Ebunoluwa",
-    position: "General Secretary",
-    image: "/assets/Executives/GeneralSec.jpg",
-    socials: {
-      whatsapp: "08084070943",
-      tiktok: "https://www.tiktok.com/@ebun1277",
-      snapchat: "https://snapchat.com/t/v4y9LXbO"
-    },
-  },
-  {
-    name: "Oguntuwase Oluwafemi Joseph",
-    position: "Assistant General Secretary",
-    image: "/assets/Executives/AssistantGeneralSec.jpg",
-    socials: {
-      whatsapp: "07034972272",
-      instagram: "https://www.instagram.com/oluwafemi31_",
-      twitter: "https://x.com/theoluwafemi_",
-    },
-  },
-  {
-    name: "Kuforiji Ayobami Waris",
-    position: "Public Relations Officer",
-    image: "/assets/Executives/PublicRelationOfficer.jpg",
-    socials: {
       whatsapp: "09167369415",
-      instagram: "https://www.instagram.com/ayobami.w.k",
+     instagram: "https://www.instagram.com/ayobami.w.k",
       twitter: "https://x.com/aw_kuforiji",
     },
   },
   {
     name: "Shanu Mariam Oluwabunmi",
-    position: "Financial Secretary",
-    image: "/assets/Executives/FinancialSec.jpeg",
+    position: "Vice President",
+    image: "/assets/Executives/VicePresident.jpg",
     socials: {
       whatsapp: "09030857396",
       twitter: "https://x.com/Bummie___",
@@ -74,41 +34,88 @@ export const executives: Executive[] = [
     },
   },
   {
-    name: "Shittu Fareedah Adedamola",
-    position: "Welfare Secretary",
-    image: "/assets/Executives/WelfareSec.jpg",
+    name: "Odeniyi David Dideolu",
+    position: "General Secretary",
+    image: "/assets/Executives/GeneralSec.jpg",
     socials: {
-      whatsapp: "09134434959",
+      whatsapp: "09130169243",
+      twitter: "https://x.com/iamdideolu",
+     instagram: "https://www.instagram.com/iamdideolu"
     },
   },
   {
-    name: "Akinleye Akinjuwon Olushola",
-    position: "Social Director",
-    image: "/assets/Executives/SocialDirector.jpg",
+    name: "Adelaja Elijah Omotayo",
+    position: "Assistant General Secretary",
+    image: "/assets/Executives/AssistantGeneralSec.jpg",
     socials: {
-      whatsapp: "08073617300",
-      twitter: "https://x.com/irregularstilez",
-      instagram: "https://www.instagram.com/clicksbystilez"
+      whatsapp: "08051230488",
     },
   },
   {
-    name: "Ashaolu Michael Oluwatoni",
-    position: "Sports Director",
-    image: "/assets/Executives/SportsDirector.jpg",
+    name: "Fiki Kehinde Elisha",
+    position: "Public Relations Officer I",
+    image: "/assets/Executives/PublicRelationOfficer.jpg",
     socials: {
-      whatsapp: "07010635009",
-      instagram: "https://www.instagram.com/ashaolu.micheal",
-      twitter: "https://x.com/Toni2kul",
+      whatsapp: "07088832997",
+      twitter: "https://x.com/GlobalREY001",
+      instagram: "https://www.instagram.com/fikikehindeelisha?igsh=aWhhMzN6NGVnZXZs",
     },
   },
   {
-    name: "Ikeh Chidiebere Franklin",
+    name: "Mustapha Ololade Firdauz",
+    position: "Public Relations Officer II",
+    image: "/assets/Executives/PublicRelationOfficerii.jpg",
+    socials: {
+      whatsapp: "07013940533",
+      twitter: "x.com/Sarauniya_001",
+    },
+  },
+  
+  {
+    name: "Oladejo Mary Ouwadarasimi",
+    position: "Financial Secretary",
+    image: "/assets/Executives/FinancialSec.jpeg",
+    socials: {
+      whatsapp: "07056657260",
+      instagram: "https://www.instagram.com/darasdelighthub/"
+    },
+  },
+  {
+    name: "Jacobs Favour Olamilekan",
     position: "Software Director",
     image: "/assets/Executives/SoftwareDirector.jpg",
     socials: {
-      whatsapp: "09079016973",
-      twitter: "https://x.com/builtbyfranklin",
-      linkedin: "https://www.linkedin.com/in/franklin-ikeh",
+      whatsapp: "0121606821",
+      instagram: "https://www.instagram.com/thefavourjacobs/",
+      linkedin: "https://ng.linkedin.com/in/thefavourjacobs",
+      twitter: "https://x.com/favour30312",
+    },
+  },
+  {
+    name: "Abdulrasheed Ayobami Ishola",
+    position: "Welfare Secretary",
+    image: "/assets/Executives/WelfareSec.jpg",
+    socials: {
+      whatsapp: "09015359742",
+       tiktok: "https://www.tiktok.com/jiggy_sola",
+      twitter: "https://x.com/jiggy_206",
+    },
+  },
+  {
+    name: "Ejigah Ojochenemi Oluwatosin",
+    position: "Social Director",
+    image: "/assets/Executives/SocialDirector.jpeg",
+    socials: {
+      whatsapp: "09017555275",
+    },
+  },
+  {
+    name: "Arewa Sultan Ayomide",
+    position: "Sports Director",
+    image: "/assets/Executives/SportDirector.png",
+    socials: {
+      whatsapp: "08127828846",
+      instagram: "https://www.instagram.com/Surphur_gram",
     },
   },
 ];

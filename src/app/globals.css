@@ -8,12 +8,12 @@
   default: true;
   prefersdark: false;
   color-scheme: "light";
-  --color-base-100: oklch(98% 0.005 60);
-  --color-base-200: oklch(95% 0.005 60);
-  --color-base-300: oklch(91% 0.005 60);
+  --color-base-100: oklch(98.5% 0.004 60);
+  --color-base-200: oklch(95.5% 0.006 60);
+  --color-base-300: oklch(91.5% 0.008 60);
   --color-base-content: oklch(20% 0.02 60);
-  --color-primary: oklch(45% 0.1 60);
-  --color-primary-content: oklch(95% 0.02 85);
+  --color-primary: oklch(48% 0.12 60);
+  --color-primary-content: oklch(98% 0.01 85);
   --color-secondary: oklch(75% 0.15 85);
   --color-secondary-content: oklch(20% 0.05 60);
   --color-accent: oklch(65% 0.15 180);
@@ -36,4 +36,22 @@
   --border: 1px;
   --depth: 1;
   --noise: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: oklch(48% 0.12 60 / 0.2);
+  color: oklch(20% 0.02 60);
 }

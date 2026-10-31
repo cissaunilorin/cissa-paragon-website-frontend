@@ -2,10 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { MessageCircle } from "lucide-react";
 
 export default function Hero() {
 	const containerRef = useRef<HTMLDivElement>(null);
 	const subTextRef = useRef<HTMLParagraphElement>(null);
+	const badgeRef = useRef<HTMLDivElement>(null);
+
 	const [headlineText, setHeadlineText] = useState(
 		"We're closer than you think.",
 	);
@@ -43,45 +46,58 @@ export default function Hero() {
 		const ctx = gsap.context(() => {
 			const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
 
-			tl.to(".word-anim", {
-				y: 0,
-				opacity: 1,
-				stagger: headlineStagger,
-				duration: headlineDuration,
-				delay: 0.2,
-			}).fromTo(
-				subTextRef.current,
-				{ y: 30, opacity: 0 },
-				{ y: 0, opacity: 1, duration: 1 },
-				"-=0.8",
-			);
+			tl.fromTo(
+				badgeRef.current,
+				{ y: 20, opacity: 0 },
+				{ y: 0, opacity: 1, duration: 0.8, delay: 0.1 },
+			)
+				.to(".word-anim", {
+					y: 0,
+					opacity: 1,
+					stagger: headlineStagger,
+					duration: headlineDuration,
+				}, "-=0.5")
+				.fromTo(
+					subTextRef.current,
+					{ y: 25, opacity: 0 },
+					{ y: 0, opacity: 1, duration: 0.9 },
+					"-=0.7",
+				);
 		}, containerRef);
 
 		return () => ctx.revert();
 	}, [headlineText, isMounted]);
 
 	return (
-		<div className="bg-base-100 p-0 lg:p-4 min-h-screen flex flex-col justify-center">
+		<div className="w-full relative overflow-hidden">
 			<div
 				ref={containerRef}
 				id="contact"
-				className="hero min-h-screen lg:min-h-full relative overflow-hidden flex items-end justify-start lg:items-center lg:justify-center lg:rounded-2xl flex-1"
+				className="relative w-full min-h-[85vh] sm:min-h-screen flex items-center justify-center bg-cover bg-center overflow-hidden"
 				style={{
 					backgroundImage: "url(/assets/fac4.jpg)",
 					backgroundSize: "cover",
 					backgroundPosition: "center",
 				}}
 			>
-				<div className="absolute inset-0 bg-black/65 z-0"></div>
+				<div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/60 to-black/85 z-0" />
 
-				<div className="relative z-10 w-full max-w-[90vw] px-6 md:px-10 pb-20 md:pb-10 lg:pb-0 text-left lg:text-center text-white lg:max-w-7xl lg:mx-auto">
-					<h1 className="font-bold text-5xl md:text-8xl leading-[1.06] md:leading-none tracking-tight mb-4 md:mb-8 max-w-full lg:max-w-7xl lg:mx-auto">
+				<div className="relative z-10 w-full max-w-4xl px-5 sm:px-8 pt-24 pb-16 sm:pt-28 sm:pb-20 text-center text-white mx-auto flex flex-col items-center justify-center">
+					<div
+						ref={badgeRef}
+						className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-1.5 text-xs sm:text-sm font-medium text-white/90 backdrop-blur-md mb-4 sm:mb-6 shadow-xs opacity-0"
+					>
+						<MessageCircle className="h-3.5 w-3.5 text-amber-300" />
+						<span>Get in Touch</span>
+					</div>
+
+					<h1 className="font-bold text-3xl sm:text-5xl md:text-7xl lg:text-8xl leading-[1.1] md:leading-[1.04] tracking-tight mb-4 sm:mb-6 max-w-4xl mx-auto">
 						{headlineText.split(" ").map((word, index) => (
 							<span
 								key={index}
-								className="inline-block whitespace-nowrap mr-3 md:mr-6 last:mr-0 lg:mr-4"
+								className="inline-block whitespace-nowrap mr-2 sm:mr-3 md:mr-5 last:mr-0"
 							>
-								<span className="inline-block opacity-0 translate-y-20 word-anim will-change-transform">
+								<span className="inline-block opacity-0 translate-y-16 word-anim will-change-transform">
 									{word}
 								</span>
 							</span>
@@ -90,9 +106,9 @@ export default function Hero() {
 
 					<p
 						ref={subTextRef}
-						className="text-lg md:text-2xl font-normal text-gray-200 max-w-2xl lg:max-w-2xl mx-auto mb-4 md:mb-8 leading-relaxed opacity-0"
+						className="text-base sm:text-lg md:text-xl font-normal text-white/85 max-w-xl md:max-w-2xl mx-auto leading-relaxed opacity-0 px-2"
 					>
-						Find the best way to reach CISSA below.
+						Have questions, concerns, or ideas? Your executive team is just a tap away.
 					</p>
 				</div>
 			</div>

@@ -8,155 +8,210 @@ import {
     Twitter,
     Youtube,
     Instagram,
+    ArrowUpRight,
+    Heart,
 } from "lucide-react";
 
 export const socialLinks = [
     {
-        label: "X",
+        label: "X (Twitter)",
         href: "https://x.com/cissa_unilorin?s=21",
         icon: Twitter,
-        hoverClassName: "hover:text-sky-400",
+        hoverClassName: "hover:bg-sky-500/20 hover:text-sky-300 hover:border-sky-500/40",
     },
     {
         label: "Instagram",
         href: "https://www.instagram.com/cissaunilorin?igsh=MWJqaXRnMXB3djJ5ag==",
         icon: Instagram,
-        hoverClassName: "hover:text-fuchsia-400",
+        hoverClassName: "hover:bg-pink-500/20 hover:text-pink-300 hover:border-pink-500/40",
     },
     {
         label: "TikTok",
-        href: "https://www.tiktok.com/@cissa_unilorin?_r=1&_t=ZM-91XFVYEl1uF",
+        href: "https://www.tiktok.com/@cissaunilorin",
         icon: Music2,
-        hoverClassName: "hover:text-cyan-300",
+        hoverClassName: "hover:bg-cyan-500/20 hover:text-cyan-300 hover:border-cyan-500/40",
     },
     {
         label: "YouTube",
         href: "https://youtube.com/@cissapulse?si=VJDMiDFlFSlCtSQp",
         icon: Youtube,
-        hoverClassName: "hover:text-red-400",
+        hoverClassName: "hover:bg-red-500/20 hover:text-red-300 hover:border-red-500/40",
     },
     {
         label: "WhatsApp TV",
-        href: "https://wa.me/7059834118",
+        href: "https://wa.me/7061835134",
         icon: MessageCircleMore,
-        hoverClassName: "hover:text-emerald-400",
+        hoverClassName: "hover:bg-emerald-500/20 hover:text-emerald-300 hover:border-emerald-500/40",
     },
     {
         label: "WhatsApp Group",
         href: "https://chat.whatsapp.com/G5LkBmXDxQa1mYWBvhrMaa",
         icon: MessagesSquare,
-        hoverClassName: "hover:text-emerald-400",
+        hoverClassName: "hover:bg-emerald-500/20 hover:text-emerald-300 hover:border-emerald-500/40",
     },
 ];
 
 export default function Footer() {
     return (
-        <footer className="bg-primary text-white">
-            <div className="mx-auto max-w-6xl px-6 pb-10 pt-16 md:px-8 lg:px-10 lg:pb-12 lg:pt-20">
-                <div className="grid gap-12 lg:grid-cols-3 lg:gap-16">
-                    <aside className="space-y-4 text-left">
-                        <Link href="/" className="inline-flex items-center gap-3">
-                            <div className="avatar">
-                                <div className="h-12 w-12 overflow-hidden rounded-full">
-                                    <Image
-                                        src="/assets/cissa.png"
-                                        alt="CISSA Logo"
-                                        width={48}
-                                        height={48}
-                                    />
-                                </div>
+        <footer className="bg-neutral-950 text-white border-t border-white/10 relative overflow-hidden">
+            {/* Top Community Banner */}
+            <div className="border-b border-white/10 bg-white/5 py-8 sm:py-10">
+                <div className="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                        <div>
+                            <h3 className="text-lg sm:text-xl font-bold tracking-tight text-white">
+                                Stay connected with CISSA
+                            </h3>
+                            <p className="text-xs sm:text-sm text-white/60">
+                                Get immediate notifications, lecture updates, and community links on WhatsApp.
+                            </p>
+                        </div>
+                        <a
+                            href="https://chat.whatsapp.com/G5LkBmXDxQa1mYWBvhrMaa"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="group inline-flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white shadow-lg transition-all hover:bg-emerald-500 active:scale-95"
+                        >
+                            <MessagesSquare className="h-4 w-4" />
+                            <span>Join Community</span>
+                            <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            {/* Main Footer Links */}
+            <div className="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8 py-12 sm:py-16">
+                <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
+                    {/* Brand */}
+                    <div className="space-y-4 sm:col-span-2 lg:col-span-1">
+                        <Link href="/" className="inline-flex items-center gap-3 group">
+                            <div className="relative h-11 w-11 overflow-hidden rounded-full ring-2 ring-primary/40">
+                                <Image
+                                    src="/assets/cissa.png"
+                                    alt="CISSA Logo"
+                                    fill
+                                    sizes="44px"
+                                    className="object-cover"
+                                />
                             </div>
-                            <span className="text-sm md:text-sm font-bold tracking-[0.24em] text-white/80">
-                                CISSA
-                            </span>
+                            <div className="flex flex-col">
+                                <span className="text-base font-bold tracking-tight text-white">
+                                    CISSA
+                                </span>
+                                <span className="text-[0.68rem] uppercase tracking-wider text-white/50">
+                                    University of Ilorin
+                                </span>
+                            </div>
                         </Link>
 
-                        <p className="max-w-sm text-sm leading-7 text-white/70 md:text-[0.95rem]">
-                            The official student association of the Faculty of
-                            Communication and Information Sciences, University of
-                            Ilorin.
+                        <p className="text-xs sm:text-sm leading-relaxed text-white/70 max-w-sm">
+                            The official student association representing students across Computer Science, Information & Communication Science, Library & Information Science, Mass Communication, Telecommunication Science, and Cybersecurity.
                         </p>
-                    </aside>
+                    </div>
 
-                    <nav aria-label="Quick links" className="space-y-4 text-left">
-                        <p className="text-xs md:text-sm font-bold uppercase tracking-[0.28em] text-white/50">
-                            Quick Links
+                    {/* Navigation */}
+                    <div className="space-y-3">
+                        <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400/90">
+                            Navigation
                         </p>
-
-                        <ul className="space-y-2 text-sm md:text-[0.95rem]">
+                        <ul className="space-y-2 text-xs sm:text-sm">
                             <li>
-                                <Link className="link link-hover text-white/75 hover:text-white" href="/">
+                                <Link className="text-white/70 hover:text-white transition-colors" href="/">
                                     Home
                                 </Link>
                             </li>
                             <li>
-                                <Link className="link link-hover text-white/75 hover:text-white" href="/about">
-                                    About
+                                <Link className="text-white/70 hover:text-white transition-colors" href="/about">
+                                    About Us
                                 </Link>
                             </li>
                             <li>
-                                <Link className="link link-hover text-white/75 hover:text-white" href="/events">
-                                    Events
+                                <Link className="text-white/70 hover:text-white transition-colors" href="/events">
+                                    Events Calendar
                                 </Link>
                             </li>
                             <li>
-                                <Link className="link link-hover text-white/75 hover:text-white" href="/news">
-                                    News
+                                <Link className="text-white/70 hover:text-white transition-colors" href="/news">
+                                    News & Memos
                                 </Link>
                             </li>
                             <li>
-                                <Link className="link link-hover text-white/75 hover:text-white" href="/about">
-                                    Resources
+                                <Link className="text-white/70 hover:text-white transition-colors" href="/materials">
+                                    Study Materials
                                 </Link>
                             </li>
                             <li>
-                                <Link className="link link-hover text-white/75 hover:text-white" href="/contact">
-                                    Contact
+                                <Link className="text-white/70 hover:text-white transition-colors" href="/contact">
+                                    Contact Executives
                                 </Link>
                             </li>
                         </ul>
-                    </nav>
+                    </div>
 
-                    <div className="space-y-4 text-left">
-                        <p className="text-xs md:text-sm font-bold uppercase tracking-[0.28em] text-white/50">
-                            Connect
+                    {/* Quick Resources */}
+                    <div className="space-y-3">
+                        <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400/90">
+                            Departments
+                        </p>
+                        <ul className="space-y-2 text-xs sm:text-sm text-white/70">
+                            <li>Computer Science</li>
+                            <li>Information & Comm. Science</li>
+                            <li>Library & Info Science</li>
+                            <li>Mass Communication</li>
+                            <li>Telecommunication Science</li>
+                            <li>Cybersecurity</li>
+                        </ul>
+                    </div>
+
+                    {/* Contact & Socials */}
+                    <div className="space-y-3">
+                        <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400/90">
+                            Contact
                         </p>
 
                         <a
                             href="mailto:officialcissaunilorin1@gmail.com"
-                            className="inline-flex items-center gap-2 text-sm text-white/75 transition-colors duration-200 hover:text-white md:text-[0.95rem]"
+                            className="inline-flex items-center gap-2 text-xs sm:text-sm text-white/70 hover:text-white transition-colors break-all"
                         >
-                            <Mail className="h-4 w-4 shrink-0" />
+                            <Mail className="h-4 w-4 shrink-0 text-amber-300" />
                             <span>officialcissaunilorin1@gmail.com</span>
                         </a>
 
-                        <div className="flex flex-wrap gap-3 pt-1">
-                            {socialLinks.map((social) => {
-                                const SocialIcon = social.icon;
-
-                                return (
-                                    <a
-                                        key={social.label}
-                                        href={social.href}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        aria-label={social.label}
-                                        title={social.label}
-                                        className={`inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white/70 transition-colors duration-200 hover:bg-white/15 ${social.hoverClassName}`}
-                                    >
-                                        <SocialIcon className="h-5 w-5" />
-                                    </a>
-                                );
-                            })}
+                        <div className="pt-2">
+                            <p className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-white/40 mb-2">
+                                Social Channels
+                            </p>
+                            <div className="flex flex-wrap gap-2">
+                                {socialLinks.map((social) => {
+                                    const SocialIcon = social.icon;
+                                    return (
+                                        <a
+                                            key={social.label}
+                                            href={social.href}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            aria-label={social.label}
+                                            title={social.label}
+                                            className={`inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 transition-all ${social.hoverClassName}`}
+                                        >
+                                            <SocialIcon className="h-4 w-4" />
+                                        </a>
+                                    );
+                                })}
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div className="mt-10 border-t border-white/10 pt-8 lg:mt-12 lg:pt-10" />
-
-                <div className="flex flex-col items-center justify-between gap-3 text-center text-sm md:text-md text-white/60 lg:flex-row lg:text-left">
-                    <p>Copyright © 2026 CISSA. All rights reserved.</p>
-                    <p>Built with ❤️ by CISSA TECH</p>
+                {/* Bottom Bar */}
+                <div className="mt-12 border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left text-xs text-white/50">
+                    <p>© 2026 CISSA University of Ilorin. All rights reserved.</p>
+                    <p className="flex items-center gap-1.5">
+                        <span>Crafted with</span>
+                        <Heart className="h-3.5 w-3.5 fill-red-500 text-red-500" />
+                        <span>by CISSA TECH</span>
+                    </p>
                 </div>
             </div>
         </footer>

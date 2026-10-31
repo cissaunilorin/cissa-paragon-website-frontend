@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Globe, MapPin } from "lucide-react";
+import { ArrowRight, Calendar, Clock, Globe, MapPin } from "lucide-react";
 
 import { type Event } from "@/lib/events";
 import { formatTimeTo12Hour } from "@/lib/utils/format";
@@ -13,11 +13,11 @@ function getExcerpt(body: string) {
         .replace(/\s+/g, " ")
         .trim();
 
-    if (cleanedBody.length <= 180) {
+    if (cleanedBody.length <= 160) {
         return cleanedBody;
     }
 
-    return `${cleanedBody.slice(0, 180).trimEnd()}…`;
+    return `${cleanedBody.slice(0, 160).trimEnd()}…`;
 }
 
 function getStartDateParts(event: Event) {
@@ -39,17 +39,6 @@ function LocationIcon({
         return <Globe className="h-4 w-4 shrink-0" aria-hidden="true" />;
     }
 
-    if (locationType === "physical") {
-        return (
-            <span
-                className="inline-flex items-center gap-1.5"
-                aria-hidden="true"
-            >
-                <MapPin className="h-4 w-4 shrink-0" />
-            </span>
-        );
-    }
-
     return <MapPin className="h-4 w-4 shrink-0" aria-hidden="true" />;
 }
 
@@ -57,67 +46,84 @@ export default function EventCard({ event }: { event: Event }) {
     const startDate = getStartDateParts(event);
 
     return (
-        <article className="relative bg-base-100 py-6 md:p-6">
-            <div className="grid grid-cols-1 gap-5 md:grid-cols-[minmax(5.5rem,0.58fr)_minmax(14rem,1.2fr)_minmax(0,2.4fr)] md:items-center md:gap-8">
-                <div className="relative flex items-center justify-start">
-                    <div className="flex min-w-0 flex-col items-center justify-center text-center md:max-w-24 md:flex-none">
-                        <span className="text-sm font-medium tracking-wide">
-                            {startDate.time}
-                        </span>
-                        <span className="text-5xl font-bold leading-none tracking-tight md:text-6xl">
-                            {startDate.day}
-                        </span>
-                        <span className="mt-1 text-sm font-medium">
-                            {startDate.month}, {startDate.year}
-                        </span>
+        <article className="group relative rounded-3xl border border-base-300/80 bg-base-100 p-5 sm:p-6 shadow-xs transition-all duration-300 hover:border-primary/40 hover:shadow-xl">
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-[auto_16rem_1fr] lg:grid-cols-[auto_18rem_1fr] md:items-center md:gap-7">
+                {/* Date display (Desktop) */}
+                <div className="hidden md:flex min-w-24 flex-col items-center justify-center rounded-2xl bg-base-200/60 p-4 text-center border border-base-200">
+                    <span className="text-xs font-semibold text-primary uppercase tracking-wider">
+                        {startDate.month}
+                    </span>
+                    <span className="text-4xl font-black leading-none tracking-tight text-base-content my-1">
+                        {startDate.day}
+                    </span>
+                    <span className="text-xs font-medium text-base-content/60">
+                        {startDate.year}
+                    </span>
+                    <div className="mt-2.5 flex items-center gap-1 text-[0.72rem] font-medium text-base-content/70">
+                        <Clock className="h-3 w-3" />
+                        <span>{startDate.time}</span>
                     </div>
                 </div>
 
-                <div className="relative aspect-16/10 w-full rounded-md overflow-hidden bg-base-300 md:w-64 md:self-stretch">
+                {/* Event Image */}
+                <div className="relative aspect-16/10 w-full overflow-hidden rounded-2xl bg-base-300 md:self-stretch">
                     {event.image_url ? (
                         <Image
                             src={event.image_url}
                             alt={event.title}
                             fill
-                            sizes="(min-width: 768px) 16rem, 100vw"
-                            className="object-cover"
+                            sizes="(min-width: 1024px) 18rem, (min-width: 768px) 16rem, 100vw"
+                            className="object-cover transition-transform duration-300 group-hover:scale-105"
                         />
                     ) : (
                         <div
-                            className="absolute inset-0 bg-base-300"
-                            aria-hidden="true"
-                        />
-                    )}
-                </div>
-
-                <div className="min-w-0 space-y-3 md:pl-2">
-                    <Link
-                        href={`/events/${event.slug}`}
-                        className="inline-block text-left text-xl font-bold uppercase tracking-[0.12em] text-base-content transition-colors hover:underline focus-visible:underline focus-visible:outline-none md:text-2xl"
-                    >
-                        <h2>{event.title}</h2>
-                    </Link>
-
-                    <div className="flex items-start gap-2 text-sm text-base-content/70 md:text-[0.98rem]">
-                        <span
-                            className="mt-0.5 inline-flex items-center gap-1.5 text-primary"
+                            className="absolute inset-0 bg-base-300 flex items-center justify-center text-base-content/40"
                             aria-hidden="true"
                         >
+                            <Calendar className="h-8 w-8" />
+                        </div>
+                    )}
+
+                    {/* Mobile Floating Date Badge */}
+                    <div className="md:hidden absolute top-3 left-3 flex items-center gap-1.5 rounded-full bg-neutral-950/85 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md shadow-md">
+                        <Calendar className="h-3 w-3 text-amber-300" />
+                        <span>{startDate.month} {startDate.day}, {startDate.year}</span>
+                        <span className="text-white/40">•</span>
+                        <span>{startDate.time}</span>
+                    </div>
+                </div>
+
+                {/* Content details */}
+                <div className="min-w-0 space-y-3">
+                    <Link
+                        href={`/events/${event.slug}`}
+                        className="group/title block focus-visible:outline-none"
+                    >
+                        <h2 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-base-content transition-colors group-hover/title:text-primary">
+                            {event.title}
+                        </h2>
+                    </Link>
+
+                    <div className="flex items-center gap-1.5 text-xs sm:text-sm font-medium text-base-content/70">
+                        <span className="text-primary" aria-hidden="true">
                             <LocationIcon locationType={event.location_type} />
                         </span>
-                        <span className="min-w-0">{event.location}</span>
+                        <span className="truncate">{event.location}</span>
                     </div>
 
-                    <p className="line-clamp-3 max-w-3xl text-sm leading-6 text-base-content/65 md:text-base md:leading-7">
+                    <p className="line-clamp-2 sm:line-clamp-3 text-xs sm:text-sm leading-relaxed text-base-content/70">
                         {getExcerpt(event.description)}
                     </p>
 
-                    <Link
-                        href={`/events/${event.slug}`}
-                        className="inline-flex w-fit items-center rounded-full border border-base-300 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-primary transition-colors hover:bg-primary hover:text-base-100 active:bg-primary active:text-base-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
-                    >
-                        Learn more
-                    </Link>
+                    <div className="pt-1">
+                        <Link
+                            href={`/events/${event.slug}`}
+                            className="group/link inline-flex items-center gap-2 rounded-full border border-base-300 bg-base-100 px-4 py-2 text-xs sm:text-sm font-semibold uppercase tracking-wider text-base-content transition-all hover:border-primary hover:bg-primary hover:text-white active:scale-95"
+                        >
+                            <span>Learn more</span>
+                            <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/link:translate-x-1" />
+                        </Link>
+                    </div>
                 </div>
             </div>
         </article>

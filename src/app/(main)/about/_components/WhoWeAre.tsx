@@ -1,60 +1,87 @@
+import { Compass, Eye, History, Sparkles } from "lucide-react";
+
+const stats = [
+	{ label: "Founded", value: "June 2008" },
+	{ label: "Departments", value: "6 Fields" },
+	{ label: "Undergraduate Body", value: "3,000+ Members" },
+	{ label: "Active Administration", value: "Horizon Era" },
+];
+
 export default function WhoWeAre() {
 	return (
-		<section className="bg-base-100 py-16 md:py-20 lg:py-24">
-			<div className="container mx-auto px-4">
+		<section className="bg-base-100 py-16 sm:py-20 lg:py-28 relative">
+			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="mx-auto max-w-6xl">
-					<div className="mb-12 text-center md:mb-14">
-						<p className="text-lg font-bold uppercase tracking-[0.22em] text-primary md:text-2xl">
+					{/* Section Header */}
+					<div className="mb-12 sm:mb-16 text-center max-w-2xl mx-auto space-y-3">
+						<div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3.5 py-1 text-xs sm:text-sm font-semibold uppercase tracking-wider text-primary">
+							<Sparkles className="h-3.5 w-3.5" />
+							Identity & Purpose
+						</div>
+						<h2 className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-base-content leading-tight">
 							Who We Are
+						</h2>
+						<p className="text-base sm:text-lg text-base-content/80 leading-relaxed max-w-3xl mx-auto">
+							CISSA is the official student body for all students in the Faculty of Communication and Information Sciences at the University of Ilorin, uniting scholars across media, computing, and information disciplines.
 						</p>
 					</div>
 
-					<p className="mx-auto mb-12 max-w-4xl text-center text-base font-normal leading-8 text-base-content/80 md:mb-14 md:text-xl md:leading-9">
-						CISSA is the official student body for all students in the Faculty
-						of Communication and Information Sciences at the University of
-						Ilorin. It serves as a link between students and the faculty
-						administration while organizing programs that support academic
-						growth, welfare, and career development.
-					</p>
+					{/* Quick Stats Grid */}
+					<div className="mb-14 grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
+						{stats.map((stat) => (
+							<div
+								key={stat.label}
+								className="rounded-3xl border border-base-300/80 bg-base-200/50 p-4 sm:p-6 text-center shadow-xs"
+							>
+								<div className="text-xl sm:text-2xl md:text-3xl font-extrabold text-primary">
+									{stat.value}
+								</div>
+								<div className="mt-1 text-xs sm:text-sm font-medium text-base-content/65">
+									{stat.label}
+								</div>
+							</div>
+						))}
+					</div>
 
-					<div className="grid gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20">
-						<div className="space-y-4">
-							<p className="text-sm font-bold uppercase tracking-[0.24em] text-base-content/60 text-center md:text-base md:text-left">
+					{/* Story, Mission & Vision Cards */}
+					<div className="grid gap-6 sm:gap-8 lg:grid-cols-3">
+						{/* Story */}
+						<div className="rounded-3xl border border-base-300/80 bg-base-100 p-6 sm:p-8 shadow-xs space-y-4 hover:border-primary/40 transition-colors">
+							<div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-500/10 text-amber-600">
+								<History className="h-6 w-6" />
+							</div>
+							<h3 className="text-xl font-bold text-base-content">
 								Our Story
-							</p>
-							<p className="max-w-prose text-base text-center md:text-left font-normal leading-8 text-base-content/80 md:text-lg md:leading-9">
-								The Communication and Information Sciences Students&apos;
-								Association (CISSA) of the University of Ilorin was
-								established in June 2008 to unify students across all
-								departments within the Faculty of Communication and
-								Information Sciences. It was created to provide structured
-								representation, promote academic collaboration, and
-								coordinate student-focused programs within the faculty.
+							</h3>
+							<p className="text-sm sm:text-base leading-relaxed text-base-content/75">
+								Established in June 2008, CISSA was created to unify students across all departments within the Faculty. It provides structured representation, fosters academic collaboration, and coordinates impactful campus initiatives.
 							</p>
 						</div>
 
-						<div className="space-y-10 lg:space-y-12">
-							<div className="space-y-4">
-								<p className="text-sm font-bold uppercase tracking-[0.24em] text-base-content/60 text-center md:text-base md:text-left">
-									Mission
-								</p>
-								<p className="max-w-prose text-base text-center md:text-left font-normal leading-8 text-base-content/80 md:text-lg md:leading-9">
-									To represent, support, and empower students of Communication
-									and Information Sciences through academic, professional, and
-									social initiatives.
-								</p>
+						{/* Mission */}
+						<div className="rounded-3xl border border-base-300/80 bg-base-100 p-6 sm:p-8 shadow-xs space-y-4 hover:border-primary/40 transition-colors">
+							<div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-600">
+								<Compass className="h-6 w-6" />
 							</div>
+							<h3 className="text-xl font-bold text-base-content">
+								Our Mission
+							</h3>
+							<p className="text-sm sm:text-base leading-relaxed text-base-content/75">
+								To advocate, support, and empower students of Communication and Information Sciences through rigorous academic support, career development, and transformative social programs.
+							</p>
+						</div>
 
-							<div className="space-y-4">
-								<p className="text-sm font-bold uppercase tracking-[0.24em] text-base-content/60 text-center md:text-base md:text-left">
-									Vision
-								</p>
-								<p className="max-w-prose text-base text-center md:text-left font-normal leading-8 text-base-content/80 md:text-lg md:leading-9">
-									To build a dynamic student community that produces globally
-									competitive graduates in communication and information
-									sciences.
-								</p>
+						{/* Vision */}
+						<div className="rounded-3xl border border-base-300/80 bg-base-100 p-6 sm:p-8 shadow-xs space-y-4 hover:border-primary/40 transition-colors">
+							<div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-500/10 text-sky-600">
+								<Eye className="h-6 w-6" />
 							</div>
+							<h3 className="text-xl font-bold text-base-content">
+								Our Vision
+							</h3>
+							<p className="text-sm sm:text-base leading-relaxed text-base-content/75">
+								To build a dynamic, inclusive student community that produces globally competitive innovators, researchers, journalists, and tech leaders ready to shape tomorrow.
+							</p>
 						</div>
 					</div>
 				</div>

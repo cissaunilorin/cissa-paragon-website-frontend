@@ -5,9 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
+    ArrowRight,
+    BookOpen,
     CalendarDays,
-    Info,
+    ChevronRight,
     Home,
+    Info,
     Instagram,
     Menu,
     MessageCircleMore,
@@ -20,11 +23,12 @@ import {
 } from "lucide-react";
 
 const navLinks = [
-    { label: "Home", href: "/", icon: Home },
-    { label: "About", href: "/about", icon: Info },
-    { label: "Events", href: "/events", icon: CalendarDays },
-    { label: "News", href: "/news", icon: Newspaper },
-    { label: "Contact", href: "/contact", icon: MessageCircleMore },
+    { label: "Home", href: "/", icon: Home, description: "Welcome & overview" },
+    { label: "About", href: "/about", icon: Info, description: "Our story & leaders" },
+    { label: "Events", href: "/events", icon: CalendarDays, description: "Upcoming & past faculty events" },
+    { label: "News", href: "/news", icon: Newspaper, description: "Official announcements" },
+    { label: "Resources", href: "/materials", icon: BookOpen, description: "Lecture notes & past questions" },
+    { label: "Contact", href: "/contact", icon: MessageCircleMore, description: "Get in touch with executives" },
 ];
 
 const socialLinks = [
@@ -40,9 +44,19 @@ export default function Navbar() {
     const pathname = usePathname();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [hasMounted, setHasMounted] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
 
     useEffect(() => {
         setHasMounted(true);
+
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 20);
+        };
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        handleScroll();
+
+        return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
     useEffect(() => {
@@ -50,9 +64,7 @@ export default function Navbar() {
     }, [pathname]);
 
     useEffect(() => {
-        if (!isMobileMenuOpen) {
-            return;
-        }
+        if (!isMobileMenuOpen) return;
 
         const originalOverflow = document.body.style.overflow;
         document.body.style.overflow = "hidden";
@@ -73,147 +85,260 @@ export default function Navbar() {
 
     return (
         <div className="fixed inset-x-0 top-0 z-50 pointer-events-none">
-            <div className="mx-auto w-full lg:max-w-[80vw] px-3 mt-4 pointer-events-auto transition-all duration-300 sm:px-4 lg:px-6 lg:mt-8">
-                <header className="flex h-16 items-center justify-between gap-4 rounded-4xl border border-[#d7d0c4] bg-base-100/70 px-4 shadow-[0_12px_30px_rgba(34,24,15,0.16)] backdrop-blur-xl lg:h-16 lg:px-6">
-                    <Link href="/" className="flex min-w-0 items-center gap-2.5 lg:gap-3">
-                        <div className="avatar shrink-0">
-                            <div className="h-8 w-8 overflow-hidden rounded-full ring-1 ring-black/5 lg:h-10 lg:w-10">
-                                <Image
-                                    src="/assets/cissa.png"
-                                    alt="CISSA Logo"
-                                    width={40}
-                                    height={40}
-                                />
-                            </div>
+            <div
+                className={`mx-auto w-full transition-all duration-300 pointer-events-auto px-3 sm:px-5 lg:px-8 ${
+                    isScrolled
+                        ? "mt-2 sm:mt-3 lg:max-w-6xl"
+                        : "mt-3 sm:mt-4 lg:mt-6 lg:max-w-6xl"
+                }`}
+            >
+                <header
+                    className={`flex items-center justify-between gap-4 rounded-full border px-3.5 py-2 sm:px-5 sm:py-2.5 transition-all duration-300 ${
+                        isScrolled
+                            ? "border-base-300/80 bg-base-100/90 shadow-[0_12px_32px_rgba(20,15,10,0.12)] backdrop-blur-xl"
+                            : "border-base-300/70 bg-base-100/75 shadow-[0_8px_24px_rgba(20,15,10,0.08)] backdrop-blur-lg"
+                    }`}
+                >
+                    <Link
+                        href="/"
+                        className="group flex min-w-0 items-center gap-2.5 sm:gap-3 transition-transform duration-200 active:scale-95"
+                    >
+                        <div className="relative h-9 w-9 sm:h-10 sm:w-10 shrink-0 overflow-hidden rounded-full ring-2 ring-primary/20 transition-all duration-300 group-hover:ring-primary/40 group-hover:scale-105">
+                            <Image
+                                src="/assets/cissa.png"
+                                alt="CISSA Logo"
+                                fill
+                                sizes="40px"
+                                className="object-cover"
+                                priority
+                            />
                         </div>
-                        <span className="truncate text-[1.05rem] font-semibold tracking-tight text-neutral-900 lg:text-[1.1rem]">
-                            CISSA
-                        </span>
+                        <div className="flex flex-col">
+                            <span className="text-[1.05rem] font-bold tracking-tight text-neutral-900 sm:text-[1.12rem] leading-none">
+                                CISSA
+                            </span>
+                            <span className="hidden sm:inline-block text-[0.65rem] font-medium uppercase tracking-[0.16em] text-neutral-500 mt-0.5">
+                                Unilorin
+                            </span>
+                        </div>
                     </Link>
 
-                    <button
-                        type="button"
-                        className="inline-flex items-center justify-center rounded-full border border-[#cbbfb0] bg-white/55 p-2.5 text-neutral-900 shadow-sm transition-transform duration-200 hover:scale-[1.02] hover:bg-white/80 active:scale-[0.98] lg:hidden"
-                        aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-                        aria-expanded={isMobileMenuOpen}
-                        aria-controls="mobile-navigation-overlay"
-                        onClick={() => setIsMobileMenuOpen((current) => !current)}
-                    >
-                        {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-                    </button>
-
+                    {/* Desktop Navigation */}
                     <nav className="ml-auto hidden items-center lg:flex" aria-label="Primary">
-                        <ul className="flex items-center gap-1 pl-4">
+                        <ul className="flex items-center gap-1">
                             {navLinks.map((link) => {
                                 const Icon = link.icon;
                                 const isActive =
                                     hasMounted &&
                                     (pathname === link.href ||
-                                        ((link.href === "/news" || link.href === "/events") &&
+                                        ((link.href === "/news" ||
+                                            link.href === "/events" ||
+                                            link.href === "/materials") &&
                                             pathname.startsWith(link.href)));
 
                                 return (
                                     <li key={link.href}>
                                         <Link
                                             href={link.href}
-                                            className={`flex items-center rounded-full px-4 py-2 text-sm transition-colors ${
+                                            className={`relative flex items-center rounded-full px-3.5 py-1.5 text-sm font-medium transition-all duration-200 ${
                                                 isActive
-                                                    ? "text-neutral-900"
-                                                    : "text-neutral-500 hover:text-neutral-900"
+                                                    ? "bg-primary text-white shadow-xs"
+                                                    : "text-neutral-600 hover:text-neutral-950 hover:bg-black/5"
                                             }`}
                                         >
-                                            {Icon && <Icon className="mr-2 h-4 w-4 opacity-80" />}
-                                            <span className="whitespace-nowrap">{link.label}</span>
+                                            {Icon && (
+                                                <Icon
+                                                    className={`mr-1.5 h-4 w-4 transition-transform ${
+                                                        isActive
+                                                            ? "text-white"
+                                                            : "opacity-70 group-hover:scale-110"
+                                                    }`}
+                                                />
+                                            )}
+                                            <span>{link.label}</span>
                                         </Link>
                                     </li>
                                 );
                             })}
                         </ul>
                     </nav>
+
+                    {/* Mobile Menu Trigger Button */}
+                    <button
+                        type="button"
+                        className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-base-300/80 bg-base-100 text-neutral-900 shadow-xs transition-all duration-200 hover:bg-base-200 active:scale-95 lg:hidden"
+                        aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+                        aria-expanded={isMobileMenuOpen}
+                        aria-controls="mobile-navigation-overlay"
+                        onClick={() => setIsMobileMenuOpen((current) => !current)}
+                    >
+                        {isMobileMenuOpen ? (
+                            <X className="h-5 w-5 text-neutral-900" />
+                        ) : (
+                            <Menu className="h-5 w-5 text-neutral-900" />
+                        )}
+                    </button>
                 </header>
 
+                {/* Mobile Navigation Drawer */}
                 <div
                     id="mobile-navigation-overlay"
-                    className={`fixed inset-0 z-50 lg:hidden transition-all duration-300 ease-out ${
-                        isMobileMenuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
+                    className={`fixed inset-0 z-50 lg:hidden transition-all duration-300 ${
+                        isMobileMenuOpen
+                            ? "pointer-events-auto opacity-100"
+                            : "pointer-events-none opacity-0"
                     }`}
                     aria-hidden={!isMobileMenuOpen}
                 >
-                    <button
-                        type="button"
-                        className="absolute inset-0 bg-black/20 backdrop-blur-[2px]"
-                        aria-label="Close navigation overlay"
-                        tabIndex={-1}
+                    {/* Backdrop */}
+                    <div
+                        className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300"
                         onClick={() => setIsMobileMenuOpen(false)}
                     />
 
-                    <div className="relative flex h-full flex-col bg-[linear-gradient(180deg,#c97d3a_0%,#bb7336_48%,#ac682f_100%)] px-5 pb-6 pt-5 text-white shadow-[0_24px_80px_rgba(54,28,9,0.35)]">
-                        <div className="flex items-center justify-between gap-4">
-                            <Link href="/" className="flex items-center gap-2.5" onClick={() => setIsMobileMenuOpen(false)}>
-                                <div className="avatar shrink-0">
-                                    <div className="h-9 w-9 overflow-hidden rounded-full bg-white/90 ring-1 ring-white/15">
-                                        <Image
-                                            src="/assets/cissa.png"
-                                            alt="CISSA Logo"
-                                            width={36}
-                                            height={36}
-                                        />
-                                    </div>
+                    {/* Sheet Drawer */}
+                    <div
+                        className={`absolute inset-x-0 top-0 max-h-[92vh] flex flex-col overflow-y-auto rounded-b-3xl border-b border-white/10 bg-neutral-950 text-white shadow-2xl transition-transform duration-300 ease-out ${
+                            isMobileMenuOpen ? "translate-y-0" : "-translate-y-full"
+                        }`}
+                        style={{
+                            paddingTop: "calc(env(safe-area-inset-top, 0px) + 1.25rem)",
+                            paddingBottom: "calc(env(safe-area-inset-bottom, 0px) + 1.5rem)",
+                        }}
+                    >
+                        {/* Drawer Header */}
+                        <div className="flex items-center justify-between border-b border-white/10 px-5 pb-4">
+                            <Link
+                                href="/"
+                                className="flex items-center gap-2.5"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                                <div className="relative h-9 w-9 shrink-0 overflow-hidden rounded-full ring-2 ring-primary/40">
+                                    <Image
+                                        src="/assets/cissa.png"
+                                        alt="CISSA Logo"
+                                        fill
+                                        sizes="36px"
+                                        className="object-cover"
+                                    />
                                 </div>
-                                <span className="text-[1.05rem] font-semibold tracking-tight text-white">
-                                    CISSA
-                                </span>
+                                <div className="flex flex-col">
+                                    <span className="text-base font-bold tracking-tight text-white leading-tight">
+                                        CISSA
+                                    </span>
+                                    <span className="text-[0.68rem] font-medium tracking-wider text-white/60 uppercase">
+                                        Faculty of CIS • Unilorin
+                                    </span>
+                                </div>
                             </Link>
 
                             <button
                                 type="button"
-                                className="inline-flex items-center justify-center rounded-full border border-white/35 bg-white/10 p-2.5 text-white transition-colors hover:bg-white/18 active:bg-white/24"
-                                aria-label="Close navigation menu"
+                                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition-all hover:bg-white/20 active:scale-95"
+                                aria-label="Close menu"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 <X className="h-5 w-5" />
                             </button>
                         </div>
 
-                        <div className="flex flex-1 items-center justify-center">
-                            <nav aria-label="Mobile primary" className="w-full">
-                                <ul className="flex flex-col items-end gap-3 sm:gap-4">
-                                    {navLinks.map((link) => {
-                                        const isActive =
-                                            hasMounted &&
-                                            (pathname === link.href ||
-                                                ((link.href === "/news" || link.href === "/events") &&
-                                                    pathname.startsWith(link.href)));
+                        {/* Navigation Links */}
+                        <nav aria-label="Mobile primary" className="px-4 py-4">
+                            <ul className="space-y-1.5">
+                                {navLinks.map((link) => {
+                                    const Icon = link.icon;
+                                    const isActive =
+                                        hasMounted &&
+                                        (pathname === link.href ||
+                                            ((link.href === "/news" ||
+                                                link.href === "/events" ||
+                                                link.href === "/materials") &&
+                                                pathname.startsWith(link.href)));
 
-                                        return (
-                                            <li key={link.href} className="w-full text-right">
-                                                <Link
-                                                    href={link.href}
-                                                    onClick={() => setIsMobileMenuOpen(false)}
-                                                    className={`inline-flex min-w-[72%] justify-end rounded-full px-2 py-1 text-[clamp(2rem,6.25vw,3.45rem)] font-medium leading-none tracking-tight transition-all duration-200 sm:min-w-[65%] ${
+                                    return (
+                                        <li key={link.href}>
+                                            <Link
+                                                href={link.href}
+                                                onClick={() => setIsMobileMenuOpen(false)}
+                                                className={`group flex items-center justify-between rounded-2xl p-3 transition-all duration-200 ${
+                                                    isActive
+                                                        ? "bg-primary text-white shadow-md font-semibold"
+                                                        : "text-white/80 hover:bg-white/10 hover:text-white"
+                                                }`}
+                                            >
+                                                <div className="flex items-center gap-3.5">
+                                                    <div
+                                                        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl transition-colors ${
+                                                            isActive
+                                                                ? "bg-white/20 text-white"
+                                                                : "bg-white/5 text-amber-300 group-hover:bg-white/10"
+                                                        }`}
+                                                    >
+                                                        <Icon className="h-5 w-5" />
+                                                    </div>
+                                                    <div className="text-left">
+                                                        <div className="text-base leading-tight">
+                                                            {link.label}
+                                                        </div>
+                                                        <div
+                                                            className={`text-xs ${
+                                                                isActive
+                                                                    ? "text-white/80"
+                                                                    : "text-white/50"
+                                                            }`}
+                                                        >
+                                                            {link.description}
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <ChevronRight
+                                                    className={`h-4 w-4 transition-transform group-hover:translate-x-0.5 ${
                                                         isActive
                                                             ? "text-white"
-                                                            : "text-white/80 hover:text-white"
+                                                            : "text-white/30"
                                                     }`}
-                                                >
-                                                    {link.label}
-                                                </Link>
-                                            </li>
-                                        );
-                                    })}
-                                </ul>
-                            </nav>
+                                                />
+                                            </Link>
+                                        </li>
+                                    );
+                                })}
+                            </ul>
+                        </nav>
+
+                        {/* Quick Action Button */}
+                        <div className="px-4 pt-1 pb-3">
+                            <a
+                                href="https://chat.whatsapp.com/G5LkBmXDxQa1mYWBvhrMaa"
+                                target="_blank"
+                                rel="noreferrer"
+                                className="group flex items-center justify-between rounded-2xl bg-emerald-500/15 border border-emerald-500/30 p-3 text-emerald-300 transition-all hover:bg-emerald-500/25 active:scale-[0.99]"
+                            >
+                                <div className="flex items-center gap-3">
+                                    <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-500 text-neutral-950 font-bold">
+                                        <MessagesSquare className="h-5 w-5" />
+                                    </div>
+                                    <div>
+                                        <div className="text-sm font-semibold text-white">
+                                            Join CISSA WhatsApp
+                                        </div>
+                                        <div className="text-xs text-emerald-300/80">
+                                            Get daily faculty updates
+                                        </div>
+                                    </div>
+                                </div>
+                                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                            </a>
                         </div>
 
-                        <div className="mt-8 flex flex-col items-start gap-4">
-                            <p className="text-[0.68rem] uppercase tracking-[0.32em] text-white/70">
-                                Connect
+                        {/* Social Links Footer */}
+                        <div className="mt-auto border-t border-white/10 px-5 pt-4">
+                            <p className="text-[0.65rem] font-bold uppercase tracking-[0.25em] text-white/50 mb-3">
+                                Stay Connected
                             </p>
-
-                            <div className="flex items-center gap-2.5">
+                            <div className="flex flex-wrap items-center gap-2">
                                 {socialLinks.map((social) => {
                                     const SocialIcon = social.icon;
-
                                     return (
                                         <a
                                             key={social.label}
@@ -221,9 +346,9 @@ export default function Navbar() {
                                             target="_blank"
                                             rel="noreferrer"
                                             aria-label={social.label}
-                                            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/22 bg-white/10 text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/18 hover:border-white/35"
+                                            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/70 transition-all hover:border-white/40 hover:bg-white/15 hover:text-white active:scale-95"
                                         >
-                                            <SocialIcon className="h-4.5 w-4.5" />
+                                            <SocialIcon className="h-4 w-4" />
                                         </a>
                                     );
                                 })}

@@ -242,7 +242,7 @@ export default function Page() {
                                     </label>
                                     <input
                                         type="text"
-                                        placeholder="e.g., SANNI, Nurudeen Akorede"
+                                        placeholder="e.g., Kuforiji Ayobami Waris"
                                         className="input input-bordered"
                                         value={formData.name}
                                         onChange={(e) =>
