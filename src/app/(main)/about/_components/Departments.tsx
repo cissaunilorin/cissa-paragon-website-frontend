@@ -29,7 +29,7 @@ const departments: Department[] = [
 		focusAreas: ["Software Engineering", "AI & ML", "Algorithms", "Cloud Computing"],
 	},
 	{
-		name: "Information & Communication Science",
+		name: "Information Technology",
 		icon: Radio,
 		color: "text-amber-600 bg-amber-500/10 border-amber-500/20",
 		description:
