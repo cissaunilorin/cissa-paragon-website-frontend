@@ -119,3 +119,46 @@ export const executives: Executive[] = [
     },
   },
 ];
+
+export type PrincipalOfficer = Executive;
+
+export const principalOfficers: PrincipalOfficer[] = [
+  {
+    name: "Rt. Hon. Akinola David Oluwamayowa (Bucknor)",
+    position: "Speaker",
+    image: "/assets/Principal Officers/Speaker.jpg",
+    socials: {
+      twitter: "https://x.com/BucknorBlaq",
+      instagram: "https://www.instagram.com/Bucknorr_",
+      tiktok: "https://www.tiktok.com/@Bucknor_Blaq",
+    },
+  },
+  {
+    name: "Hon. Ogunremi Oluwafunmilayo Favour (Layo)",
+    position: "Deputy Speaker",
+    image: "/assets/Principal Officers/DeputySpeaker.jpg",
+    socials: {
+      instagram: "https://www.instagram.com/Omo_arolu_owo",
+      tiktok: "https://www.tiktok.com/@Omo_arolu_owo",
+    },
+  },
+  {
+    name: "Hon. Alabi Oluwasore Samuel (Sorefunmi)",
+    position: "Clerk",
+    image: "/assets/Principal Officers/Clerk.jpg",
+    socials: {
+      twitter: "https://x.com/sore_alabi",
+      instagram: "https://www.instagram.com/sore_alabi",
+      tiktok: "https://www.tiktok.com/@sorealabi",
+    },
+  },
+  {
+    name: "Hon. Adebayo Kabir Kayode (Salwest)",
+    position: "Deputy Clerk",
+    image: "/assets/Principal Officers/DeputyClerk.jpg",
+    socials: {
+      twitter: "https://x.com/Iamsalwest",
+      instagram: "https://www.instagram.com/salwestxr",
+    },
+  },
+];

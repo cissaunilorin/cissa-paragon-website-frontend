@@ -1,10 +1,10 @@
 "use client";
 
-import { Ghost, Instagram, Linkedin, MessageCircle, Music2, Sparkles, Twitter } from "lucide-react";
+import { Ghost, Instagram, Linkedin, MessageCircle, Music2, Scale, Sparkles, Twitter } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
-import { executives, type Executive } from "@/lib/executives";
+import { executives, principalOfficers, type Executive } from "@/lib/executives";
 import { formatNumberToWhatsappLink } from "@/lib/utils/format";
 
 function ExecutiveCard({ executive }: { executive: Executive }) {
@@ -36,7 +36,7 @@ function ExecutiveCard({ executive }: { executive: Executive }) {
 
 				{/* Executive Info */}
 				<div className="space-y-1 text-left">
-					<h3 className="text-sm sm:text-base md:text-lg font-bold leading-tight text-base-content line-clamp-1 group-hover:text-primary transition-colors">
+					<h3 className="text-sm sm:text-base md:text-lg font-bold leading-tight text-base-content line-clamp-2 min-h-[2.5rem] sm:min-h-[2.75rem] group-hover:text-primary transition-colors">
 						{executive.name}
 					</h3>
 					<p className="text-xs sm:text-sm font-medium text-primary line-clamp-1">
@@ -149,9 +149,33 @@ export default function MeetTheTeam() {
 						))}
 					</div>
 
-					<div className="mt-12 text-center">
-						<div className="inline-flex items-center gap-2 rounded-full border border-base-300 bg-base-100 px-4 py-2 text-xs sm:text-sm font-medium text-base-content/70 shadow-xs">
-							<span>Principal Officers and Senate members directory coming soon</span>
+					{/* Principal Officers Subsection */}
+					<div className="mt-16 sm:mt-24 pt-12 sm:pt-16 border-t border-base-300/80">
+						<div className="mb-10 sm:mb-14 text-center max-w-2xl mx-auto space-y-3">
+							<div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3.5 py-1 text-xs sm:text-sm font-semibold uppercase tracking-wider text-primary">
+								<Scale className="h-3.5 w-3.5" />
+								Students&apos; Representative Council
+							</div>
+							<h3 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-base-content leading-tight">
+								S.R.C Principal Officers
+							</h3>
+							<p className="text-sm sm:text-base text-base-content/70 leading-relaxed">
+								The presiding officers of the Student Representative Council steering parliamentary leadership and legislative oversight.
+							</p>
+						</div>
+
+						{/* 2-column mobile, 4-column desktop grid */}
+						<div className="grid grid-cols-2 gap-3.5 sm:gap-6 lg:grid-cols-4">
+							{principalOfficers.map((officer) => (
+								<ExecutiveCard key={officer.name} executive={officer} />
+							))}
+						</div>
+
+						{/* Senate directory coming soon */}
+						<div className="mt-12 text-center">
+							<div className="inline-flex items-center gap-2 rounded-full border border-base-300 bg-base-100 px-4 py-2 text-xs sm:text-sm font-medium text-base-content/70 shadow-xs">
+								<span>Senate members directory coming soon</span>
+							</div>
 						</div>
 					</div>
 				</div>
